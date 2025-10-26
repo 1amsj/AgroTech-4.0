@@ -4,13 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bienvenido a AgroTech</title>
+    <title>Bienvenido a AgroTech 4.0</title>
     <!-- Style -->
     <link rel="stylesheet" href="assets/css/login.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <linkn href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+    <linkn href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>  
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -22,9 +24,42 @@
 
 
   <body>
-    <div class="container">
+      <div class="container-fluid">
+        <div class ="row justify-content-end align-items-start">
+          <div class = "col-auto">
+            <button type="button" class="btn-standar" onclick= "window.location.href = 'https://inta.gob.ni/'" >INTA</button>
+            <button type="button" class="btn-standar">Iniciar Sesión</button>
+          </div>
+        </div>
+        <div class ="row justify-content-start align-items-center">
+          <div class ="col-12 col-md-8 col-lg-6 order-2 order-md-2 order-lg-1">
+            <div class="news-card">
+              <div class = "image-section">
+                <img src="assets/Imagenes/logo1.png" alt="AgroTech 4.0 Logo" style = "width: 70vh; height: 70vh;"/>
+                <div class = "description">
+                  <p>AgroTech 4.0 es un sistema web innovador diseñado para transformar la gestión de los CDTs de la Dirección de la Costa Caribe Sur del INTA, integrando principios y herramientas de la Cuarta Revolución Industrial en el ámbito agropecuario.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class ="col-12 col-md-8 col-lg-6 order-1 order-md-1 order-lg-2">
+            <div class = "welcome-section">
+              <div class ="welcome">
+                <h2>Bienvenido</h2>
+              </div>
+              <div class ="image-section">
+                <img src="assets/Imagenes/F-Login.png" alt="Login Image" style="width:80vh; height:80vh;"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+  <!-- 
+     
       <div class="card">
-        <div class="container-label">Bienvenido <span></span></div>
+        <div class="container-label">Bienvenido a AgroTech 4.0<span></span></div>
 
         <div class="container-icon">
           <div class="circle">
@@ -55,9 +90,9 @@
             </form>
         </div>
       </div>
-    </div>
+    -->
 
-    <?php require_once('comunes/footer.php') ?> 
-    <script src="assets/js/login.js"></script>> 
+     
+    <script src="assets/js/login.js"></script>
   </body>
 </html>

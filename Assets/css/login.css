@@ -1,0 +1,25 @@
+.news-card{
+    background-color: #49FD5B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2vh;
+    border-radius: 1.6vh;
+    font-family: "ABeeZee", sans-serif;
+    
+
+}
+
+.image-section {
+    text-align: center;
+    margin: 2vh;
+    
+}
+
+.welcome-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "ABeeZee", sans-serif;
+}
