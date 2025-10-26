@@ -15,7 +15,12 @@
     <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!-- Bootstrap icons and Bootstrap 4 stylesheet (using local Bootstrap 4 JS below) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"/>
+<<<<<<< HEAD
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+=======
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+>>>>>>> d68c145659d780cdd6723abac98acad58e1d3bf7
   </head>
 
 
@@ -49,7 +54,7 @@
                     <img class="d-block w-100" src="assets/Imagenes/Inta2.jpg" alt="Second slide">
                     <div class="carousel-caption d-none d-md-block">
                       <h5>AgroTech 4.0</h5>
-                      <p>...</p>
+                      <p>Esta plataforma digital permite registrar, controlar y supervisar de manera centralizada y en tiempo real el flujo de productos que se generan o comercializan en los CDTs</p>
                     </div>
                   </div>
                   <div class="carousel-item">
@@ -62,7 +67,7 @@
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
+                  <span class="sr-only">Anterior</span>
                 </a>
                 <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -121,11 +126,19 @@
       </div>
     -->
 
+<<<<<<< HEAD
      
     <!-- jQuery -> Popper -> Bootstrap 4 (local) -> custom login JS -->
     <script src="Assets/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
     <script src="Assets/js/p_bootstrap.min.js"></script>
+=======
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> 
+>>>>>>> d68c145659d780cdd6723abac98acad58e1d3bf7
     <script src="assets/js/login.js"></script>
   </body>
 </html>
