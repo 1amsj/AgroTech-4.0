@@ -34,11 +34,43 @@
         <div class ="row justify-content-start align-items-center">
           <div class ="col-12 col-md-8 col-lg-6 order-2 order-md-2 order-lg-1">
             <div class="news-card">
-              <div class = "image-section">
-                <img src="assets/Imagenes/logo1.png" alt="AgroTech 4.0 Logo" style = "width: 70vh; height: 70vh;"/>
-                <div class = "description">
-                  <p>AgroTech 4.0 es un sistema web innovador diseñado para transformar la gestión de los CDTs de la Dirección de la Costa Caribe Sur del INTA, integrando principios y herramientas de la Cuarta Revolución Industrial en el ámbito agropecuario.</p>
+              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="assets/Imagenes/Inta1.jpg" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>AgroTech 4.0</h5>
+                      <p>Sistema web innovador diseñado para transformar la gestión de los CDTs de la Dirección de la Costa Caribe Sur del INTA, integrando principios y herramientas de la Cuarta Revolución Industrial en el ámbito agropecuario.<</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="assets/Imagenes/Inta2.jpg" alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>AgroTech 4.0</h5>
+                      <p>...</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="assets/Imagenes/Inta3.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>AgroTech 4.0</h5>
+                      <p>...</p>
+                    </div>
+                  </div>
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
               </div>
             </div>
           </div>
