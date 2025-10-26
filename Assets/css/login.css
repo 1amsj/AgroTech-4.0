@@ -1,12 +1,11 @@
-.carousel-item{
-    background-color: #49FD5B;
+.news-card{
+    background-color: rgba(73, 253, 91, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2vh;
     border-radius: 1.6vh;
     font-family: "ABeeZee", sans-serif;
-    
 
 }
 
