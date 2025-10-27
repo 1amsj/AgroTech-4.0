@@ -14,9 +14,9 @@ require_once("modelo/".$pagina.".php");
 		if(!empty($_POST)){
 
 			$o = new entrada();
-			if (preg_match("/^[a-zA-Z0-9!@#$%^&()_+\-=\[\]{};':\"\\|,.<>\/?]$/",$_POST['user'] )) {
+			
 				$o->set_usuario($_POST['user']);
-			}
+			
 			
 			
 			$mensaje="";
@@ -31,10 +31,10 @@ require_once("modelo/".$pagina.".php");
 				
 			}
 			
-			$verifica=password_verify($_POST['password'],$resultado[0]);
+			
 			if($mensaje==""){
 
-				if (!$verifica) {
+				if ($$_POST['password']==$resultado[0]) {
 					$entrada= false;
 					$mensaje="La contraceña ingresada es incorrecta";
 					echo $mensaje;
