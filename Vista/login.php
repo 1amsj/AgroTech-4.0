@@ -66,7 +66,7 @@
                 </a>
                 <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
+                  <span class="sr-only">Siguiente</span>
                 </a>
               </div>
             </div>
@@ -113,7 +113,7 @@
         </div>
           </div>
           <div class="modal-footer">
-            <button type="button" id = "send">Guardar cambios</button>
+            <button type="button" id = "enviar">Guardar cambios</button>
           </div>
         </div>
       </div>
