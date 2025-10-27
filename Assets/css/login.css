@@ -22,3 +22,14 @@
     align-items: center;
     font-family: "ABeeZee", sans-serif;
 }
+
+#send{
+    font-family: "ABeeZee", sans-serif;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 1vh;
+    padding: 1vh 2vh;
+}
+
+
