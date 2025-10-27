@@ -19,7 +19,7 @@ class entrada extends datos{
 		try{
 		
 
-			$resultado = $co->prepare("SELECT usuarios.clave, usuarios.id_rol, usuarios.id FROM usuarios WHERE usuarios.nombre =:usua");
+			$resultado = $co->prepare("SELECT usuario.Contrasena, usuario.ID_rol, usuario.N_de_empleado FROM usuario WHERE usuario.nombre =:usua");
 			
 			$resultado->bindParam(':usua',$this->usuario);
 		
