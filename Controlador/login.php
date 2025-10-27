@@ -34,7 +34,7 @@ require_once("modelo/".$pagina.".php");
 			
 			if($mensaje==""){
 
-				if ($$_POST['password']==$resultado[0]) {
+				if (!$_POST['password']==$resultado[0]) {
 					$entrada= false;
 					$mensaje="La contraceña ingresada es incorrecta";
 					echo $mensaje;
@@ -51,7 +51,7 @@ require_once("modelo/".$pagina.".php");
 					$_SESSION['usuario'] =$resultado[2];
 					$_SESSION['rol'] = $resultado[1];
 					$_SESSION['permisos'] =$permisos;
-					$pagina="principal";
+					$pagina="main";
 					
 				}else{
 					echo $permisos;
