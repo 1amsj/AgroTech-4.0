@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>  
     <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic:wght@400..700&display=swap" rel="stylesheet">
     <!-- Bootstrap icons and Bootstrap 4 stylesheet (using local Bootstrap 4 JS below) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -42,21 +43,21 @@
                     <img class="d-block w-100" src="assets/Imagenes/Inta1.jpg" alt="First slide" style="height:66.4vh; width: 133.33vh;">
                     <div class="carousel-caption d-none d-md-block">
                       <h5>AgroTech 4.0</h5>
-                      <p>Sistema web innovador diseñado para transformar la gestión de los CDTs de la Dirección de la Costa Caribe Sur del INTA, integrando principios y herramientas de la Cuarta Revolución Industrial en el ámbito agropecuario.</p>
+                      <p class = "Parrafo">Sistema web innovador diseñado para transformar la gestión de los CDTs de la Dirección de la Costa Caribe Sur del INTA, integrando principios y herramientas de la Cuarta Revolución Industrial en el ámbito agropecuario.</p>
                     </div>
                   </div>
                   <div class="carousel-item">
                     <img class="d-block w-100" src="assets/Imagenes/Inta2.jpg" alt="Second slide" style = "height:66.4vh; width: 133.33vh;">
                     <div class="carousel-caption d-none d-md-block">
                       <h5>AgroTech 4.0</h5>
-                      <p>Esta plataforma digital permite registrar, controlar y supervisar de manera centralizada y en tiempo real el flujo de productos que se generan o comercializan en los CDTs</p>
+                      <p class = "Parrafo">Esta plataforma digital permite registrar, controlar y supervisar de manera centralizada y en tiempo real el flujo de productos que se generan o comercializan en los CDTs</p>
                     </div>
                   </div>
                   <div class="carousel-item">
                     <img class="d-block w-100" src="assets/Imagenes/Inta3.jpg" alt="Third slide" style = "height:66.4vh; width: 133.33vh;">
                     <div class="carousel-caption d-none d-md-block">
                       <h5>AgroTech 4.0</h5>
-                      <p>...</p>
+                      <p class = "Parrafo">...</p>
                     </div>
                   </div>
                 </div>
@@ -66,7 +67,7 @@
                 </a>
                 <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
+                  <span class="sr-only">Siguiente</span>
                 </a>
               </div>
             </div>
@@ -87,7 +88,7 @@
     <!-- Modal -->
      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" id ="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Iniciar Sesión</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -97,9 +98,9 @@
           <div class="modal-body">
             <div class="container-form">
               <form  method="post" id="f">
-              <label for="usuario">Nombre / Usuario</label>
+              <label for="usuario">N° de empleado</label>
               <span id="suser"></span>
-              <input type="text"id="user" name="user" placeholder="Introducir Nombre / Contraseña" autofocus/>
+              <input type="text"id="user" name="user" placeholder="Introducir n° de empleado" autofocus/>
 
               <div class="container-input">
                 <label for="password">Contraseña</label>
