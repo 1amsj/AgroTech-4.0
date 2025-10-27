@@ -25,7 +25,7 @@
         <div class ="row justify-content-end align-items-start">
           <div class = "col-auto">
             <button type="button" class="btn-standar" onclick= "window.location.href = 'https://inta.gob.ni/'" >INTA</button>
-            <button type="button" class="btn-standar" id = "login">Iniciar Sesión</button>
+            <button type="button" class="btn-standar" id="login" data-toggle="modal" data-target="#loginModal">Iniciar Sesión</button>
           </div>
         </div>
         <div class ="row justify-content-start align-items-center">
@@ -85,7 +85,7 @@
       </div>
       
     <!-- Modal -->
-     <div class="modal" tabindex="-1" role="dialog">
+     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
