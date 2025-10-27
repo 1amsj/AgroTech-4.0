@@ -91,26 +91,40 @@
         <div class="modal-content" id ="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Iniciar Sesión</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            >
           </div>
           <div class="modal-body">
             <div class="container-form">
               <form  method="post" id="f">
-              <label for="usuario">N° de empleado</label>
-              <span id="suser"></span>
-              <input type="text"id="user" name="user" placeholder="Introducir n° de empleado" autofocus/>
-
-              <div class="container-input">
-                <label for="password">Contraseña</label>
-
-                <span id="spassword"></span>
-                <input type="password"id="password" name="password" id="password" placeholder="Digite su Contrasena"/>
-                <i id="reveal-password" class="bi bi-eye-slash"></i>
-              </div>
-
-            </form>
+                <div class ="container-input">
+                  <div class = "row">
+                    <div class = "col-12 col-md-8 col-lg-6">
+                      <label for="usuario">Ingrese su número de empleado</label>
+                      <span id="suser"></span>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class = "row">
+                    <div class = "col-12 col-md-8 col-lg-6">
+                      <input type="text"id="user" name="user" placeholder="Introducir n° de empleado" autofocus/>
+                    </div>
+                  </div>
+                  <div class = "row">
+                      <div class = "col-12 col-md-8 col-lg-6">
+                      <label for="password">Ingrese su contraseña</label>
+                      <span id="spassword"></span>
+                      </div>
+                  </div>
+                  <div class = "row">
+                      <div class = "col-12 col-md-8 col-lg-6">
+                        <input type="password"id="password" name="password" id="password" placeholder="Digite su Contrasena"/>
+                        <i id="reveal-password" class="bi bi-eye-slash"></i>
+                      </div>
+                  </div>
+                </div>
+              </form>
         </div>
           </div>
           <div class="modal-footer">

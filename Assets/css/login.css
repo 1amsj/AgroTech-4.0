@@ -36,3 +36,10 @@
     background-color: #49FD5B;
     border-radius: 1.6vh;
 }
+
+.container-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    font-family: "Special Gothic", sans-serif;
+}
