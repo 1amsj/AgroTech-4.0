@@ -19,7 +19,7 @@ class entrada extends datos{
 		try{
 		
 
-			$resultado = $co->prepare("SELECT usuario.Contrasena, usuario.ID_rol, usuario.N_de_empleado FROM usuario WHERE usuario.nombre =:usua");
+			$resultado = $co->prepare("SELECT usuario.Contrasena, usuario.ID_rol, usuario.N_de_empleado FROM usuario WHERE usuario.N_de_empleado =:usua");
 			
 			$resultado->bindParam(':usua',$this->usuario);
 		
@@ -27,7 +27,7 @@ class entrada extends datos{
 
 
 			foreach($resultado as $r){
-				$fila= array($r["clave"],$r["id_rol"],$r["id"]);
+				$fila= array($r["Contrasena"],$r["ID_rol"],$r["N_de_empleado"]);
 
             }
 	
@@ -58,9 +58,9 @@ class entrada extends datos{
 		
 
 			$resultado = $co->prepare("SELECT p.nombre as permiso FROM rol r 
-            INNER JOIN rol_permiso rp ON r.id=rp.id_rol INNER JOIN permisos p ON rp.id_permiso=p.id 
+            INNER JOIN rol_permiso rp ON r.id=rp.id_rol INNER JOIN permisos p ON rp.ID_Permiso=p.id 
             WHERE r.id = :rol 
-            ORDER BY rp.id_permiso");
+            ORDER BY rp.ID_Permiso;");
 			
 			$resultado->bindParam(':rol',$rol);
 		
