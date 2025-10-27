@@ -113,51 +113,12 @@
         </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Save changes</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" id = "send">Guardar cambios</button>
           </div>
         </div>
       </div>
     </div>
 
-  <!-- 
-     
-      <div class="card">
-        <div class="container-label">Bienvenido a AgroTech 4.0<span></span></div>
-
-        <div class="container-icon">
-          <div class="circle">
-            <i class="bi bi-chevron-right"></i>
-          </div>
-        </div>
-
-        <div class="container-form">
-            <form  method="post" id="f">
-            <label for="usuario">Nombre / Usuario</label>
-            <span id="suser"></span>
-            <input type="text"id="user" name="user" placeholder="Introducir Nombre / Contraseña" autofocus/>
-
-            <div class="container-input">
-              <label for="password">Contraseña</label>
-
-              <span id="spassword"></span>
-              <input type="password"id="password" name="password" id="password" placeholder="Digite su Contrasena"/>
-              <i id="reveal-password" class="bi bi-eye-slash"></i>
-            </div>
-
-            <div class="change-password">
-              Para alterar Contraseña <a href="javascript:void(0)">Clique aqui</a>
-            </div>
-            
-            <div class="boton" id="enviar" >Ingresar</div>
-            
-            </form>
-        </div>
-      </div>
-    -->
-
-
-    
   <!-- jQuery -> Popper (v1) -> Bootstrap 4 (local) -> custom login JS -->
   <script src="Assets/jquery-3.3.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
