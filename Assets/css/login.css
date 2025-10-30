@@ -9,6 +9,20 @@
 
 }
 
+body {
+  background: radial-gradient(circle at top left, #49FD5B, #ffffff 60%);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .image-section {
     text-align: center;
     margin: 2vh;
@@ -29,6 +43,24 @@
     border: none;
     border-radius: 1vh;
     padding: 1vh 2vh;
+    background-color: white;
+    margin: 1vh;
+    border-radius: 1.6vh;
+    box-shadow: 0.6vh 0.6vh 1.2vh rgba(0, 0, 0, 0.2);
+    padding: 2vh 2vh;
+    font-size: 2vh;
+    border: none;
+    font-family: "ABeeZee", sans-serif;
+}
+
+#enviar:hover {
+    transform: scale(1.05);
+    color: white;
+    background-color: black;
+    border: white;
+    box-shadow: 0 4px 12px white;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 #modal-content {
@@ -43,3 +75,4 @@
     gap: 2vh;
     font-family: "Special Gothic", sans-serif;
 }
+ 

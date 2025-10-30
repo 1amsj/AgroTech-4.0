@@ -107,7 +107,7 @@
                     <label for="password">Ingrese su contraseña</label>
                     <input class="form-control input-standar" type="password" id="password" name="password" placeholder="Digite su contraseña">
                   </div>
-                  <button type="submit" class="btn btn-success w-100" id = "enviar" >Iniciar sesión</button>
+                  <button type="submit" class="btn w-100" id = "enviar" >Iniciar sesión</button>
                 </form>
               </div>
 

@@ -9,12 +9,22 @@
     font-family: "ABeeZee", sans-serif;
 }
 
+.btn-standar:hover{
+    transform: scale(1.05);
+    background-color: transparent;
+    border: black;
+    box-shadow: 0 4px 12px rgba(73, 253, 91, 0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
 .Parrafo{
     font-family: "Special Gothic", sans-serif;
     font-size: 2vh;
 }
 
-.input-standar{
+#user, #password {
+    height: 4vh;
     border-radius: 2vh;
     box-shadow: 0.6vh 0.6vh 1.2vh rgba(0, 0, 0, 0.2);
     padding: 1.5vh 1.5vh;
