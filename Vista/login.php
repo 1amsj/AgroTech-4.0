@@ -31,7 +31,6 @@
         </div>
         <div class ="row justify-content-start align-items-center">
           <div class ="col-12 col-md-8 col-lg-6 order-2 order-md-2 order-lg-1">
-            <div class="news-card">
               <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -70,7 +69,6 @@
                   <span class="sr-only">Siguiente</span>
                 </a>
               </div>
-            </div>
           </div>
           <div class ="col-12 col-md-8 col-lg-6 order-1 order-md-1 order-lg-2">
             <div class = "welcome-section">
@@ -86,53 +84,44 @@
       </div>
       
     <!-- Modal -->
-     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content" id ="modal-content">
+     <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg"> <!-- modal grande -->
+        <div class="modal-content" id="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Iniciar Sesión</h5>
-            >
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
+
           <div class="modal-body">
-            <div class="container-form">
-              <form  method="post" id="f">
-                <div class ="container-input">
-                  <div class = "row">
-                    <div class = "col-12 col-md-8 col-lg-6">
-                      <label for="usuario">Ingrese su número de empleado</label>
-                      <span id="suser"></span>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
+            <div class="row align-items-center">
+              <!-- Columna del formulario -->
+              <div class="col-md-6">
+                <form id="f" method="post">
+                  <div class="mb-3">
+                    <label for="user">Ingrese su número de empleado</label>
+                    <input class="form-control input-standar" type="text" id="user" name="user" placeholder="Introducir n° de empleado" autofocus>
                   </div>
-                  <div class = "row">
-                    <div class = "col-12 col-md-8 col-lg-6">
-                      <input type="text"id="user" name="user" placeholder="Introducir n° de empleado" autofocus/>
-                    </div>
+                  <div class="mb-3">
+                    <label for="password">Ingrese su contraseña</label>
+                    <input class="form-control input-standar" type="password" id="password" name="password" placeholder="Digite su contraseña">
                   </div>
-                  <div class = "row">
-                      <div class = "col-12 col-md-8 col-lg-6">
-                      <label for="password">Ingrese su contraseña</label>
-                      <span id="spassword"></span>
-                      </div>
-                  </div>
-                  <div class = "row">
-                      <div class = "col-12 col-md-8 col-lg-6">
-                        <input type="password"id="password" name="password" id="password" placeholder="Digite su Contrasena"/>
-                        <i id="reveal-password" class="bi bi-eye-slash"></i>
-                      </div>
-                  </div>
-                </div>
-              </form>
-        </div>
+                  <button type="submit" class="btn btn-success w-100" id = "enviar" >Iniciar sesión</button>
+                </form>
+              </div>
+
+              <!-- Columna de la imagen -->
+              <div class="col-md-6 text-center">
+                <img src="assets/Imagenes/F-Login.png" alt="Login Image" class="img-fluid rounded">
+              </div>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" id = "enviar">Guardar cambios</button>
-          </div>
+
         </div>
       </div>
     </div>
+
 
   <!-- jQuery -> Popper (v1) -> Bootstrap 4 (local) -> custom login JS -->
   <script src="Assets/jquery-3.3.1.min.js"></script>

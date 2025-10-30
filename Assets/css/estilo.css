@@ -13,3 +13,12 @@
     font-family: "Special Gothic", sans-serif;
     font-size: 2vh;
 }
+
+.input-standar{
+    border-radius: 2vh;
+    box-shadow: 0.6vh 0.6vh 1.2vh rgba(0, 0, 0, 0.2);
+    padding: 1.5vh 1.5vh;
+    font-size: 2vh;
+    border: none;
+    font-family: "ABeeZee", sans-serif;
+}
