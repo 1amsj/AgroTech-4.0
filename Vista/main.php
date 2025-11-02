@@ -25,10 +25,16 @@
             <div class="col-12 col-md-8 col-lg-6 order-2 order-md-2 order-lg-1">
                 <?php require_once("comunes/menu.php")?>
             </div>
+<<<<<<< HEAD
             <div class="col-12 col-md-8 col-lg-6 order-1 order-md-1 order-lg-2" style = "justify-content: start; align-items: center; display: flex; flex-direction: column;">
                 <h1 class = "header-standar">Bienvenido, <?php $nivel = $_SESSION['usuario']; echo $nivel;?></h1>
                 <p>Esta es la página principal de AgroTech 4.0</p>
                 
+=======
+            <div class="col-12 col-md-8 col-lg-6 order-1 order-md-1 order-lg-2" style = "justify-content: start; align-items: center; display: flex; flex-direction: column; padding: 8vh;">
+                <h1 class = "header-standar">Bienvenido, ...</h1>
+                <p>¿Qué haremos el día de hoy?</p>
+>>>>>>> ec5bdf43bb2b2337140b0a8435216a1997e3ae99
             </div>
         </div>
     </div>

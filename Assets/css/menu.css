@@ -10,9 +10,16 @@ body {
 .sidebar {
     width: var(--sidebar-width);
     height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
     background-color: #49FD5B;
     transition: all 0.3s ease;
+    overflow-y: auto;      
+    overflow-x: hidden;     
+    z-index: 1000;
 }
+
 
 .sidebar.collapsed {
     width: var(--sidebar-width-collapsed);
@@ -40,6 +47,32 @@ body {
 .sidebar-link.active {
     color: #ffffff;
     background: black;
+}
+
+/* ===== Scrollbar translúcida y minimalista ===== */
+.sidebar::-webkit-scrollbar {
+    width: 8px;                         
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;             
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.001);  
+    border-radius: 10px;
+    backdrop-filter: blur(2px);          
+    transition: background 0.3s ease;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.332); 
+}
+
+/* ===== Firefox ===== */
+.sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: black transparent; 
 }
 
 .logo-text {
@@ -74,7 +107,7 @@ body {
 
 .toggle-btn {
     position: absolute;
-    right: -15px;
+    right: 5px;
     top: 20px;
     background: white;
     border-radius: 50%;
@@ -117,3 +150,4 @@ body {
 .profile-info {
     transition: opacity 0.2s ease;
 }
+
