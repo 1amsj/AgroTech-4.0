@@ -18,7 +18,7 @@
 
 
     <?php
-    if ($nivel !== "") { ?>
+    if ($nivel == "") { ?>
         <div class="d-flex">
             <nav class="sidebar d-flex flex-column flex-shrink-0 position-fixed">
                 <button class="toggle-btn" onclick="toggleSidebar()">
@@ -35,25 +35,90 @@
                         <i class="fas fa-home me-3"></i>
                         <span class="hide-on-collapse">Inicio</span>
                     </a>
+
+                    <?php
+                        if ($nivel == "admin") {
+                    ?>
                     <a href="/AgroTech-4.0/Vista/inventario.php" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-chart-bar me-3"></i>
                         <span class="hide-on-collapse">Inventario</span>
                     </a>
                     <a href="#" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-users me-3"></i>
-                        <span class="hide-on-collapse">Salida</span>
+                        <span class="hide-on-collapse">Entradas</span>
                     </a>
-
+                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-users me-3"></i>
+                        <span class="hide-on-collapse">Salidas</span>
+                    </a>
                     <a href="#" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-box me-3"></i>
                         <span class="hide-on-collapse">Seguridad</span>
                     </a>
                     <a href="#" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-gear me-3"></i>
+                        <span class="hide-on-collapse">Bitacora</span>
+                    </a>
+                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-gear me-3"></i>
                         <span class="hide-on-collapse">Reportes</span>
                     </a>
+                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-gear me-3"></i>
+                        <span class="hide-on-collapse">Destinatarios</span>
+                    </a>
+                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-gear me-3"></i>
+                        <span class="hide-on-collapse">Proveedores</span>
+                    </a>
+                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-gear me-3"></i>
+                        <span class="hide-on-collapse">Usuarios</span>
+                    </a>
                 </div>
-
+                <?php
+                    } else if ($nivel == "worker") { ?>
+                    <a href="/AgroTech-4.0/Vista/inventario.php" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-chart-bar me-3"></i>
+                        <span class="hide-on-collapse">Inventario</span>
+                    </a>
+                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-users me-3"></i>
+                        <span class="hide-on-collapse">Entradas</span>
+                    </a>
+                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-users me-3"></i>
+                        <span class="hide-on-collapse">Salidas</span>
+                    </a>
+                <?php
+                    } else if ($nivel == "boss") { ?>
+                    <a href ="#" class = "sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-chart-bar me-3"></i>
+                        <span class="hide-on-collapse">Entradas</span>
+                    </a>
+                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-users me-3"></i>
+                        <span class="hide-on-collapse">Salidas</span>
+                    </a>
+                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-users me-3"></i>
+                        <span class="hide-on-collapse">Bitacora</span>
+                    </a>
+                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-gear me-3"></i>
+                        <span class="hide-on-collapse">Reportes</span>
+                    </a>
+                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-gear me-3"></i>
+                        <span class="hide-on-collapse">Destinatarios</span>
+                    </a>
+                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-gear me-3"></i>
+                        <span class="hide-on-collapse">Proveedores</span>
+                    </a>
+                <?php
+                    }
+                ?>
                 <div class="profile-section mt-auto p-4">
                     <div class="d-flex align-items-center">
                         <img src="https://randomuser.me/api/portraits/women/70.jpg" style="height:60px"
