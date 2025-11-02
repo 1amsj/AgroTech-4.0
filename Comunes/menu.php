@@ -18,7 +18,7 @@
 
 
     <?php
-    if ($nivel == "") { ?>
+    if ($nivel !== "") { ?>
         <div class="d-flex">
             <nav class="sidebar d-flex flex-column flex-shrink-0 position-fixed">
                 <button class="toggle-btn" onclick="toggleSidebar()">
