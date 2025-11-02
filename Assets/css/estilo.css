@@ -36,12 +36,12 @@ body {
 }
 
 #user, #password {
-    height: 4vh;
     border-radius: 2vh;
     box-shadow: 0.6vh 0.6vh 1.2vh rgba(0, 0, 0, 0.2);
-    padding: 1.5vh 1.5vh;
+    padding: 4vh 5vh;
     font-size: 2vh;
     border: none;
+    font-size: 2.5vh;
     font-family: "ABeeZee", sans-serif;
 }
 
