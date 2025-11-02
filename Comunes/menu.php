@@ -37,7 +37,7 @@
                     </a>
 
                     <?php
-                        if ($nivel == "admin") {
+                        if ($nivel == "1") {
                     ?>
                     <a href="/AgroTech-4.0/Vista/inventario.php" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-chart-bar me-3"></i>
@@ -125,7 +125,7 @@
                             class="rounded-circle" alt="Profile">
                         <div class="ms-3 profile-info">
                             <h6 class="text-white mb-0">Slilma Juárez</h6>
-                            <small class="text-muted">Admin</small>
+                            <small class="text-muted">1</small>
                         </div>
                     </div>
                 </div>

@@ -19,7 +19,7 @@ class entrada extends datos{
 		try{
 		
 
-			$resultado = $co->prepare("SELECT usuario.Contrasena, usuario.ID_rol, usuario.N_de_empleado FROM usuario WHERE usuario.N_de_empleado =:usua");
+			$resultado = $co->prepare("SELECT usuario.Contrasena, usuario.ID_rol, usuario.Nombre, usuario.Apellido FROM usuario WHERE usuario.N_de_empleado =:usua;");
 			
 			$resultado->bindParam(':usua',$this->usuario);
 		
@@ -27,7 +27,7 @@ class entrada extends datos{
 
 
 			foreach($resultado as $r){
-				$fila= array($r["Contrasena"],$r["ID_rol"],$r["N_de_empleado"]);
+				$fila= array($r["Contrasena"],$r["ID_rol"],$r["Nombre"]." ".$r["Apellido"]);
 
             }
 	
