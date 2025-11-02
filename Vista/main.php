@@ -23,7 +23,7 @@
     <div class = "container-fluid">
         <div class="row align-items-center">
             <div class="col-12 col-md-8 col-lg-6 order-2 order-md-2 order-lg-1">
-                <?php include 'Vista/menu.php'; ?>
+                <?php require_once("comunes/menu.php")?>
             </div>
             <div class="col-12 col-md-8 col-lg-6 order-1 order-md-1 order-lg-2" style = "justify-content: start; align-items: center; display: flex; flex-direction: column;">
                 <h1 class = "header-standar">Bienvenido, ...</h1>
