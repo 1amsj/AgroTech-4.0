@@ -23,6 +23,18 @@
     font-size: 2vh;
 }
 
+body {
+    transform: translateX(-100px); 
+    animation: slideIn 1s ease-out forwards;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0); /* Termina en su posición normal */
+  }
+}
+
 #user, #password {
     height: 4vh;
     border-radius: 2vh;
@@ -31,4 +43,9 @@
     font-size: 2vh;
     border: none;
     font-family: "ABeeZee", sans-serif;
+}
+
+.header-standar{
+    font-family: "Special Gothic", sans-serif;
+    font-size: 6vh;
 }
