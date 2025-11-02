@@ -8,8 +8,8 @@
         session_start();
     }
 
-    if (isset($_SESSION['nivel'])) {
-        $nivel = $_SESSION['nivel'];
+    if (isset($_SESSION['rol'])) {
+        $nivel = $_SESSION['rol'];
     } else {
         $nivel = "";
     }

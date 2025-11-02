@@ -58,9 +58,8 @@ class entrada extends datos{
 		
 
 			$resultado = $co->prepare("SELECT p.nombre as permiso FROM rol r 
-            INNER JOIN rol_permiso rp ON r.id=rp.id_rol INNER JOIN permisos p ON rp.ID_Permiso=p.id 
-            WHERE r.id = :rol 
-            ORDER BY rp.ID_Permiso;");
+            INNER JOIN rol_permiso rp ON r.id=rp.ID_ROL INNER JOIN permisos p ON rp.ID_Permiso=p.id 
+            WHERE r.id = :rol;");
 			
 			$resultado->bindParam(':rol',$rol);
 		
