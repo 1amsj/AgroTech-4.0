@@ -28,6 +28,7 @@
             <div class="col-12 col-md-8 col-lg-6 order-1 order-md-1 order-lg-2" style = "justify-content: start; align-items: center; display: flex; flex-direction: column;">
                 <h1 class = "header-standar">Bienvenido, <?php $nivel = $_SESSION['usuario']; echo $nivel;?></h1>
                 <p>Esta es la página principal de AgroTech 4.0</p>
+                
             </div>
         </div>
     </div>
