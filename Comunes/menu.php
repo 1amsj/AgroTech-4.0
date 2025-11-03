@@ -71,7 +71,7 @@
                         <i class="fas fa-gear me-3"></i>
                         <span class="hide-on-collapse">Proveedores</span>
                     </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                    <a href="?pagina=usuario" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-gear me-3"></i>
                         <span class="hide-on-collapse">Usuarios</span>
                     </a>
@@ -124,7 +124,7 @@
                         <img src="https://randomuser.me/api/portraits/women/70.jpg" style="height:60px"
                             class="rounded-circle" alt="Profile">
                         <div class="ms-3 profile-info">
-                            <h6 class="text-white mb-0">Slilma Juárez</h6>
+                            <h6 class="text-white mb-0"><?php $nivel = $_SESSION['usuario']; echo $nivel; ?></h6>
                             <small class="text-muted">1</small>
                         </div>
                     </div>

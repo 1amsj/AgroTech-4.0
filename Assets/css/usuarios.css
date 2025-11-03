@@ -1,0 +1,57 @@
+.btn-modificar{
+    background-color: #FFC107;
+    margin: 1vh;
+    border-radius: 1.6vh;
+    box-shadow: 0.6vh 0.6vh 1.2vh rgba(0, 0, 0, 0.2);
+    padding: 1vh 2vh;
+    font-size: 2vh;
+    border: none;
+    font-family: "ABeeZee", sans-serif;
+}
+
+.btn-eliminar{
+    background-color: #DC3545;
+    margin: 1vh;
+    border-radius: 1.6vh;
+    box-shadow: 0.6vh 0.6vh 1.2vh rgba(0, 0, 0, 0.2);
+    padding: 1vh 2vh;
+    font-size: 2vh;
+    border: none;
+    font-family: "ABeeZee", sans-serif;
+}
+
+.btn-modificar:hover{
+    transform: scale(1.05);
+    background-color: transparent;
+    border: black;
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-eliminar:hover{
+    transform: scale(1.05);
+    background-color: transparent;
+    border: black;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* arriba */
+    align-items: flex-end;       /* derecha */
+    text-align: right;           /* alinear texto */
+    gap: 10px;
+   
+}
+
+.container-all{
+    justify-content: center; 
+    align-items: center; 
+    display: flex; 
+    flex-direction: column;
+}
+

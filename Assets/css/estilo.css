@@ -9,6 +9,7 @@
     font-family: "ABeeZee", sans-serif;
 }
 
+
 .btn-standar:hover{
     transform: scale(1.05);
     background-color: transparent;
@@ -17,6 +18,8 @@
     transition: all 0.3s ease;
     cursor: pointer;
 }
+
+
 
 .Parrafo{
     font-family: "Special Gothic", sans-serif;
