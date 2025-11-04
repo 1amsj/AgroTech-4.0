@@ -29,32 +29,36 @@
   <!-- CONTENIDO PRINCIPAL -->
   <main class="main-content">
     <div class="header">
-      <h1 class="header-standar">Usuarios</h1>
+      <h1 class="header-standar">Proveedores</h1>
     </div>
 
     <div class="container-all">
       <div class="container-header">
-        <button class="btn-standar" data-toggle="modal" data-target="#loginModal">Agregar Usuario</button>
+        <button class="btn-standar" data-toggle="modal" data-target="#loginModal">Agregar Proveedor</button>
       </div>
 
       <div class="user-table">
         <table class="table table-bordered text-center align-middle">
           <thead>
             <tr>
-              <th>N° de empleado</th>
-              <th>Nombre y Apellido</th>
-              <th>CDT de pertenencia</th>
-              <th>Rol</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Correo</th>
+              <th>Telefono</th>
+              <th>Dirección</th>
+              <th>Descripción</th>
               <th>Modificar</th>
               <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>001</td>
-              <td>Juan Pérez</td>
-              <td>CDT Norte</td>
-              <td>Administrador</td>
+              <td>Juan</td>
+              <td>Pérez</td>
+              <td>hola@gmail.com</td>
+              <td>xxxx-xxxx</td>
+                <td>Calle Falsa 123</td>
+                <td>Proveedor de frutas y verduras</td>
               <td><button class="btn-modificar btn-sm">Modificar</button></td>
               <td><button class="btn-eliminar btn-sm">Eliminar</button></td>
             </tr>
@@ -81,24 +85,28 @@
                         <div class="col-md-8">
                             <form id="f" method="post">
                                 <div class="mb-3">
-                                    <label for="user">Ingrese el número de empleado</label>
-                                    <input class="form-control input-standar" type="text" id="user" name="user"
-                                        placeholder="Introducir n° de empleado" autofocus>
+                                    <label for="user">Nombre</label>
+                                    <input class="form-control input-standar" type="text" id="user" name="user"placeholder="Introducir n° de empleado" autofocus>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="password">Nombre y Apellido</label>
-                                    <input class="form-control input-standar" id="password"
-                                        name="password" placeholder="Digite su contraseña">
+                                    <label for="password">Apellido</label>
+                                    <input class="form-control input-standar" id="password"name="password" placeholder="Digite su contraseña">
                                 </div>
-                                 <div class="mb-3">
-                                    <label for="password">CDT de pertenencia</label>
-                                    <input class="form-control input-standar" id="password"
-                                        name="password" placeholder="Digite su contraseña">
+                                <div class="mb-3">
+                                    <label for="user">Correo</label>
+                                    <input class="form-control input-standar" type="text" id="user" name="user"placeholder="Introducir n° de empleado" autofocus>
                                 </div>
-                                 <div class="mb-3">
-                                    <label for="password">Rol</label>
-                                    <input class="form-control input-standar" id="password"
-                                        name="password" placeholder="Digite su contraseña">
+                                <div class="mb-3">
+                                    <label for="user">Telefono</label>
+                                    <input class="form-control input-standar" type="text" id="user" name="user"placeholder="Introducir n° de empleado" autofocus>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="user">Dirección</label>
+                                    <input class="form-control input-standar" type="text" id="user" name="user"placeholder="Introducir n° de empleado" autofocus>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="user">Descripción</label>
+                                    <input class="form-control input-standar" type="text" id="user" name="user"placeholder="Introducir n° de empleado" autofocus>
                                 </div>
                                 <button type="submit" class="btn w-100" id="enviar">Registrar</button>
                             </form>

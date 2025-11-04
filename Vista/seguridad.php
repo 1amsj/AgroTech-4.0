@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="password">Descripción</label>
-                                    <input class="form-control input-standar" type="password" id="password"
+                                    <input class="form-control input-standar" id="password"
                                         name="password" placeholder="Digite su contraseña">
                                 </div>
                                 <button type="submit" class="btn w-100" id="enviar">Modificar</button>
