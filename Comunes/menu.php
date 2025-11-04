@@ -51,7 +51,7 @@
                         <i class="fas fa-users me-3"></i>
                         <span class="hide-on-collapse">Salidas</span>
                     </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                    <a href="?pagina=seguridad" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-box me-3"></i>
                         <span class="hide-on-collapse">Seguridad</span>
                     </a>
