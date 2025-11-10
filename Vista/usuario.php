@@ -34,7 +34,7 @@
 
     <div class="container-all">
       <div class="container-header">
-        <button class="btn-standar" data-toggle="modal" data-target="#loginModal">Agregar Usuario</button>
+        <button class="btn-standar" data-toggle="modal" data-target="#loginModal">Agregar Usuario <?php if(isset($mensaje)) {echo $mensaje; }?></button>
       </div>
 
       <div class="user-table">
@@ -82,21 +82,40 @@
                 <form id="f" method="post">
                   <div class="mb-3">
                     <label for="user">Ingrese el número de empleado</label>
+                    <span id="suser" class="text-danger"></span>
                     <input class="form-control input-standar" type="text" id="user" name="user" placeholder="Introducir n° de empleado" autofocus>
                   </div>
                   <div class="mb-3">
                     <label for="password">Ingrese nombre del empleado</label>
-                    <input class="form-control input-standar" type="password" id="password" name="password" placeholder="Digite su contraseña">
+                    <span id="snombre" class="text-danger"></span>
+                    <input class="form-control input-standar" type="text" id="nombre" name="nombre" placeholder="Escrba su nombre">
+                  </div>
+                  <div class="mb-3">
+                    <label for="apellido">Ingrese apellido del empleado</label>
+                    <span id="sapellido" class="text-danger"></span>
+                    <input class="form-control input-standar" type="text" id="apellido" name="apellido" placeholder="Escrba su apellido">
                   </div>
                   <div class="mb-3">
                     <label for="user">Ingrese el CDT de pertenencia</label>
-                    <input class="form-control input-standar" type="text" id="user" name="user" placeholder="Introducir n° de empleado" autofocus>
+                    <span id="scdt" class="text-danger"></span>
+                    <select name="cdt" id="cdt">
+                      <?php if(isset($cdt)) {echo $cdt; } ?>
+                    </select>
                   </div>
                   <div class="mb-3">
                     <label for="user">Ingrese el rol del empleado</label>
-                    <input class="form-control input-standar" type="text" id="user" name="user" placeholder="Introducir n° de empleado" autofocus>
+                    <span id="srol" class="text-danger"></span>
+                    <select name="rol" id="rol">
+                      <?php if(isset($roles)) {echo $roles; } ?>
+                    </select>
                   </div>
-                  <button type="submit" class="btn w-100" id = "enviar" >Iniciar sesión</button>
+                  <div class="mb-3">
+                    <label for="user">Ingrese el contraseña</label>
+                    <span id="scontraseña" class="text-danger"></span>
+                    <input class="form-control input-standar" type="text" id="contraseña" name="contraseña" placeholder="Digite su contraseña">
+                    <input  type="text" name="accion" value="registrar">
+                  </div>
+                  <button type="button" class="btn w-100" id="registrar">guardar</button>
                 </form>
               </div>
 
@@ -118,4 +137,5 @@
   <script src="Assets/jquery-3.3.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
   <script src="Assets/js/p_bootstrap.min.js"></script>
+  <script src="Assets/js/usuario.js"></script>
 </html>

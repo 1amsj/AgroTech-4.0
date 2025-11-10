@@ -1,98 +1,414 @@
 <?php
 
 require_once('modelo/conexion.php');
-class entrada extends datos{
-    private $usuario;
-	private $clave;
+class usuarios extends datos{
+
+	private $nombre;
+	private $rol;
+    private $apellido;
+    private $contraseña;
+    private $cdt;
+    private $id;
+    private $nivel;
 
 
-    public function set_usuario($valor){
-		$this->usuario = $valor; 
+	public function set_nombre($valor){
+       
+		$this->nombre = $valor;
+        
 	}
-	public function set_clave($valor){
-		$this->clave = $valor; 
+    public function set_user($valor){
+      
+		$this->id = $valor; 
+        
 	}
 	
-    public function busca(){
+    public function set_apellido($valor){
+
+		$this->apellido = $valor;
+
+	}
+    public function set_contraceña($valor){
+       
+		$this->contraseña = $valor; 
+        
+
+	}
+    public function set_cdt($valor){
+        
+		$this->cdt = $valor;
+    
+	}
+    public function set_rol($valor){
+       
+		$this->rol = $valor; 
+        
+       
+	}
+    public function set_nivel($valor){
+		$this->nivel = $valor; 
+
+	}
+
+
+    public function registrar(){
+       $val= $this->registrar1();
+       echo $val;
+    }
+
+    public function modificar(){
+        $val=  $this->modificar1();
+        echo $val;
+    }
+
+    public function eliminar(){
+        $val= $this->eliminar1();
+        echo $val;
+    }
+
+
+
+   
+    public function registrar1(){
+
+
+        $co = $this->conecta();
+		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        if(!$this->existe($this->id)){
+            try{
+                $t="1";
+                $r= $co->prepare("Insert into usuario(
+						
+                    N_de_empleado,
+                    nombre, 
+                    Apellido,
+                    Contrasena,
+                    estado,
+                    ID_rol,
+                    ID_CDT 
+                    )
+            
+
+                    Values(
+                        :N_de_empleado,
+                        :nombre,
+                        :apellido,
+                        :contrasena,
+                        :estado,
+                        :id_rol,
+                        :id_cdt
+                    )");
+                $r->bindParam(':N_de_empleado',$this->id);	
+                $r->bindParam(':nombre',$this->nombre);	
+                $r->bindParam(':apellido',$this->apellido);	
+                $r->bindParam(':contrasena',$this->contraseña);	
+                $r->bindParam(':estado',$t);	
+                $r->bindParam(':id_rol',$this->rol);	
+                $r->bindParam(':id_cdt',$this->cdt);	    
+                $r->execute();
+                $this->bitacora("se registro un usuario", "usuarios",$this->nivel);
+             
+                    return "Registro incluido";	
+                
+            }catch(Exception $e){
+                return $e->getMessage();
+            }
+                
+            }
+            else{
+                return "nombre registrado";
+            }
+    
+
+
+
+
+
+
+
+
+        }
+
+        public function modificar1(){
+
+
+            $co = $this->conecta();
+            $co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            if($this->existe($this->id)){
+                try{
+                    $t="1";
+                    $r= $co->prepare("Update usuarios set 
+                            
+                       
+                        nombre=:nombre,
+                        
+                        correo=:correo,
+                        clave=:clave,
+                        estado=:estado,
+                        id_rol=:id_rol
+                        where
+						id =:id
+                        
+                
+    
+                    
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        ");
+                        $r->bindParam(':nombre',$this->nombre);	
+                        $r->bindParam(':id',$this->id);
+                        $r->bindParam(':clave',$this->contraseña);	
+                        $r->bindParam(':estado',$t);	
+                        $r->bindParam(':id_rol',$this->rol);	
+                 
+                    $r->execute();
+    
+                    $this->bitacora("se modifico un usuario", "usuarios",$this->nivel);
+                        return "Registro modificado";	
+                    
+                }catch(Exception $e){
+                    return $e->getMessage();
+                }
+                    
+                }
+                else{
+                    return "el usuario no esta registrado";
+                }
+        
+    
+    
+    
+    
+    
+    
+    
+    
+            }
+
+
+        public function cdt(){
 		$co = $this->conecta();
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		try{
 		
+			try {
+					$r = $co->prepare("SELECT ID, Nombre FROM cdt");
+					$r->execute();
 
-			$resultado = $co->prepare("SELECT usuario.Contrasena, usuario.ID_rol, usuario.Nombre, usuario.Apellido FROM usuario WHERE usuario.N_de_empleado =:usua;");
-			
-			$resultado->bindParam(':usua',$this->usuario);
-		
-			$resultado->execute();
+					if($r){
+				
+				$respuesta = '';
+					
+					$respuesta = $respuesta.'<option value="seleccionar" selected hidden>-Seleccionar-</option>';
+				foreach($r as $r){
+					
+							$respuesta =$respuesta.'<option value="'.$r['ID'].'">'.$r['Nombre'].'</option>';
+							
+				}
 
-
-			foreach($resultado as $r){
-				$fila= array($r["Contrasena"],$r["ID_rol"],$r["Nombre"]." ".$r["Apellido"]);
-
-            }
-	
-			
-			if(!empty($fila[0])){
-
-			
-				return $fila;
-
+				
+				return $respuesta;
 			    
 			}
 			else{
-				$fila=array("El usuario ingresado es incorrecto");
-				return $fila;
+				return '';
 			}
 
+
+
+
+
+
+
+						
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		
+		
+	}
+
+    public function roles(){
+		$co = $this->conecta();
+		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		
+			try {
+					$r = $co->prepare("SELECT ID, Nombre FROM rol");
+					
+					
+					
+					$r->execute();
+
+					if($r){
+				
+				$respuesta = '';
+					
+					$respuesta = $respuesta.'<option value="seleccionar" selected hidden>-Seleccionar-</option>';
+				foreach($r as $r){
+					
+							$respuesta =$respuesta.'<option value="'.$r['ID'].'">'.$r['Nombre'].'</option>';
+							
+				}
+
+				
+				return $respuesta;
+			    
+			}
+			else{
+				return '';
+			}
+
+
+
+
+
+
+
+						
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
+		
+		
+	}
+    
+
+public function consultar($nivel1){
+    $co = $this->conecta();
+		
+		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try{
+			
+			
+			$resultado = $co->prepare('SELECT a.id, a.nombre,a.correo, b.name FROM (SELECT id as ide, nombre as name FROM rol) as b , usuarios as a WHERE b.ide = a.id_rol');
+			$resultado->execute();
+           $respuesta="";
+
+            foreach($resultado as $r){
+                
+                $respuesta=$respuesta."<th>".$r['id']."</th>";
+                $respuesta=$respuesta."<th>".$r['name']."</th>";
+                $respuesta=$respuesta."<th>".$r['nombre']."</th>";
+                $respuesta=$respuesta."<th>".$r['correo']."</th>";
+                
+                $respuesta=$respuesta.'<th>';
+                if (in_array("modificar usuario",$nivel1)) {
+                    # code...
+                
+                
+                $respuesta=$respuesta.'<a href="#editEmployeeModal" class="edit" data-toggle="modal" onclick="modificar(`'.$r['id'].'`)">
+                <i class="material-icons"  title="MODIFICAR"><img src="assets/icon/pencill.png"/></i>
+               </a>';
+            }
+            if(in_array("eliminar usuario",$nivel1)){
+               $respuesta=$respuesta.'<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"  onclick="eliminar(`'.$r['id'].'`)">
+               <i class="material-icons"  title="BORRAR"><img src="assets/icon/trashh.png"/></i>    
+               </a>';
+               
+            }
+            $respuesta=$respuesta.'</th>';
+             $respuesta= $respuesta.'</tr>';
+
+            }
+
+           
+            return $respuesta;
+         
+							
+							
+
+
+			
 			
 		}catch(Exception $e){
-			return $e;
+			
+			return false;
+		}
+}
+
+    private function existe($id){
+		
+		$co = $this->conecta();
+		
+		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		
+		
+		try{
+			
+			
+			$resultado = $co->prepare("Select * from usuario where N_de_empleado =:id");
+			
+			$resultado->bindParam(':id',$id);
+			$resultado->execute();
+			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
+			if($fila){ 
+
+				return true; 
+			    
+			}
+			else{
+				
+				return false; 
+			}
+			
+		}catch(Exception $e){
+			
+			return false;
 		}
 	}
 
 
-	public function permisos($rol){
-		$co = $this->conecta();
+    public function eliminar1(){
+        $co = $this->conecta();
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		try{
+		if($this->existe($this->id)){
 		
 
-			$resultado = $co->prepare("SELECT p.nombre as permiso FROM rol r 
-            INNER JOIN rol_permiso rp ON r.id=rp.ID_ROL INNER JOIN permisos p ON rp.ID_Permiso=p.id 
-            WHERE r.id = :rol;");
+			try {
+					$r=$co->prepare("Delete from usuarios 
+						where
+						id= :id
+						");
+					$r->bindParam(':id',$this->id);
+					$r->execute();
+                    $this->bitacora("se elimino un usuario", "usuarios",$this->nivel);
+					return "Registro Eliminado";
+                    
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
 			
-			$resultado->bindParam(':rol',$rol);
 		
-			$resultado->execute();
 
-			$permisos = [];
-            $i = 0;
-			foreach($resultado as $r){
-				$permisos[$i] = $r["permiso"];
-                $i++;
-
-            }
-
-			
-			
-			if(!empty($permisos[0])){
-
-				
-				return $permisos;
-			    
-			}
-			else{
-				
-				return "ha ocurrido un error";
-			}
-	
-			
-		}catch(Exception $e){
-			return $e;
 		}
-	}
+		else{
+			return "Usuario no registrado";
+		}
+    }
 
-
+    private function bitacora($accion, $modulo,$id){
+        try {
+            $co = $this->conecta();
+            $co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        parent::registrar_bitacora($accion, $modulo,$id);
+    
+                    
+                    
+                    ;
+            } catch(Exception $e) {
+                return $e->getMessage();
+            }
+        
+    }
 
 }
 
