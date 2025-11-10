@@ -58,12 +58,12 @@ require_once("modelo/".$pagina.".php");
 			
 			
 		  }
-			
+			$roles = $o->roles();
+		$cdt = $o->cdt();
 		}
 		
 
-		$roles = $o->roles();
-		$cdt = $o->cdt();
+		
 		require_once("vista/".$pagina.".php");
 	}
 	else{
