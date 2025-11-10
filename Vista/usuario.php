@@ -75,7 +75,6 @@
                     </button>
                 </div>
 
-<<<<<<< HEAD
           <div class="modal-body">
             <div class="row align-items-center">
               <!-- Columna del formulario -->
@@ -114,43 +113,11 @@
                     <label for="user">Ingrese el contraseña</label>
                     <span id="scontraseña" class="text-danger"></span>
                     <input class="form-control input-standar" type="text" id="contraseña" name="contraseña" placeholder="Digite su contraseña">
-                    <input  type="text" name="accion" value="registrar">
+                    <input style="display: none;" type="text" name="accion" value="registrar">
                   </div>
                   <button type="button" class="btn w-100" id="registrar">guardar</button>
                 </form>
               </div>
-=======
-                <div class="modal-body">
-                    <div class="row justify-content-center align-items-center text-center">
-                        <!-- Columna del formulario -->
-                        <div class="col-md-8">
-                            <form id="f" method="post">
-                                <div class="mb-3">
-                                    <label for="user">Ingrese el número de empleado</label>
-                                    <input class="form-control input-standar" type="text" id="user" name="user"
-                                        placeholder="Introducir n° de empleado" autofocus>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password">Nombre y Apellido</label>
-                                    <input class="form-control input-standar" id="password"
-                                        name="password" placeholder="Digite su contraseña">
-                                </div>
-                                 <div class="mb-3">
-                                    <label for="password">CDT de pertenencia</label>
-                                    <input class="form-control input-standar" id="password"
-                                        name="password" placeholder="Digite su contraseña">
-                                </div>
-                                 <div class="mb-3">
-                                    <label for="password">Rol</label>
-                                    <input class="form-control input-standar" id="password"
-                                        name="password" placeholder="Digite su contraseña">
-                                </div>
-                                <button type="submit" class="btn w-100" id="enviar">Registrar</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
->>>>>>> 725a82b226e28597a86b25e3511238dda1ecc38c
 
             </div>
         </div>
