@@ -29,7 +29,7 @@
   <!-- CONTENIDO PRINCIPAL -->
   <main class="main-content">
     <div class="header">
-      <h1 class="header-standar">Inventario</h1>
+      <h1 class="header-standar">Proveedores</h1>
     </div>
 
     <div class="container-all">
@@ -94,6 +94,10 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="user">Correo</label>
+                                    <input class="form-control input-standar" type="text" id="user" name="user"placeholder="Introducir n° de empleado" autofocus>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="user">Telefono</label>
                                     <input class="form-control input-standar" type="text" id="user" name="user"placeholder="Introducir n° de empleado" autofocus>
                                 </div>
                                 <div class="mb-3">

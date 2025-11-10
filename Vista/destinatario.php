@@ -29,12 +29,12 @@
   <!-- CONTENIDO PRINCIPAL -->
   <main class="main-content">
     <div class="header">
-      <h1 class="header-standar">Inventario</h1>
+      <h1 class="header-standar">Destinatarios</h1>
     </div>
 
     <div class="container-all">
       <div class="container-header">
-        <button class="btn-standar" data-toggle="modal" data-target="#loginModal">Agregar Proveedor</button>
+        <button class="btn-standar" data-toggle="modal" data-target="#loginModal">Agregar Destinatario</button>
       </div>
 
       <div class="user-table">
@@ -43,9 +43,7 @@
             <tr>
               <th>Nombre</th>
               <th>Apellido</th>
-              <th>Correo</th>
               <th>Telefono</th>
-              <th>Dirección</th>
               <th>Descripción</th>
               <th>Modificar</th>
               <th>Eliminar</th>
@@ -55,9 +53,7 @@
             <tr>
               <td>Juan</td>
               <td>Pérez</td>
-              <td>hola@gmail.com</td>
               <td>xxxx-xxxx</td>
-                <td>Calle Falsa 123</td>
                 <td>Proveedor de frutas y verduras</td>
               <td><button class="btn-modificar btn-sm">Modificar</button></td>
               <td><button class="btn-eliminar btn-sm">Eliminar</button></td>
@@ -93,11 +89,7 @@
                                     <input class="form-control input-standar" id="password"name="password" placeholder="Digite su contraseña">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="user">Correo</label>
-                                    <input class="form-control input-standar" type="text" id="user" name="user"placeholder="Introducir n° de empleado" autofocus>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="user">Dirección</label>
+                                    <label for="user">Telefono</label>
                                     <input class="form-control input-standar" type="text" id="user" name="user"placeholder="Introducir n° de empleado" autofocus>
                                 </div>
                                 <div class="mb-3">

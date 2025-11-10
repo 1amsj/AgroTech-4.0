@@ -66,15 +66,16 @@
 
   <!-- Modal de Agregar -->
   <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-lg"> <!-- modal grande -->
-        <div class="modal-content" id="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Agregar usuario</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+        <div class="modal-dialog modal-lg modal-dialog-centered d-flex justify-content-center">
+            <div class="modal-content" id="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registrar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
+<<<<<<< HEAD
           <div class="modal-body">
             <div class="row align-items-center">
               <!-- Columna del formulario -->
@@ -118,16 +119,41 @@
                   <button type="button" class="btn w-100" id="registrar">guardar</button>
                 </form>
               </div>
+=======
+                <div class="modal-body">
+                    <div class="row justify-content-center align-items-center text-center">
+                        <!-- Columna del formulario -->
+                        <div class="col-md-8">
+                            <form id="f" method="post">
+                                <div class="mb-3">
+                                    <label for="user">Ingrese el número de empleado</label>
+                                    <input class="form-control input-standar" type="text" id="user" name="user"
+                                        placeholder="Introducir n° de empleado" autofocus>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password">Nombre y Apellido</label>
+                                    <input class="form-control input-standar" id="password"
+                                        name="password" placeholder="Digite su contraseña">
+                                </div>
+                                 <div class="mb-3">
+                                    <label for="password">CDT de pertenencia</label>
+                                    <input class="form-control input-standar" id="password"
+                                        name="password" placeholder="Digite su contraseña">
+                                </div>
+                                 <div class="mb-3">
+                                    <label for="password">Rol</label>
+                                    <input class="form-control input-standar" id="password"
+                                        name="password" placeholder="Digite su contraseña">
+                                </div>
+                                <button type="submit" class="btn w-100" id="enviar">Registrar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+>>>>>>> 725a82b226e28597a86b25e3511238dda1ecc38c
 
-              <!-- Columna de la imagen -->
-              <div class="col-md-6 text-center">
-                <img src="assets/Imagenes/F-Login.png" alt="Login Image" class="img-fluid rounded">
-              </div>
             </div>
-          </div>
-
         </div>
-      </div>
     </div>
 
 </body>

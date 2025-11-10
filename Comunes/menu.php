@@ -39,7 +39,7 @@
                     <?php
                         if ($nivel == "1") {
                     ?>
-                    <a href="/AgroTech-4.0/Vista/inventario.php" class="sidebar-link text-decoration-none p-3">
+                    <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-chart-bar me-3"></i>
                         <span class="hide-on-collapse">Inventario</span>
                     </a>
@@ -51,7 +51,7 @@
                         <i class="fas fa-users me-3"></i>
                         <span class="hide-on-collapse">Salidas</span>
                     </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                    <a href="?pagina=seguridad" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-box me-3"></i>
                         <span class="hide-on-collapse">Seguridad</span>
                     </a>
@@ -63,11 +63,11 @@
                         <i class="fas fa-gear me-3"></i>
                         <span class="hide-on-collapse">Reportes</span>
                     </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                    <a href="?pagina=destinatario" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-gear me-3"></i>
                         <span class="hide-on-collapse">Destinatarios</span>
                     </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                    <a href="?pagina=proveedor" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-gear me-3"></i>
                         <span class="hide-on-collapse">Proveedores</span>
                     </a>
@@ -78,7 +78,7 @@
                 </div>
                 <?php
                     } else if ($nivel == "worker") { ?>
-                    <a href="/AgroTech-4.0/Vista/inventario.php" class="sidebar-link text-decoration-none p-3">
+                    <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-chart-bar me-3"></i>
                         <span class="hide-on-collapse">Inventario</span>
                     </a>
@@ -92,13 +92,17 @@
                     </a>
                 <?php
                     } else if ($nivel == "boss") { ?>
-                    <a href ="#" class = "sidebar-link text-decoration-none p-3">
+                    <a href ="?pagina=inventario" class = "sidebar-link text-decoration-none p-3">
                         <i class="fas fa-chart-bar me-3"></i>
                         <span class="hide-on-collapse">Entradas</span>
                     </a>
                     <a href="#" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-users me-3"></i>
                         <span class="hide-on-collapse">Salidas</span>
+                    </a>
+                    <a href="?pagina=seguridad" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-box me-3"></i>
+                        <span class="hide-on-collapse">Seguridad</span>
                     </a>
                     <a href="#" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-users me-3"></i>
@@ -108,13 +112,17 @@
                         <i class="fas fa-gear me-3"></i>
                         <span class="hide-on-collapse">Reportes</span>
                     </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                    <a href="?pagina=destinatario" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-gear me-3"></i>
                         <span class="hide-on-collapse">Destinatarios</span>
                     </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                    <a href="?pagina=proveedor" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-gear me-3"></i>
                         <span class="hide-on-collapse">Proveedores</span>
+                    </a>
+                    <a href="?pagina=usuario" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-gear me-3"></i>
+                        <span class="hide-on-collapse">Usuarios</span>
                     </a>
                 <?php
                     }
