@@ -59,7 +59,6 @@
             
           </thead>
           <tbody>
-<<<<<<< HEAD
             
               <?php 
               if(in_array("consutar_usuario",$nivel1)){
@@ -67,9 +66,6 @@
             }
               ?>
             
-=======
-              <?= $tabla ?>
->>>>>>> 1ac4883aa7d8f66729fb067365aec5d4ce5d4ae2
           </tbody>
         </table>
       </div>
