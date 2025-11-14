@@ -77,7 +77,7 @@
                     </a>
                 </div>
                 <?php
-                    } else if ($nivel == "worker") { ?>
+                    } else if ($nivel == "2") { ?>
                     <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-chart-bar me-3"></i>
                         <span class="hide-on-collapse">Inventario</span>
