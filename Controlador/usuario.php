@@ -13,7 +13,6 @@ if (is_file("vista/" . $pagina . ".php")) {
 		session_start();
 	}
 
-<<<<<<< HEAD
 	if (isset($_SESSION['usuario'])) {
 		$nivel = $_SESSION['usuario'];
 	} else {
@@ -32,12 +31,6 @@ if (is_file("vista/" . $pagina . ".php")) {
 	if (!empty($_POST)) {
 		$o = new usuarios();
 		if (!empty($_POST['accion'])) {
-=======
-		$o = new usuarios();
-		if(!empty($_POST)){
-		
-		if(!empty($_POST['accion'])){
->>>>>>> 826a7644e2e61808d7c88af1e6bc42676beba9b9
 
 
 			$valor = true;
@@ -58,7 +51,6 @@ if (is_file("vista/" . $pagina . ".php")) {
 
 			$mensaje = $o->registrar();
 			echo $mensaje;
-<<<<<<< HEAD
 
 			$roles = $o->roles();
 		$cdt = $o->cdt();
@@ -68,17 +60,6 @@ if (is_file("vista/" . $pagina . ".php")) {
 		}
 		
 	}
-=======
-			
-				
-			
-			
-		  }
-			
-		}
-		$roles = $o->roles();
-		$cdt = $o->cdt();
->>>>>>> 826a7644e2e61808d7c88af1e6bc42676beba9b9
 
 
 	require_once("vista/" . $pagina . ".php");
