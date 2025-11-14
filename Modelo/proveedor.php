@@ -2,8 +2,15 @@
 
 require_once('modelo/conexion.php');
 class entrada extends datos{
-    private $usuario;
-	private $clave;
+	private $usuario;
+	private $valor; 
+
+	private $nombre;
+	private $rol;
+    private $telefono;
+    private $descripcion;
+    private $id;
+    private $nivel;
 
 
     public function set_usuario($valor){
@@ -12,7 +19,31 @@ class entrada extends datos{
 	public function set_clave($valor){
 		$this->clave = $valor; 
 	}
+	public function set_nombre($valor){
+       
+		$this->nombre = $valor;
+        
+	}
+
 	
+    public function set_apellido($valor){
+
+		$this->apellido = $valor;
+
+	}
+    public function set_descripcion($valor){
+       
+		$this->contraseña = $valor; 
+        
+
+	}
+    public function set_nivel($valor){
+		$this->nivel = $valor; 
+
+	}
+
+
+
     public function busca(){
 		$co = $this->conecta();
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -91,6 +122,7 @@ class entrada extends datos{
 			return $e;
 		}
 	}
+	
 
 
 
