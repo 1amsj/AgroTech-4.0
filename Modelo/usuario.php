@@ -288,7 +288,7 @@ public function consultar($nivel1){
         try{
 			
 			
-			$resultado = $co->prepare('SELECT a.N_de_empleado, a.ID_rol, a.nombre, a.Apellido, b.name, tcdt.NombreCDT FROM (SELECT id as ide, nombre as name FROM rol) as b , usuario as a, (SELECT Nombre as NombreCDT,ID as ID_CDT FROM cdt ) AS tcdt WHERE b.ide = a.ID_rol AND tcdt.ID_CDT=a.ID_CDT;');
+			$resultado = $co->prepare('SELECT a.N_de_empleado, a.ID_rol, a.nombre, a.Apellido, b.Nombre as name, cdt.Nombre as NombreCDT FROM usuario a INNER JOIN rol b ON a.ID_rol=b.ID INNER JOIN cdt ON cdt.ID= a.ID_CDT;');
 			$resultado->execute();
            $respuesta="";
 
