@@ -190,6 +190,17 @@ $("#contraceña3").on("keyup", function() {
     
     }
 
+    // Safety: ensure modals are direct children of <body> to avoid positioning/z-index issues
+    // This moves #loginModal and #loginModal1 to body on load without changing markup/styles.
+    $(function(){
+        try{
+            $('#loginModal, #loginModal1').appendTo('body');
+        }catch(e){
+            // ignore if elements not present or jQuery error
+            console.warn('Could not move modals to body:', e);
+        }
+    });
+
 
     function validarenvio() {
         if (validarkeyup(/^[0-9]{4,26}$/,

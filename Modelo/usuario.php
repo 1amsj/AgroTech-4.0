@@ -288,34 +288,33 @@ public function consultar($nivel1){
         try{
 			
 			
-			$resultado = $co->prepare('SELECT a.id, a.nombre,a.correo, b.name FROM (SELECT id as ide, nombre as name FROM rol) as b , usuarios as a WHERE b.ide = a.id_rol');
+			$resultado = $co->prepare('SELECT a.N_de_empleado, a.ID_rol, a.nombre, a.Apellido, b.name, tcdt.NombreCDT FROM (SELECT id as ide, nombre as name FROM rol) as b , usuario as a, (SELECT Nombre as NombreCDT,ID as ID_CDT FROM cdt ) AS tcdt WHERE b.ide = a.ID_rol AND tcdt.ID_CDT=a.ID_CDT;');
 			$resultado->execute();
            $respuesta="";
 
             foreach($resultado as $r){
-                
-                $respuesta=$respuesta."<th>".$r['id']."</th>";
-                $respuesta=$respuesta."<th>".$r['name']."</th>";
+                $respuesta= $respuesta.'<tr>';
+                $respuesta=$respuesta."<th>".$r['N_de_empleado']."</th>";
                 $respuesta=$respuesta."<th>".$r['nombre']."</th>";
-                $respuesta=$respuesta."<th>".$r['correo']."</th>";
+                $respuesta=$respuesta."<th>".$r['Apellido']."</th>";
+                $respuesta=$respuesta."<th>".$r['name']."</th>";
+                $respuesta=$respuesta."<th>".$r['NombreCDT']."</th>";
+
                 
                 $respuesta=$respuesta.'<th>';
-                if (in_array("modificar usuario",$nivel1)) {
+                if (in_array("modificar_usuario",$nivel1)) {
                     # code...
                 
                 
-                $respuesta=$respuesta.'<a href="#editEmployeeModal" class="edit" data-toggle="modal" onclick="modificar(`'.$r['id'].'`)">
-                <i class="material-icons"  title="MODIFICAR"><img src="assets/icon/pencill.png"/></i>
-               </a>';
+                $respuesta=$respuesta.'<button type="button" class="btn-modificar btn-sm" data-toggle="modal" data-target="#loginModal1">Modificar</button>';
             }
-            if(in_array("eliminar usuario",$nivel1)){
-               $respuesta=$respuesta.'<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"  onclick="eliminar(`'.$r['id'].'`)">
-               <i class="material-icons"  title="BORRAR"><img src="assets/icon/trashh.png"/></i>    
-               </a>';
+            if(in_array("eliminar_usuario",$nivel1)){
+               $respuesta=$respuesta.'<td><button class="btn-eliminar btn-sm" >Eliminar</button></td>';
                
             }
             $respuesta=$respuesta.'</th>';
-             $respuesta= $respuesta.'</tr>';
+            $respuesta= $respuesta.'</tr>';
+             
 
             }
 

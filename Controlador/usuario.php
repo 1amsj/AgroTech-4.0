@@ -61,6 +61,7 @@ require_once("modelo/".$pagina.".php");
 			
 		}
 		$roles = $o->roles();
+		$consult = $o->consultar($nivel1);
 		$cdt = $o->cdt();
 
 		
