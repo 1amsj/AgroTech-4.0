@@ -409,6 +409,34 @@ public function consultar($nivel1){
             }
         
     }
+    
+    public function table_users(){
+		$co = $this->conecta();
+		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		$sql = $co->prepare("
+		SELECT id, nombre, cdt, rol
+		FROM empleados
+		ORDER BY nombre ASC;");
+
+		$sql->execute();
+
+		$tabla = '';
+
+		while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+			$tabla .= '
+        <tr>
+            <td>' . $row['id'] . '</td>
+            <td>' . $row['nombre'] . '</td>
+            <td>' . $row['cdt'] . '</td>
+            <td>' . $row['rol'] . '</td>
+            <td><button class="btn-modificar btn-sm" data-id="' . $row['id'] . '">Modificar</button></td>
+            <td><button class="btn-eliminar btn-sm" data-id="' . $row['id'] . '">Eliminar</button></td>
+        </tr>';
+		}
+
+        return $tabla;
+    }
 
 }
 

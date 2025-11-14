@@ -50,14 +50,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>001</td>
-              <td>Juan Pérez</td>
-              <td>CDT Norte</td>
-              <td>Administrador</td>
-              <td><button class="btn-modificar btn-sm">Modificar</button></td>
-              <td><button class="btn-eliminar btn-sm">Eliminar</button></td>
-            </tr>
+              <?= $tabla ?>
           </tbody>
         </table>
       </div>
@@ -88,24 +81,24 @@
                   <div class="mb-3">
                     <label for="password">Ingrese nombre del empleado</label>
                     <span id="snombre" class="text-danger"></span>
-                    <input class="form-control input-standar" type="text" id="nombre" name="nombre" placeholder="Escrba su nombre">
+                    <input class="form-control input-standar" type="text" id="nombre" name="nombre" placeholder="Escriba su nombre">
                   </div>
                   <div class="mb-3">
                     <label for="apellido">Ingrese apellido del empleado</label>
                     <span id="sapellido" class="text-danger"></span>
-                    <input class="form-control input-standar" type="text" id="apellido" name="apellido" placeholder="Escrba su apellido">
+                    <input class="form-control input-standar" type="text" id="apellido" name="apellido" placeholder="Escriba su apellido">
                   </div>
                   <div class="mb-3">
                     <label for="user">Ingrese el CDT de pertenencia</label>
                     <span id="scdt" class="text-danger"></span>
-                    <select name="cdt" id="cdt">
+                    <select name="cdt" id="cdt" class="form-control input-standar">
                       <?php if(isset($cdt)) {echo $cdt; } ?>
                     </select>
                   </div>
                   <div class="mb-3">
                     <label for="user">Ingrese el rol del empleado</label>
                     <span id="srol" class="text-danger"></span>
-                    <select name="rol" id="rol">
+                    <select name="rol" id="rol" class ="form-control input-standar">
                       <?php if(isset($roles)) {echo $roles; } ?>
                     </select>
                   </div>
@@ -115,7 +108,7 @@
                     <input class="form-control input-standar" type="text" id="contraseña" name="contraseña" placeholder="Digite su contraseña">
                     <input style="display: none;" type="text" name="accion" value="registrar">
                   </div>
-                  <button type="button" class="btn w-100" id="registrar">guardar</button>
+                  <button type="button" class="btn w-100" id="registrar">Guardar</button>
                 </form>
               </div>
 
