@@ -17,8 +17,8 @@ class datos{
 
     public function registrar_bitacora($accion, $modulo,$id)
     {
-        $sql = "INSERT INTO bitacora (fecha, accion, modulo, id_usuario ) 
-        VALUES(CURDATE(), :accion, :modulo, :id_usuario)";
+        $sql = "INSERT INTO bitacora (Fecha, Accion, N_de_empleado  ) 
+        VALUES(CURDATE(), :accion, :id_usuario)";
 
         $stmt = $this->conecta()->prepare($sql);
 
@@ -26,7 +26,7 @@ class datos{
             
             
             ":accion" => $accion,
-            ":modulo" => $modulo,
+            
             ":id_usuario" => $id
 
         ));

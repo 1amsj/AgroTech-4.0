@@ -137,39 +137,29 @@ class usuarios extends datos{
             if($this->existe($this->id)){
                 try{
                     $t="1";
-                    $r= $co->prepare("Update usuarios set 
+                    $r= $co->prepare("Update usuario set 
                             
                        
-                        nombre=:nombre,
+                        N_de_empleado =:N_de_empleado,
                         
-                        correo=:correo,
-                        clave=:clave,
-                        estado=:estado,
-                        id_rol=:id_rol
+                        Nombre=:Nombre,
+                        Apellido=:Apellido,
+                        Contrasena=:Contrasena,
+                        Estado=:Estado,
+                        ID_rol =:ID_rol,
+                        ID_CDT =:ID_CDT
                         where
-						id =:id
-                        
-                
-    
-                    
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
+						N_de_empleado =:N_de_empleado 
                             
                         ");
-                        $r->bindParam(':nombre',$this->nombre);	
-                        $r->bindParam(':id',$this->id);
-                        $r->bindParam(':clave',$this->contraseña);	
-                        $r->bindParam(':estado',$t);	
-                        $r->bindParam(':id_rol',$this->rol);	
-                 
+                        $r->bindParam(':N_de_empleado',$this->id);
+                        $r->bindParam(':Nombre',$this->nombre);	
+                        $r->bindParam(':Apellido',$this->apellido);
+                        $r->bindParam(':Contrasena',$this->contraseña);	
+                        $r->bindParam(':Estado',$t);	
+                        $r->bindParam(':ID_rol',$this->rol);
+                        $r->bindParam(':ID_CDT',$this->cdt);
+
                     $r->execute();
     
                     $this->bitacora("se modifico un usuario", "usuarios",$this->nivel);
@@ -288,7 +278,7 @@ public function consultar($nivel1){
         try{
 			
 			
-			$resultado = $co->prepare('SELECT a.N_de_empleado, a.ID_rol, a.nombre, a.Apellido, b.Nombre as name, cdt.Nombre as NombreCDT FROM usuario a INNER JOIN rol b ON a.ID_rol=b.ID INNER JOIN cdt ON cdt.ID= a.ID_CDT;');
+			$resultado = $co->prepare('SELECT a.N_de_empleado, a.ID_rol, a.nombre, a.Apellido, b.Nombre as name, cdt.Nombre as NombreCDT FROM usuario a INNER JOIN rol b ON a.ID_rol=b.ID INNER JOIN cdt ON cdt.ID= a.ID_CDT WHERE a.Estado=1;');
 			$resultado->execute();
            $respuesta="";
 
@@ -306,12 +296,12 @@ public function consultar($nivel1){
                     # code...
                 
                 
-                $respuesta=$respuesta.'<button type="button" class="btn-modificar btn-sm" data-toggle="modal" data-target="#loginModal1">Modificar</button>';
+                $respuesta=$respuesta.'<button type="button" class="btn-modificar btn-sm" data-toggle="modal" data-target="#loginModal1" onclick="modificar(`'.$r['N_de_empleado'].'`)">Modificar</button>';
             }
-            if(in_array("eliminar_usuario",$nivel1)){
-               $respuesta=$respuesta.'<td><button class="btn-eliminar btn-sm" >Eliminar</button></td>';
-               
-            }
+                if(in_array("eliminar_usuario",$nivel1)){
+                    // Make delete button behave like the modify button (open the confirm modal)
+                    $respuesta = $respuesta . '<td><button type="button" class="btn-eliminar btn-sm" data-id="'.$r['N_de_empleado'].'" onclick="eliminar1(`'.$r['N_de_empleado'].'`)" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</button></td>';
+                }
             $respuesta=$respuesta.'</th>';
             $respuesta= $respuesta.'</tr>';
              
@@ -372,11 +362,13 @@ public function consultar($nivel1){
 		
 
 			try {
-					$r=$co->prepare("Delete from usuarios 
-						where
-						id= :id
-						");
-					$r->bindParam(':id',$this->id);
+					$r=$co->prepare("Update usuario set 
+                        Estado=0
+                        where
+						N_de_empleado =:N_de_empleado 
+                            
+                        ");
+					$r->bindParam(':N_de_empleado',$this->id);
 					$r->execute();
                     $this->bitacora("se elimino un usuario", "usuarios",$this->nivel);
 					return "Registro Eliminado";

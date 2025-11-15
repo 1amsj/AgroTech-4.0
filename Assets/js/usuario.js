@@ -11,21 +11,15 @@ $(document).ready(function() {
     });
 
 
-    $("#registrar2").on("click", function() {
+    $("#modificar").on("click", function() {
         if (validarenvio1()) {
           
-            if($("#contraceña2").val()==$("#contraceña3").val()){
-             
-                enviaAjax($("#f2"));
-            }else{
-                //mensaje de retorno 
-            }
-
+            $("#f2").submit();
        }
    
-
     });
-    
+
+   
 /*validaciones para registrar*/
 
 
@@ -69,6 +63,46 @@ $(document).ready(function() {
     });
       
     
+
+    $("#userm").on("keypress", function(e) {
+        validarkeypress(/^[0-9-\b]*$/, e);
+
+    });
+
+    $("#userm").on("keyup", function() {
+        validarkeyup(/^[0-9]{6,10}$/,
+        $(this), $("#suserm"), "El formato debe ser en solo numeros");
+    });
+
+    $("#nombrem").on("keypress", function(e) {
+        validarkeypress(/^[A-Za-z]$/, e);
+
+    });
+
+    $("#nombrem").on("keyup", function() {
+        validarkeyup(/^[A-Za-z]{4,26}$/,
+            $(this), $("#snombrem"), "El formato puede ser A-Z a-z 8-26");
+    });
+
+    $("#apellidom").on("keypress", function(e) {
+        validarkeypress(/^[A-Za-z]$/, e);
+
+    });
+
+    $("#apellidom").on("keyup", function() {
+        validarkeyup(/^[A-Za-z]{4,26}$/,
+            $(this), $("#sapellidom"), "El formato puede ser A-Z a-z 8-26");
+    });
+
+    $("#contraseñam").on("keypress", function(e) {
+        validarkeypress(/^[0-9A-Za-z\u00f1\u002E\u0040\u00d1\u00E0-\u00FC\u0023\u002A]$/, e);
+    });
+
+    $("#contraseñam").on("keyup", function() {
+        validarkeyup(/^[0-9A-Za-z\b\s\u00f1\u002E\u0040\u00d1\u00E0-\u00FC\u0023\u002A]{8,16}$/,
+            $(this), $("#scontraseñam"), "la contraseña puede llevar: A-Z a-z (.),(#),(@)(*),  8-16 caracteres");
+    });
+      
 
   
 
@@ -130,11 +164,11 @@ $("#contraceña3").on("keyup", function() {
         $("#tabla tr").each(function(){
         
             if(id == $(this).find("th:eq(0)").text()){
-                $("#id").val(id);
+                $("#userm").val(id);
           
-                $("#nombre1").val($(this).find("th:eq(2)").text());
+                $("#nombrem").val($(this).find("th:eq(2)").text());
                
-                $("#correo1").val($(this).find("th:eq(3)").text());
+                $("#apellidom").val($(this).find("th:eq(3)").text());
      
            
                 
@@ -144,11 +178,11 @@ $("#contraceña3").on("keyup", function() {
     
     }
 
-    function eliminar(id){
-        $("#id1").val(id);
-        $("#borrar").on("click", function(){
-           
-        enviaAjax($("#f3"));
+    function eliminar1(id){
+        $("#eliminar").val(id);
+        $("#confirmDeleteButton").on("click", function(){
+            $("#f3").submit();
+        
         });
 
     }
@@ -194,7 +228,9 @@ $("#contraceña3").on("keyup", function() {
     // This moves #loginModal and #loginModal1 to body on load without changing markup/styles.
     $(function(){
         try{
-            $('#loginModal, #loginModal1').appendTo('body');
+            // Move any modal elements to the document body to avoid clipping
+            // by transformed/overflowing ancestor containers (fixes backdrop-only issue).
+            $('.modal').appendTo('body');
         }catch(e){
             // ignore if elements not present or jQuery error
             console.warn('Could not move modals to body:', e);
@@ -233,29 +269,32 @@ $("#contraceña3").on("keyup", function() {
     }
 
     function validarenvio1() {
-         if (validarkeyup(/^[A-Za-z]{4,26}$/,
-        $("#nombre1"), $("#snombre1"), "El formato puede ser A-Z a-z 8-26") == 0) {
+        if (validarkeyup(/^[0-9]{4,26}$/,
+        $("#userm"), $("#suserm"), "El formato puede ser A-Z a-z 8-26") == 0) {
             mensaje("<p>El formato puede ser A-Z a-z 8-26</p>");
             return false;
     
-        } else if (validarkeyup(/^[0-9a-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1]{4,26}[\u0040]{1}[a-z]{5,7}[\u002E]{1}[a-z]{3}$/,
-        $("#correo1"), $("#scorreo1"), "El formato puede ser A-Z a-z 0-9 ejemplo: nombreUsuari+@+servidor+.+dominio") == 0) {
-            mensaje("<p>Solo numeros 0-9 en el formato 0000-0000000</p>");
+        }else if (validarkeyup(/^[A-Za-z]{4,26}$/,
+        $("#nombrem"), $("#snombrem"), "El formato puede ser A-Z a-z 8-26") == 0) {
+            mensaje("<p>El formato puede ser A-Z a-z 8-26</p>");
             return false;
-        }else if (valRol($('#rol1').val(),$("#srol1")) == 0) {
-            mensaje("<p>Debe de seleccionar un Rol</p>");
+    
+        }else if (validarkeyup(/^[A-Za-z]{4,26}$/,
+        $("#apellidom"), $("#sapellidom"), "El formato puede ser A-Z a-z 8-26") == 0) {
+            $("#sapellidom").text("<p>El formato puede ser A-Z a-z 8-26</p>");
             return false;
-        }
-        else if (validarkeyup(/^[0-9A-Za-z\b\s\u00f1\u002E\u0040\u00d1\u00E0-\u00FC\u0023\u002A]{8,16}$/,
-        $("#contraceña2"), $("#scontraceña2"), "Solo letras entre 8 y 16 caracteres, numeros, (.),(#),(@)(*)") == 0) {
-    mensaje("<p>la contraseña debe tener entre 8 y 16 caracteres</p>");
-    return false;
-
-} else if (validarkeyup(/^[0-9A-Za-z\b\s\u00f1\u002E\u0040\u00d1\u00E0-\u00FC\u0023\u002A]{8,16}$/,
-        $("#contraceña3"), $("#scontraceña3"), "Solo letras entre 8 y 16 caracteres, numeros, (.),(#),(@)(*)") == 0) {
-    mensaje("<p>la contraseña debe tener entre 8 y 16 caracteres</p>");
-    return false;
-}
+            }else if (valselect($('#cdtm').val(),$("#scdtm")) == 0) {
+            $("#scdtm").text("<p>Debe de seleccionar un CDT</p>");
+            return false;
+        }else if (valselect($('#rolm').val(),$("#srolm")) == 0) {
+            $("#srolm").text("<p>Debe de seleccionar un Rol</p>");
+            return false;
+        
+        } else if (validarkeyup(/^[0-9A-Za-z\b\s\u00f1\u002E\u0040\u00d1\u00E0-\u00FC\u0023\u002A]{8,16}$/,
+            $("#contraseñam"), $("#scontraseñam"), "Solo letras entre 8 y 16 caracteres, numeros, (.),(#),(@)(*)") == 0) {
+            $("#scontraseñam").text("<p>la contraseña debe tener entre 8 y 16 caracteres</p>");
+            return false;
+        }        
         return true;
     }
 

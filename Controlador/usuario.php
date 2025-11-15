@@ -35,8 +35,7 @@ require_once("modelo/".$pagina.".php");
 		if(!empty($_POST['accion'])){
 
 
-			$valor=true;
-			$retorno="";
+			
 			$o->set_user($_POST['user']);
 
 			$o->set_nombre($_POST['nombre']);
@@ -52,6 +51,45 @@ require_once("modelo/".$pagina.".php");
 			$o->set_nivel($nivel);
 			
 			$mensaje = $o->registrar();	
+			echo $mensaje;
+			
+				
+			
+			
+		  }
+
+		  if(!empty($_POST['modificar'])){
+
+
+			$o->set_user($_POST['userm']);
+
+			$o->set_nombre($_POST['nombrem']);
+
+			$o->set_apellido($_POST['apellidom']);
+			$o->set_cdt($_POST['cdtm']);
+			
+			$o->set_rol($_POST['rolm']);
+			
+			$o->set_contraceña($_POST['contraseñam']);
+
+			$o->set_nivel($nivel);
+			
+			$mensaje = $o->modificar();	
+			echo $mensaje;
+			
+				
+			
+			
+		  }
+
+		  if(!empty($_POST['eliminar'])){
+
+
+			$o->set_user($_POST['eliminar']);
+
+			$o->set_nivel($nivel);
+			
+			$mensaje = $o->eliminar();	
 			echo $mensaje;
 			
 				
