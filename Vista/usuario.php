@@ -93,7 +93,7 @@
         </div>
 
         <div class="modal-body">
-          <div class="row align-items-center">
+          <div class="row justify-content-center align-items-center text-center">
             <!-- Columna del formulario -->
             <div class="col-md-6">
               <form id="f" method="post">
@@ -151,7 +151,7 @@
       <!-- Modal de modificar -->
       <div class="modal fade" id="loginModal1" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered d-flex justify-content-center">
-          <div class="modal-content" id="modal-content1">
+          <div class="modal-content" id="modal-content">
             <div class="modal-header">
               <h5 class="modal-title">Modificar</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -160,7 +160,7 @@
             </div>
 
             <div class="modal-body">
-              <div class="row align-items-center">
+              <div class="row justify-content-center align-items-center text-center">
                 <!-- Columna del formulario -->
                 <div class="col-md-6">
                   <form id="f2" method="post">
@@ -177,7 +177,7 @@
                         placeholder="Escrba su nombre">
                     </div>
                     <div class="mb-3">
-                      <label for="apellidom">Ingrese apellidom del empleado</label>
+                      <label for="apellidom">Ingrese apellido del empleado</label>
                       <span id="sapellidom" class="text-danger"></span>
                       <input class="form-control input-standar" type="text" id="apellidom" name="apellidom"
                         placeholder="Escrba su apellido">
@@ -185,7 +185,7 @@
                     <div class="mb-3">
                       <label for="cdtm">Ingrese el CDT de pertenencia</label>
                       <span id="scdtm" class="text-danger"></span>
-                      <select name="cdtm" id="cdtm">
+                      <select name="cdtm" id="cdtm" class="form-control input-standar">
                         <?php if (isset($cdt)) {
                           echo $cdt;
                         } ?>
@@ -194,7 +194,7 @@
                     <div class="mb-3">
                       <label for="rolm">Ingrese el rol del empleado</label>
                       <span id="srolm" class="text-danger"></span>
-                      <select name="rolm" id="rolm">
+                      <select name="rolm" id="rolm" class ="form-control input-standar">
                         <?php if (isset($roles)) {
                           echo $roles;
                         } ?>
@@ -218,7 +218,7 @@
           <!-- Modal de confirmación (solo front) -->
           <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-sm modal-dialog-centered">
-              <div class="modal-content">
+              <div class="modal-content" id ="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title">Confirmar eliminación</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
@@ -237,16 +237,11 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 
-                  <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
+                  <button type="button" class="btn-eliminar" id="confirmDeleteButton">Eliminar</button>
                 </div>
               </div>
             </div>
           </div>
-
-
-
-
-
 
 </body>
 

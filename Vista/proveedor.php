@@ -91,7 +91,7 @@
                 <div class="mb-3">
                   <label for="user">Nombre</label>
                   <span id="snombre" class="text-danger"></span>
-                  <input class="form-control input-standar" type="text" id="user" name="nombre"
+                  <input class="form-control input-standar" type="text" id="nombre" name="nombre"
                     placeholder="Escriba su nombre" autofocus>
                 </div>
                 <div class="mb-3">
@@ -196,7 +196,7 @@
   </div>
   <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered">
-      <div class="modal-content">
+      <div class="modal-content" id="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Confirmar eliminación</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
@@ -215,7 +215,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 
-          <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
+          <button type="button" class="btn-eliminar" id="confirmDeleteButton">Eliminar</button>
         </div>
       </div>
     </div>

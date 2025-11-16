@@ -1,13 +1,14 @@
 <?php
 
 require_once('modelo/conexion.php');
-class entrada extends datos
+class Proveedor extends datos
 {
 
 	private $nombre;
-	private $rol;
+	private $apellido;
 	private $telefono;
 	private $descripcion;
+	private $direccion;
 	private $id;
 	private $nivel;
 
@@ -65,36 +66,33 @@ class entrada extends datos
 		if (!$this->existe($this->id)) {
 			try {
 				$t = "1";
-				$r = $co->prepare("Insert into usuario(
+				$r = $co->prepare("Insert into proveedor(
 						
-                    N_de_empleado,
-                    nombre, 
+                    Nombre, 
                     Apellido,
-                    Contrasena,
-                    estado,
-                    ID_rol,
-                    ID_CDT 
+                    Descripcion,
+                    Telefono,
+                    Direccion 
+					Estado
                     )
             
 
                     Values(
-                        :N_de_empleado,
                         :nombre,
                         :apellido,
-                        :contrasena,
-                        :estado,
-                        :id_rol,
-                        :id_cdt
+                        :descripcion,
+                        :telefono,
+                        :direccion
+						:estado
                     )");
-				$r->bindParam(':N_de_empleado', $this->id);
 				$r->bindParam(':nombre', $this->nombre);
 				$r->bindParam(':apellido', $this->apellido);
-				$r->bindParam(':contrasena', $this->contraseña);
-				$r->bindParam(':estado', $t);
-				$r->bindParam(':id_rol', $this->rol);
-				$r->bindParam(':id_cdt', $this->cdt);
+				$r->bindParam(':descripcion', $this->descripcion);
+				$r->bindParam(':telefono', $this->telefono);
+				$r->bindParam(':direccion', $this->direccion);
+				$r->bindParam(':estado',$t);	
 				$r->execute();
-				$this->bitacora("se registro un usuario", "usuarios", $this->nivel);
+				$this->bitacora("Se registro un proveedor", "proveedor", $this->nivel);
 
 				return "Registro incluido";
 
@@ -103,7 +101,7 @@ class entrada extends datos
 			}
 
 		} else {
-			return "nombre registrado";
+			return "Nombre registrado";
 		}
 
 
@@ -118,32 +116,29 @@ class entrada extends datos
 		if ($this->existe($this->id)) {
 			try {
 				$t = "1";
-				$r = $co->prepare("Update usuario set 
+				$r = $co->prepare("Update proveedor set 
                             
-                       
-                        N_de_empleado =:N_de_empleado,
-                        
+                        ID=:ID,
                         Nombre=:Nombre,
                         Apellido=:Apellido,
-                        Contrasena=:Contrasena,
+                        Descripcion=:Descripcion,
                         Estado=:Estado,
-                        ID_rol =:ID_rol,
-                        ID_CDT =:ID_CDT
+                        Telefono=:Telefono,
+                        Direccion=:Direccion
                         where
-						N_de_empleado =:N_de_empleado 
+						ID =:ID
                             
                         ");
-				$r->bindParam(':N_de_empleado', $this->id);
 				$r->bindParam(':Nombre', $this->nombre);
 				$r->bindParam(':Apellido', $this->apellido);
-				$r->bindParam(':Contrasena', $this->contraseña);
+				$r->bindParam(':Descripcion', $this->descripcion);
 				$r->bindParam(':Estado', $t);
-				$r->bindParam(':ID_rol', $this->rol);
-				$r->bindParam(':ID_CDT', $this->cdt);
+				$r->bindParam(':Telefono', $this->telefono);
+				$r->bindParam(':Direccion', $this->direccion);
 
 				$r->execute();
 
-				$this->bitacora("se modifico un usuario", "usuarios", $this->nivel);
+				$this->bitacora("Se modifico un proveedor", "proveedor", $this->nivel);
 				return "Registro modificado";
 
 			} catch (Exception $e) {
@@ -151,7 +146,7 @@ class entrada extends datos
 			}
 
 		} else {
-			return "el usuario no esta registrado";
+			return "El proveedor no esta registrado";
 		}
 
 	}
@@ -166,9 +161,9 @@ class entrada extends datos
 		try{
 			
 			
-			$resultado = $co->prepare("Select * from usuario where N_de_empleado =:id");
+			$resultado = $co->prepare("Select * from proveedor where ID =:ID");
 			
-			$resultado->bindParam(':id',$id);
+			$resultado->bindParam(':ID',$id);
 			$resultado->execute();
 			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
 			if($fila){ 
@@ -195,15 +190,15 @@ class entrada extends datos
 		
 
 			try {
-					$r=$co->prepare("Update usuario set 
+					$r=$co->prepare("Update proveedor set 
                         Estado=0
                         where
-						N_de_empleado =:N_de_empleado 
+						ID =:ID
                             
                         ");
-					$r->bindParam(':N_de_empleado',$this->id);
+					$r->bindParam(':ID',$this->id);
 					$r->execute();
-                    $this->bitacora("se elimino un usuario", "usuarios",$this->nivel);
+                    $this->bitacora("Se elimino un proveedor", "proveedor",$this->nivel);
 					return "Registro Eliminado";
                     
 			} catch(Exception $e) {
@@ -214,7 +209,7 @@ class entrada extends datos
 
 		}
 		else{
-			return "Usuario no registrado";
+			return "Proveedor no registrado";
 		}
     }
 
@@ -234,34 +229,56 @@ class entrada extends datos
         
     }
     
-    public function table_users(){
-		$co = $this->conecta();
+public function consultar($nivel1){
+    $co = $this->conecta();
+		
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try{
+			
+			
+			$resultado = $co->prepare('SELECT * FROM proveedor WHERE Estado=1;');
+			$resultado->execute();
+           $respuesta="";
 
-		$sql = $co->prepare("
-		SELECT id, nombre, cdt, rol
-		FROM empleados
-		ORDER BY nombre ASC;");
+            foreach($resultado as $r){
+                $respuesta= $respuesta.'<tr>';
+                $respuesta=$respuesta."<th>".$r['Nombre']."</th>";
+                $respuesta=$respuesta."<th>".$r['Apellido']."</th>";
+                $respuesta=$respuesta."<th>".$r['Correo']."</th>";
+                $respuesta=$respuesta."<th>".$r['Telefono']."</th>";
+                $respuesta=$respuesta."<th>".$r['Direccion']."</th>";
 
-		$sql->execute();
+                
+                $respuesta=$respuesta.'<th>';
+                if (in_array("modificar_proveedores",$nivel1)) {
+                    # code...
+                
+                $respuesta=$respuesta.'<button type="button" class="btn-modificar btn-sm" data-toggle="modal" data-target="#loginModal1" onclick="modificar(`'.$r['ID'].'`)">Modificar</button>';
+            }
+                if(in_array("eliminar_proveedores",$nivel1)){
+                    // Make delete button behave like the modify button (open the confirm modal)
+                    $respuesta = $respuesta . '<td><button type="button" class="btn-eliminar btn-sm" data-id="'.$r['N_de_empleado'].'" onclick="eliminar1(`'.$r['ID'].'`)" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</button></td>';
+                }
+            $respuesta=$respuesta.'</th>';
+            $respuesta= $respuesta.'</tr>';
+             
 
-		$tabla = '';
+            }
 
-		while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
-			$tabla .= '
-        <tr>
-            <td>' . $row['id'] . '</td>
-            <td>' . $row['nombre'] . '</td>
-            <td>' . $row['cdt'] . '</td>
-            <td>' . $row['rol'] . '</td>
-            <td><button class="btn-modificar btn-sm" data-id="' . $row['id'] . '">Modificar</button></td>
-            <td><button class="btn-eliminar btn-sm" data-id="' . $row['id'] . '">Eliminar</button></td>
-        </tr>';
+           
+            return $respuesta;
+         
+							
+							
+
+
+			
+			
+		}catch(Exception $e){
+			
+			return false;
 		}
-
-        return $tabla;
-    }
-
+}
 
 
 }
