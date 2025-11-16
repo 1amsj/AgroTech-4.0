@@ -38,7 +38,7 @@ body {
   }
 }
 
-#user, #password, #nombre, #apellido, #contraseña {
+#user, #password, #nombre, #apellido, #contraseña, #telefono, #direccion, #descripcion, #correo {
     border-radius: 2vh;
     box-shadow: 0.6vh 0.6vh 1.2vh rgba(0, 0, 0, 0.2);
     padding: 4vh 5vh;
