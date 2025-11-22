@@ -7,9 +7,9 @@ class Proveedor extends datos
 	private $nombre;
 	private $apellido;
 	private $telefono;
+	private $correo;
 	private $descripcion;
 	private $direccion;
-	private $correo;
 	private $id;
 	private $nivel;
 
@@ -145,6 +145,7 @@ class Proveedor extends datos
                         ID=:ID,
                         Nombre=:Nombre,
                         Apellido=:Apellido,
+						Correo=:Correo,
                         Descripcion=:Descripcion,
                         Estado=:Estado,
                         Telefono=:Telefono,
@@ -155,6 +156,7 @@ class Proveedor extends datos
                         ");
 				$r->bindParam(':Nombre', $this->nombre);
 				$r->bindParam(':Apellido', $this->apellido);
+				$r->bindParam(':Correo', $this->correo);
 				$r->bindParam(':Descripcion', $this->descripcion);
 				$r->bindParam(':Estado', $t);
 				$r->bindParam(':Telefono', $this->telefono);
@@ -275,6 +277,7 @@ public function consultar($nivel1){
                 $respuesta=$respuesta."<th>".$r['Telefono']."</th>";
 				$respuesta=$respuesta."<th>".$r['Descripcion']."</th>";
                 $respuesta=$respuesta."<th>".$r['Direccion']."</th>";
+				$respuesta=$respuesta."<th>".$r['Descripcion']."</th>";
 
                 
                 $respuesta=$respuesta.'<th>';

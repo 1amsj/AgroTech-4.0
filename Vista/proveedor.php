@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Página Principal</title>
+  <title>Proveedores</title>
 
   <link rel="stylesheet" href="assets/css/estilo.css" />
   <link rel="stylesheet" href="assets/css/menu.css" />
@@ -38,7 +38,17 @@
 
     <div class="container-all">
       <div class="container-header">
-        <button class="btn-standar" data-toggle="modal" data-target="#loginModal">Agregar Proveedor</button>
+        <?php
+        if (in_array("agregar_proveedores", $nivel1)) {
+          ?>
+          <button class="btn-standar" data-toggle="modal" data-target="#loginModal">Agregar Proveedor
+            <?php if (isset($mensaje)) {
+              echo $mensaje;
+            } ?></button>
+
+          <?php
+        }
+        ?>
       </div>
 
       <div class="user-table">
@@ -85,31 +95,31 @@
                   <label for="user">Nombre</label>
                   <span id="snombre" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="nombre" name="nombre"
-                    placeholder="Escriba su nombre" autofocus>
+                    placeholder="Escriba el nombre del proveedor" autofocus>
                 </div>
                 <div class="mb-3">
                   <label for="password">Apellido</label>
                   <span id="sapellido" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="apellido" name="apellido"
-                    placeholder="Escriba su apellido" autofocus>
+                    placeholder="Escriba el apellido del proveedor" autofocus>
                 </div>
                 <div class="mb-3">
                   <label for="email">Correo</label>
                   <span id="scorreo" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="correo" name="correo"
-                    placeholder="Escriba su correo" autofocus>
+                    placeholder="Escriba el correo" autofocus>
                 </div>
                 <div class="mb-3">
                   <label for="telephone">Telefono</label>
                   <span id="stelefono" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="telefono" name="telefono"
-                    placeholder="Escriba su n° de telefono" autofocus>
+                    placeholder="Escriba el n° de telefono" autofocus>
                 </div>
                 <div class="mb-3">
                   <label for="direction">Dirección</label>
                   <span id="sdireccion" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="direccion" name="direccion"
-                    placeholder="Escriba su dirección" autofocus>
+                    placeholder="Escriba la dirección" autofocus>
                 </div>
                 <div class="mb-3">
                   <label for="description">Descripción</label>
@@ -154,25 +164,25 @@
                   <label for="passwordm">Apellido</label>
                   <span id="sapellidom" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="apellidom" name="apellidom"
-                    placeholder="Escriba su apellido" autofocus>
+                    placeholder="Escriba el apellido del proveedor" autofocus>
                 </div>
                 <div class="mb-3">
                   <label for="emailm">Correo</label>
                   <span id="scorreom" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="correom" name="correom"
-                    placeholder="Escriba su correo" autofocus>
+                    placeholder="Escriba el correo" autofocus>
                 </div>
                 <div class="mb-3">
                   <label for="telephonem">Telefono</label>
                   <span id="stelefonom" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="telefonom" name="telefonom"
-                    placeholder="Escriba su n° de telefono" autofocus>
+                    placeholder="Escriba el n° de telefono" autofocus>
                 </div>
                 <div class="mb-3">
                   <label for="directionm">Dirección</label>
                   <span id="sdireccionm" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="direccionm" name="direccionm"
-                    placeholder="Escriba su dirección" autofocus>
+                    placeholder="Escriba la dirección" autofocus>
                 </div>
                 <div class="mb-3">
                   <label for="descriptionm">Descripción</label>
@@ -205,7 +215,7 @@
         <form id="f3" method="post">
 
           <input class="form-control input-standar" readonly type="text" id="eliminar" name="eliminar"
-            placeholder="Introducir n° de empleado" autofocus>
+            placeholder="Introducir ID del proveedor" autofocus>
 
         </form>
         <div class="modal-footer">
