@@ -39,11 +39,13 @@ require_once("modelo/".$pagina.".php");
 
 			$o->set_apellido($_POST['apellido']);
 
-			$o->set_cdt($_POST['direccion']);
+			$o->set_correo($_POST['correo']);
 			
-			$o->set_rol($_POST['telefono']);
+			$o->set_telefono($_POST['telefono']);
+
+			$o->set_direccion($_POST['direccion']);
 			
-			$o->set_contraceña($_POST['descripcion']);
+			$o->set_descripcion($_POST['descripcion']);
 
 			$o->set_nivel($nivel);
 			
@@ -62,11 +64,14 @@ require_once("modelo/".$pagina.".php");
 			$o->set_nombre($_POST['nombrem']);
 
 			$o->set_apellido($_POST['apellidom']);
-			$o->set_cdt($_POST['direccionm']);
+
+			$o->set_correo($_POST['correom']);
+
+			$o->set_telefono($_POST['telefonom']);
+
+			$o->set_direccion($_POST['direccionm']);
 			
-			$o->set_rol($_POST['telefonom']);
-			
-			$o->set_contraceña($_POST['descripcionm']);
+			$o->set_descripcion($_POST['descripcionm']);
 
 			$o->set_nivel($nivel);
 			

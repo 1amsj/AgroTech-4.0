@@ -7,6 +7,7 @@ class Proveedor extends datos
 	private $nombre;
 	private $apellido;
 	private $telefono;
+	private $correo;
 	private $descripcion;
 	private $direccion;
 	private $id;
@@ -28,13 +29,30 @@ class Proveedor extends datos
 		$this->apellido = $valor;
 
 	}
-	public function set_descripcion($valor)
+
+	public function set_telefono($telefono)
 	{
 
-		$this->contraseña = $valor;
-
-
+		$this->telefono = $telefono;
 	}
+
+	public function set_descripcion($descripcion)
+	{
+
+		$this->descripcion = $descripcion;
+	}
+	public function set_direccion($direccion)
+	{
+
+		$this->direccion = $direccion;
+	}
+
+	public function set_correo($correo)
+	{
+
+		$this->correo = $correo;
+	}	
+
 	public function set_nivel($valor)
 	{
 		$this->nivel = $valor;
@@ -70,6 +88,7 @@ class Proveedor extends datos
 						
                     Nombre, 
                     Apellido,
+					Correo,
                     Descripcion,
                     Telefono,
                     Direccion 
@@ -80,6 +99,7 @@ class Proveedor extends datos
                     Values(
                         :nombre,
                         :apellido,
+						:correo,
                         :descripcion,
                         :telefono,
                         :direccion
@@ -87,6 +107,7 @@ class Proveedor extends datos
                     )");
 				$r->bindParam(':nombre', $this->nombre);
 				$r->bindParam(':apellido', $this->apellido);
+				$r->bindParam(':correo', $this->correo);
 				$r->bindParam(':descripcion', $this->descripcion);
 				$r->bindParam(':telefono', $this->telefono);
 				$r->bindParam(':direccion', $this->direccion);
@@ -121,6 +142,7 @@ class Proveedor extends datos
                         ID=:ID,
                         Nombre=:Nombre,
                         Apellido=:Apellido,
+						Correo=:Correo,
                         Descripcion=:Descripcion,
                         Estado=:Estado,
                         Telefono=:Telefono,
@@ -131,6 +153,7 @@ class Proveedor extends datos
                         ");
 				$r->bindParam(':Nombre', $this->nombre);
 				$r->bindParam(':Apellido', $this->apellido);
+				$r->bindParam(':Correo', $this->correo);
 				$r->bindParam(':Descripcion', $this->descripcion);
 				$r->bindParam(':Estado', $t);
 				$r->bindParam(':Telefono', $this->telefono);
@@ -247,6 +270,7 @@ public function consultar($nivel1){
                 $respuesta=$respuesta."<th>".$r['Correo']."</th>";
                 $respuesta=$respuesta."<th>".$r['Telefono']."</th>";
                 $respuesta=$respuesta."<th>".$r['Direccion']."</th>";
+				$respuesta=$respuesta."<th>".$r['Descripcion']."</th>";
 
                 
                 $respuesta=$respuesta.'<th>';
