@@ -277,7 +277,7 @@ public function consultar($nivel1){
                 $respuesta=$respuesta."<th>".$r['Telefono']."</th>";
 				$respuesta=$respuesta."<th>".$r['Descripcion']."</th>";
                 $respuesta=$respuesta."<th>".$r['Direccion']."</th>";
-				$respuesta=$respuesta."<th>".$r['Descripcion']."</th>";
+		
 
                 
                 $respuesta=$respuesta.'<th>';
