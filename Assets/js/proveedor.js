@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
    
-       $("#registrar").on("click", function() {
+       $("#enviar").on("click", function() {
         if (validarenvio()) {
           
             $("#f").submit();
@@ -11,7 +11,7 @@ $(document).ready(function() {
     });
 
 
-    $("#modificar").on("click", function() {
+    $("#enviar1").on("click", function() {
         if (validarenvio1()) {
           
             $("#f2").submit();
@@ -44,29 +44,46 @@ $(document).ready(function() {
             $(this), $("#sapellido"), "El formato puede ser A-Z a-z 8-26");
     });
 
+    $("#correo").on("keypress", function(e) {
+        validarkeypress(/^[0-9A-Za-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1\u0040]$/, e);
 
-
-    $("#contraseña").on("keypress", function(e) {
-        validarkeypress(/^[0-9A-Za-z\u00f1\u002E\u0040\u00d1\u00E0-\u00FC\u0023\u002A]$/, e);
     });
 
-    $("#contraseña").on("keyup", function() {
-        validarkeyup(/^[0-9A-Za-z\b\s\u00f1\u002E\u0040\u00d1\u00E0-\u00FC\u0023\u002A]{8,16}$/,
-            $(this), $("#scontraseña"), "la contraseña puede llevar: A-Z a-z (.),(#),(@)(*),  8-16 caracteres");
+    $("#correo").on("keyup", function() {
+        validarkeyup(/^[0-9a-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1]{4,26}[\u0040]{1}[a-z]{5,7}[\u002E]{1}[a-z]{3}$/,
+            $(this), $("#scorreo"), "El formato puede ser A-Z a-z 0-9 ejemplo: nombreUsuari+@+servidor+.+dominio");
     });
-      
-    
 
-    $("#userm").on("keypress", function(e) {
+    $("#telefono").on("keypress", function(e) {
         validarkeypress(/^[0-9-\b]*$/, e);
 
     });
 
-    $("#userm").on("keyup", function() {
-        validarkeyup(/^[0-9]{6,10}$/,
-        $(this), $("#suserm"), "El formato debe ser en solo numeros");
+    $("#telefono").on("keyup", function() {
+        validarkeyup(/^[0-9-\b]{4,26}$/,
+            $(this), $("#stelefono"), "el formato debe ser solo numeros");
     });
 
+    $("#direccion").on("keypress", function(e) {
+        validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]*$/, e);
+
+    });
+
+    $("#direccion").on("keyup", function() {
+        validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
+            $(this), $("#sdireccion"), "el formato debe ser solo numeros");
+    });
+    $("#descripcion").on("keypress", function(e) {
+        validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]*$/, e);
+
+    });
+
+    $("#descripcion").on("keyup", function() {
+        validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
+            $(this), $("#sdescripcion"), "el formato debe ser solo numeros");
+    });
+   
+   
     $("#nombrem").on("keypress", function(e) {
         validarkeypress(/^[A-Za-z]$/, e);
 
@@ -87,15 +104,44 @@ $(document).ready(function() {
             $(this), $("#sapellidom"), "El formato puede ser A-Z a-z 8-26");
     });
 
-    $("#contraseñam").on("keypress", function(e) {
-        validarkeypress(/^[0-9A-Za-z\u00f1\u002E\u0040\u00d1\u00E0-\u00FC\u0023\u002A]$/, e);
+    $("#correom").on("keypress", function(e) {
+        validarkeypress(/^[0-9A-Za-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1\u0040]$/, e);
+
     });
 
-    $("#contraseñam").on("keyup", function() {
-        validarkeyup(/^[0-9A-Za-z\b\s\u00f1\u002E\u0040\u00d1\u00E0-\u00FC\u0023\u002A]{8,16}$/,
-            $(this), $("#scontraseñam"), "la contraseña puede llevar: A-Z a-z (.),(#),(@)(*),  8-16 caracteres");
+    $("#correom").on("keyup", function() {
+        validarkeyup(/^[0-9a-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1]{4,26}[\u0040]{1}[a-z]{5,7}[\u002E]{1}[a-z]{3}$/,
+            $(this), $("#scorreom"), "El formato puede ser A-Z a-z 0-9 ejemplo: nombreUsuari+@+servidor+.+dominio");
     });
-      
+
+    $("#telefonom").on("keypress", function(e) {
+        validarkeypress(/^[0-9-\b]*$/, e);
+
+    });
+
+    $("#telefonom").on("keyup", function() {
+        validarkeyup(/^[0-9-\b]{4,26}$/,
+            $(this), $("#stelefonom"), "el formato debe ser solo numeros");
+    });
+
+    $("#direccionm").on("keypress", function(e) {
+        validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]*$/, e);
+
+    });
+
+    $("#direccionm").on("keyup", function() {
+        validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
+            $(this), $("#sdireccionm"), "el formato debe ser solo numeros");
+    });
+    $("#descripcionm").on("keypress", function(e) {
+        validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]*$/, e);
+
+    });
+
+    $("#descripcionm").on("keyup", function() {
+        validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
+            $(this), $("#sdescripcionm"), "el formato debe ser solo numeros");
+    });
 
   
 
@@ -157,12 +203,15 @@ $("#contraceña3").on("keyup", function() {
         $("#tabla tr").each(function(){
         
             if(id == $(this).find("th:eq(0)").text()){
-                $("#userm").val(id);
+                
           
-                $("#nombrem").val($(this).find("th:eq(2)").text());
-               
-                $("#apellidom").val($(this).find("th:eq(3)").text());
-     
+                $("#nombrem").val($(this).find("th:eq(1)").text());
+                $("#id").val($(this).find("th:eq(0)").text());
+                $("#apellidom").val($(this).find("th:eq(2)").text());
+                $("#correom").val($(this).find("th:eq(3)").text());
+                $("#telefonom").val($(this).find("th:eq(4)").text());
+                $("#direccionm").val($(this).find("th:eq(5)").text());
+                $("#descripcionm").val($(this).find("th:eq(6)").text());
            
                 
 
@@ -232,14 +281,9 @@ $("#contraceña3").on("keyup", function() {
 
 
     function validarenvio() {
-        if (validarkeyup(/^[0-9]{4,26}$/,
-        $("#user"), $("#suser"), "El formato puede ser A-Z a-z 8-26") == 0) {
-            mensaje("<p>El formato puede ser A-Z a-z 8-26</p>");
-            return false;
-    
-        }else if (validarkeyup(/^[A-Za-z]{4,26}$/,
+        if (validarkeyup(/^[A-Za-z]{4,26}$/,
         $("#nombre"), $("#snombre"), "El formato puede ser A-Z a-z 8-26") == 0) {
-            mensaje("<p>El formato puede ser A-Z a-z 8-26</p>");
+            $("#snombre").text("<p>El formato puede ser A-Z a-z 8-26</p>");
             return false;
     
         }else if (validarkeyup(/^[A-Za-z]{4,26}$/,
@@ -247,47 +291,62 @@ $("#contraceña3").on("keyup", function() {
             $("#sapellido").text("<p>El formato puede ser A-Z a-z 8-26</p>");
             return false;
     
-        }else if (valselect($('#rol').val(),$("#srol")) == 0) {
-            $("#srol").text("<p>Debe de seleccionar un Rol</p>");
+        }else if (validarkeyup(/^[0-9a-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1]{4,26}[\u0040]{1}[a-z]{5,7}[\u002E]{1}[a-z]{3}$/,
+        $("#correo"), $("#scorreo"), "ejemplo@dominio.com") == 0) {
+            $("#scorreo").text("<p>ejemplo@dominio.com</p>");
             return false;
-        }else if (valselect($('#cdt').val(),$("#scdt")) == 0) {
-            $("#scdt").text("<p>Debe de seleccionar un CDT</p>");
+    
+        }else if (validarkeyup(/^[0-9]{4,26}$/,
+        $("#telefono"), $("#stelefono"), "El formato puede ser 12345678") == 0) {
+            $("#stelefono").text("<p>El formato puede ser 12345678</p>");
             return false;
-        } else if (validarkeyup(/^[0-9A-Za-z\b\s\u00f1\u002E\u0040\u00d1\u00E0-\u00FC\u0023\u002A]{8,16}$/,
-            $("#contraceña"), $("#scontraceña"), "Solo letras entre 8 y 16 caracteres, numeros, (.),(#),(@)(*)") == 0) {
-            $("#scontraceña").text("<p>la contraseña debe tener entre 8 y 16 caracteres</p>");
+    
+        } else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
+        $("#direccion"), $("#sdireccion"), "El formato puede ser .....") == 0) {
+            $("#sdireccion").text("<p>El formato puede ser .....</p>");
             return false;
-        }        
+    
+        }  else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
+        $("#descripcion"), $("#sdescripcion"), "El formato puede ser .....") == 0) {
+            $("#sdescripcion").text("<p>El formato puede ser .....</p>");
+            return false;
+    
+        }         
         return true;
     }
 
     function validarenvio1() {
-        if (validarkeyup(/^[0-9]{4,26}$/,
-        $("#userm"), $("#suserm"), "El formato puede ser A-Z a-z 8-26") == 0) {
-            mensaje("<p>El formato puede ser A-Z a-z 8-26</p>");
-            return false;
-    
-        }else if (validarkeyup(/^[A-Za-z]{4,26}$/,
+        if (validarkeyup(/^[A-Za-z]{4,26}$/,
         $("#nombrem"), $("#snombrem"), "El formato puede ser A-Z a-z 8-26") == 0) {
-            mensaje("<p>El formato puede ser A-Z a-z 8-26</p>");
+            $("#snombrem").text("<p>El formato puede ser A-Z a-z 8-26</p>");
             return false;
     
         }else if (validarkeyup(/^[A-Za-z]{4,26}$/,
         $("#apellidom"), $("#sapellidom"), "El formato puede ser A-Z a-z 8-26") == 0) {
             $("#sapellidom").text("<p>El formato puede ser A-Z a-z 8-26</p>");
             return false;
-            }else if (valselect($('#cdtm').val(),$("#scdtm")) == 0) {
-            $("#scdtm").text("<p>Debe de seleccionar un CDT</p>");
+    
+        }else if (validarkeyup(/^[0-9a-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1]{4,26}[\u0040]{1}[a-z]{5,7}[\u002E]{1}[a-z]{3}$/,
+        $("#correom"), $("#scorreom"), "ejemplo@dominio.com") == 0) {
+            $("#scorreom").text("<p>ejemplo@dominio.com</p>");
             return false;
-        }else if (valselect($('#rolm').val(),$("#srolm")) == 0) {
-            $("#srolm").text("<p>Debe de seleccionar un Rol</p>");
+    
+        }else if (validarkeyup(/^[0-9]{4,26}$/,
+        $("#telefonom"), $("#stelefonom"), "El formato puede ser 12345678") == 0) {
+            $("#stelefonom").text("<p>El formato puede ser 12345678</p>");
             return false;
-        
-        } else if (validarkeyup(/^[0-9A-Za-z\b\s\u00f1\u002E\u0040\u00d1\u00E0-\u00FC\u0023\u002A]{8,16}$/,
-            $("#contraseñam"), $("#scontraseñam"), "Solo letras entre 8 y 16 caracteres, numeros, (.),(#),(@)(*)") == 0) {
-            $("#scontraseñam").text("<p>la contraseña debe tener entre 8 y 16 caracteres</p>");
+    
+        } else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
+        $("#direccionm"), $("#sdireccionm"), "El formato puede ser .....") == 0) {
+            $("#sdireccionm").text("<p>El formato puede ser .....</p>");
             return false;
-        }        
+    
+        }  else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
+        $("#descripcionm"), $("#sdescripcionm"), "El formato puede ser .....") == 0) {
+            $("#sdescripcionm").text("<p>El formato puede ser .....</p>");
+            return false;
+    
+        }         
         return true;
     }
 

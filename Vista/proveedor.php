@@ -42,7 +42,7 @@
       </div>
 
       <div class="user-table">
-        <table class="table table-bordered text-center align-middle">
+        <table class="table table-bordered text-center align-middle" id="tabla">
           <thead>
             <tr>
               <th>Nombre</th>
@@ -56,16 +56,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Juan</td>
-              <td>Pérez</td>
-              <td>hola@gmail.com</td>
-              <td>xxxx-xxxx</td>
-              <td>Calle Falsa 123</td>
-              <td>Proveedor de frutas y verduras</td>
-              <td><button class="btn-modificar btn-sm" data-toggle="modal" data-target="#loginModal1">Modificar</button></td>
-              <td><button class="btn-eliminar btn-sm" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</button></td>
-            </tr>
+            <?php if (!empty($consult)) {
+              echo $consult;
+            }?>
           </tbody>
         </table>
       </div>
@@ -123,6 +116,7 @@
                   <span id="sdescripcion" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="descripcion" name="descripcion"
                     placeholder="Introducir n° de empleado" autofocus>
+                  <input class="form-control input-standar" style="display: none;" type="text" id="accion" name="accion" value="registrar">  
                 </div>
                 <button type="button" class="btn w-100" id="enviar">Registrar</button>
               </form>
@@ -133,7 +127,7 @@
       </div>
     </div>
   </div>
-
+  <!-- Modal de modificar -->
   <div class="modal fade" id="loginModal1" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered d-flex justify-content-center">
       <div class="modal-content" id="modal-content">
@@ -148,12 +142,13 @@
           <div class="row justify-content-center align-items-center text-center">
             <!-- Columna del formulario -->
             <div class="col-md-8">
-              <form id="f" method="post">
+              <form id="f2" method="post">
                 <div class="mb-3">
                   <label for="userm">Nombre</label>
                   <span id="snombrem" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="nombrem" name="nombrem"
                     placeholder="Escriba su nombre" autofocus>
+                    <input class="form-control input-standar" type="text" id="id" name="id" style="display:none;">
                 </div>
                 <div class="mb-3">
                   <label for="passwordm">Apellido</label>
@@ -182,10 +177,11 @@
                 <div class="mb-3">
                   <label for="descriptionm">Descripción</label>
                   <span id="sdescripcionm" class="text-danger"></span>
-                  <input class="form-control input-standar" type="text" id="descripciónm" name="descripcionm"
+                  <input class="form-control input-standar" type="text" id="descripcionm" name="descripcionm"
                     placeholder="Introducir n° de empleado" autofocus>
+                    <input class="form-control input-standar" style="display: none;" type="text" id="modificar" name="modificar" value="asdasd">
                 </div>
-                <button type="button" class="btn w-100" id="enviar">Modificar</button>
+                <button type="button" class="btn w-100" id="enviar1">Modificar</button>
               </form>
             </div>
           </div>
@@ -223,7 +219,7 @@
 </body>
 
 
-
+<script src="Assets/js/proveedor.js"></script>
 <script src="Assets/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
 <script src="Assets/js/p_bootstrap.min.js"></script>

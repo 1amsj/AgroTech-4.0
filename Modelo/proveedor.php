@@ -9,6 +9,7 @@ class Proveedor extends datos
 	private $telefono;
 	private $descripcion;
 	private $direccion;
+	private $correo;
 	private $id;
 	private $nivel;
 
@@ -20,7 +21,18 @@ class Proveedor extends datos
 		$this->nombre = $valor;
 
 	}
+	public function set_id($valor)
+	{
 
+		$this->id = $valor;
+
+	}
+	public function set_correo($valor)
+	{
+
+		$this->correo = $valor;
+
+	}
 
 	public function set_apellido($valor)
 	{
@@ -28,11 +40,24 @@ class Proveedor extends datos
 		$this->apellido = $valor;
 
 	}
+	public function set_telefono($valor)
+	{
+
+		$this->telefono = $valor;
+
+	}
+
 	public function set_descripcion($valor)
 	{
 
-		$this->contraseña = $valor;
+		$this->descripcion = $valor;
 
+
+	}
+	public function set_direccion($valor)
+	{
+
+		$this->direccion = $valor;
 
 	}
 	public function set_nivel($valor)
@@ -66,27 +91,26 @@ class Proveedor extends datos
 		if (!$this->existe($this->id)) {
 			try {
 				$t = "1";
-				$r = $co->prepare("Insert into proveedor(
-						
-                    Nombre, 
-                    Apellido,
-                    Descripcion,
-                    Telefono,
-                    Direccion 
+				$r = $co->prepare("INSERT INTO proveedor (
+					Nombre,
+					Apellido,
+					Correo,
+					Descripcion,
+					Telefono,
+					Direccion,
 					Estado
-                    )
-            
-
-                    Values(
-                        :nombre,
-                        :apellido,
-                        :descripcion,
-                        :telefono,
-                        :direccion
-						:estado
-                    )");
+				) VALUES (
+					:nombre,
+					:apellido,
+					:correo,
+					:descripcion,
+					:telefono,
+					:direccion,
+					:estado
+				)");
 				$r->bindParam(':nombre', $this->nombre);
 				$r->bindParam(':apellido', $this->apellido);
+				$r->bindParam(':correo', $this->correo);
 				$r->bindParam(':descripcion', $this->descripcion);
 				$r->bindParam(':telefono', $this->telefono);
 				$r->bindParam(':direccion', $this->direccion);
@@ -135,6 +159,8 @@ class Proveedor extends datos
 				$r->bindParam(':Estado', $t);
 				$r->bindParam(':Telefono', $this->telefono);
 				$r->bindParam(':Direccion', $this->direccion);
+				// bind ID for WHERE clause
+				$r->bindParam(':ID',$this->id);
 
 				$r->execute();
 
@@ -242,22 +268,23 @@ public function consultar($nivel1){
 
             foreach($resultado as $r){
                 $respuesta= $respuesta.'<tr>';
+				$respuesta=$respuesta."<th style='display:none'>".$r['ID']."</th>";
                 $respuesta=$respuesta."<th>".$r['Nombre']."</th>";
                 $respuesta=$respuesta."<th>".$r['Apellido']."</th>";
                 $respuesta=$respuesta."<th>".$r['Correo']."</th>";
                 $respuesta=$respuesta."<th>".$r['Telefono']."</th>";
+				$respuesta=$respuesta."<th>".$r['Descripcion']."</th>";
                 $respuesta=$respuesta."<th>".$r['Direccion']."</th>";
 
                 
                 $respuesta=$respuesta.'<th>';
                 if (in_array("modificar_proveedores",$nivel1)) {
-                    # code...
-                
+              
                 $respuesta=$respuesta.'<button type="button" class="btn-modificar btn-sm" data-toggle="modal" data-target="#loginModal1" onclick="modificar(`'.$r['ID'].'`)">Modificar</button>';
             }
                 if(in_array("eliminar_proveedores",$nivel1)){
-                    // Make delete button behave like the modify button (open the confirm modal)
-                    $respuesta = $respuesta . '<td><button type="button" class="btn-eliminar btn-sm" data-id="'.$r['N_de_empleado'].'" onclick="eliminar1(`'.$r['ID'].'`)" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</button></td>';
+                    
+					$respuesta = $respuesta . '<td><button type="button" class="btn-eliminar btn-sm" data-id="'.$r['ID'].'" onclick="eliminar1(`'.$r['ID'].'`)" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</button></td>';
                 }
             $respuesta=$respuesta.'</th>';
             $respuesta= $respuesta.'</tr>';
