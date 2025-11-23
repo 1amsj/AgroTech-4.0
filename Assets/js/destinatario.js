@@ -44,15 +44,6 @@ $(document).ready(function() {
             $(this), $("#sapellido"), "El formato puede ser A-Z a-z 8-26");
     });
 
-    $("#correo").on("keypress", function(e) {
-        validarkeypress(/^[0-9A-Za-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1\u0040]$/, e);
-
-    });
-
-    $("#correo").on("keyup", function() {
-        validarkeyup(/^[0-9a-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1]{4,26}[\u0040]{1}[a-z]{5,7}[\u002E]{1}[a-z]{3}$/,
-            $(this), $("#scorreo"), "El formato puede ser A-Z a-z 0-9 ejemplo: nombreUsuari+@+servidor+.+dominio");
-    });
 
     $("#telefono").on("keypress", function(e) {
         validarkeypress(/^[0-9-\b]*$/, e);
@@ -64,15 +55,6 @@ $(document).ready(function() {
             $(this), $("#stelefono"), "el formato debe ser solo numeros");
     });
 
-    $("#direccion").on("keypress", function(e) {
-        validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]*$/, e);
-
-    });
-
-    $("#direccion").on("keyup", function() {
-        validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
-            $(this), $("#sdireccion"), "el formato debe ser solo numeros");
-    });
     $("#descripcion").on("keypress", function(e) {
         validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]*$/, e);
 
@@ -104,15 +86,6 @@ $(document).ready(function() {
             $(this), $("#sapellidom"), "El formato puede ser A-Z a-z 8-26");
     });
 
-    $("#correom").on("keypress", function(e) {
-        validarkeypress(/^[0-9A-Za-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1\u0040]$/, e);
-
-    });
-
-    $("#correom").on("keyup", function() {
-        validarkeyup(/^[0-9a-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1]{4,26}[\u0040]{1}[a-z]{5,7}[\u002E]{1}[a-z]{3}$/,
-            $(this), $("#scorreom"), "El formato puede ser A-Z a-z 0-9 ejemplo: nombreUsuari+@+servidor+.+dominio");
-    });
 
     $("#telefonom").on("keypress", function(e) {
         validarkeypress(/^[0-9-\b]*$/, e);
@@ -124,15 +97,6 @@ $(document).ready(function() {
             $(this), $("#stelefonom"), "el formato debe ser solo numeros");
     });
 
-    $("#direccionm").on("keypress", function(e) {
-        validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]*$/, e);
-
-    });
-
-    $("#direccionm").on("keyup", function() {
-        validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
-            $(this), $("#sdireccionm"), "el formato debe ser solo numeros");
-    });
     $("#descripcionm").on("keypress", function(e) {
         validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]*$/, e);
 
@@ -155,9 +119,7 @@ $(document).ready(function() {
                 $("#nombrem").val($(this).find("th:eq(1)").text());
                 $("#id").val($(this).find("th:eq(0)").text());
                 $("#apellidom").val($(this).find("th:eq(2)").text());
-                $("#correom").val($(this).find("th:eq(3)").text());
                 $("#telefonom").val($(this).find("th:eq(4)").text());
-                $("#direccionm").val($(this).find("th:eq(5)").text());
                 $("#descripcionm").val($(this).find("th:eq(6)").text());
            
                 
@@ -238,20 +200,12 @@ $(document).ready(function() {
             $("#sapellido").text("<p>El formato puede ser A-Z a-z 8-26</p>");
             return false;
     
-        }else if (validarkeyup(/^[0-9a-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1]{4,26}[\u0040]{1}[a-z]{5,7}[\u002E]{1}[a-z]{3}$/,
-        $("#correo"), $("#scorreo"), "ejemplo@dominio.com") == 0) {
-            $("#scorreo").text("<p>ejemplo@dominio.com</p>");
-            return false;
     
         }else if (validarkeyup(/^[0-9]{4,26}$/,
         $("#telefono"), $("#stelefono"), "El formato puede ser 12345678") == 0) {
             $("#stelefono").text("<p>El formato puede ser 12345678</p>");
             return false;
     
-        } else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
-        $("#direccion"), $("#sdireccion"), "El formato puede ser .....") == 0) {
-            $("#sdireccion").text("<p>El formato puede ser .....</p>");
-            return false;
     
         }  else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
         $("#descripcion"), $("#sdescripcion"), "El formato puede ser .....") == 0) {
@@ -273,19 +227,9 @@ $(document).ready(function() {
             $("#sapellidom").text("<p>El formato puede ser A-Z a-z 8-26</p>");
             return false;
     
-        }else if (validarkeyup(/^[0-9a-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1]{4,26}[\u0040]{1}[a-z]{5,7}[\u002E]{1}[a-z]{3}$/,
-        $("#correom"), $("#scorreom"), "ejemplo@dominio.com") == 0) {
-            $("#scorreom").text("<p>ejemplo@dominio.com</p>");
-            return false;
-    
         }else if (validarkeyup(/^[0-9]{4,26}$/,
         $("#telefonom"), $("#stelefonom"), "El formato puede ser 12345678") == 0) {
             $("#stelefonom").text("<p>El formato puede ser 12345678</p>");
-            return false;
-    
-        } else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
-        $("#direccionm"), $("#sdireccionm"), "El formato puede ser .....") == 0) {
-            $("#sdireccionm").text("<p>El formato puede ser .....</p>");
             return false;
     
         }  else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,

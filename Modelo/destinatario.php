@@ -249,7 +249,7 @@ public function consultar($nivel1){
 
                 
                 $respuesta=$respuesta.'<th>';
-                if (in_array("modificar_proveedores",$nivel1)) {
+                if (in_array("modificar_destinatario",$nivel1)) {
                     # code...
                 
                 $respuesta=$respuesta.'<button type="button" class="btn-modificar btn-sm" data-toggle="modal" data-target="#loginModal1" onclick="modificar(`'.$r['ID'].'`)">Modificar</button>';

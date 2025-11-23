@@ -61,7 +61,7 @@
           </thead>
           <tbody>
             <?php
-            if (in_array("consutar_destinatario", $nivel1)) {
+            if (in_array("consultar_destinatario", $nivel1)) {
               if (isset($consult)) {
                 echo $consult;
               }
