@@ -144,6 +144,15 @@ $(document).ready(function() {
     });
 
   
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+>>>>>>> 0175b743d86a1d75c9998b69264d273fe4efa207
     
     });
     function modificar(id){
