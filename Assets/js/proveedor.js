@@ -145,54 +145,7 @@ $(document).ready(function() {
 
   
 
-/*aqui termina registrar*/
 
-$("#cedula1").on("keypress", function(e) {
-    validarkeypress(/^[0-9-\b]*$/, e);
-
-});
-
-$("#cedula1").on("keyup", function() {
-    validarkeyup(/^[0-9]{6,10}$/,
-    $(this), $("#scedula1"), "La Cedula debe ser en el siguiente formato 00000000");
-});
-
-$("#nombre1").on("keypress", function(e) {
-    validarkeypress(/^[A-Za-z]$/, e);
-
-});
-
-$("#nombre1").on("keyup", function() {
-    validarkeyup(/^[A-Za-z]{4,10}$/,
-        $(this), $("#snombre1"), "El formato puede ser A-Z a-z 4-10");
-});
-
-
-$("#correo1").on("keypress", function(e) {
-    validarkeypress(/^[0-9A-Za-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1\u0040]$/, e);
-
-});
-
-$("#correo1").on("keyup", function() {
-    validarkeyup(/^[0-9a-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1]{4,26}[\u0040]{1}[a-z]{5,7}[\u002E]{1}[a-z]{3}$/,
-        $(this), $("#scorreo1"), "El formato puede ser A-Z a-z 0-9 ejemplo: nombreUsuari+@+servidor+.+dominio");
-});
-$("#contraceña2").on("keypress", function(e) {
-    validarkeypress(/^[0-9A-Za-z\u00f1\u002E\u0040\u00d1\u00E0-\u00FC\u0023\u002A]$/, e);
-});
-
-$("#contraceña2").on("keyup", function() {
-    validarkeyup(/^[0-9A-Za-z\b\s\u00f1\u002E\u0040\u00d1\u00E0-\u00FC\u0023\u002A]{8,10}$/,
-        $(this), $("#scontraceña2"), "la contraseña puede llevar: A-Z a-z (.),(#),(@)(*),  8-10 caracteres");
-});
-$("#contraceña3").on("keypress", function(e) {
-    validarkeypress(/^[0-9A-Za-z\u00f1\u002E\u0040\u00d1\u00E0-\u00FC\u0023\u002A]$/, e);
-});
-
-$("#contraceña3").on("keyup", function() {
-    validarkeyup(/^[0-9A-Za-z\b\s\u00f1\u002E\u0040\u00d1\u00E0-\u00FC\u0023\u002A]{8,10}$/,
-        $(this), $("#scontraceña3"), "la contraseña puede llevar: A-Z a-z (.),(#),(@)(*),  8-10 caracteres");
-});
 
 
 
