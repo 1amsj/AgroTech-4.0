@@ -124,9 +124,14 @@
                         <i class="fas fa-gear me-3"></i>
                         <span class="hide-on-collapse">Usuarios</span>
                     </a>
+                    
                 <?php
                     }
                 ?>
+                <a href="?pagina=logout" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-gear me-3"></i>
+                        <span class="hide-on-collapse">logout</span>
+                    </a>
                 <div class="profile-section mt-auto p-4">
                     <div class="d-flex align-items-center">
                         <img src="https://randomuser.me/api/portraits/women/70.jpg" style="height:60px"
