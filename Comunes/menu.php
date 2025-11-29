@@ -43,19 +43,11 @@
                         <i class="fas fa-chart-bar me-3"></i>
                         <span class="hide-on-collapse">Inventario</span>
                     </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-users me-3"></i>
-                        <span class="hide-on-collapse">Entradas</span>
-                    </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-users me-3"></i>
-                        <span class="hide-on-collapse">Salidas</span>
-                    </a>
                     <a href="?pagina=seguridad" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-box me-3"></i>
                         <span class="hide-on-collapse">Seguridad</span>
                     </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                    <a href="?pagina=bitacora" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-gear me-3"></i>
                         <span class="hide-on-collapse">Bitacora</span>
                     </a>
@@ -82,23 +74,11 @@
                         <i class="fas fa-chart-bar me-3"></i>
                         <span class="hide-on-collapse">Inventario</span>
                     </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-users me-3"></i>
-                        <span class="hide-on-collapse">Entradas</span>
-                    </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-users me-3"></i>
-                        <span class="hide-on-collapse">Salidas</span>
-                    </a>
                 <?php
                     } else if ($nivel == "boss") { ?>
-                    <a href ="?pagina=inventario" class = "sidebar-link text-decoration-none p-3">
+                    <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-chart-bar me-3"></i>
-                        <span class="hide-on-collapse">Entradas</span>
-                    </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-users me-3"></i>
-                        <span class="hide-on-collapse">Salidas</span>
+                        <span class="hide-on-collapse">Inventario</span>
                     </a>
                     <a href="?pagina=seguridad" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-box me-3"></i>
