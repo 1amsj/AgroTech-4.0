@@ -30,27 +30,27 @@ $(document).ready(function() {
 
     $("#user").on("keyup", function() {
         validarkeyup(/^[0-9]{6,10}$/,
-        $(this), $("#suser"), "El formato debe ser en solo numeros");
+        $(this), $("#suser"), "Solo números 6-10");
     });
 
     $("#nombre").on("keypress", function(e) {
-        validarkeypress(/^[A-Za-z]$/, e);
+        validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
 
     });
 
     $("#nombre").on("keyup", function() {
-        validarkeyup(/^[A-Za-z]{4,26}$/,
-            $(this), $("#snombre"), "El formato puede ser A-Z a-z 8-26");
+        validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+            $(this), $("#snombre"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
     $("#apellido").on("keypress", function(e) {
-        validarkeypress(/^[A-Za-z]$/, e);
+        validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
 
     });
 
     $("#apellido").on("keyup", function() {
-        validarkeyup(/^[A-Za-z]{4,26}$/,
-            $(this), $("#sapellido"), "El formato puede ser A-Z a-z 8-26");
+        validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+            $(this), $("#sapellido"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
     $("#contraseña").on("keypress", function(e) {
@@ -71,27 +71,27 @@ $(document).ready(function() {
 
     $("#userm").on("keyup", function() {
         validarkeyup(/^[0-9]{6,10}$/,
-        $(this), $("#suserm"), "El formato debe ser en solo numeros");
+        $(this), $("#suserm"), "Solo números 6-10");
     });
 
     $("#nombrem").on("keypress", function(e) {
-        validarkeypress(/^[A-Za-z]$/, e);
+        validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
 
     });
 
     $("#nombrem").on("keyup", function() {
-        validarkeyup(/^[A-Za-z]{4,26}$/,
-            $(this), $("#snombrem"), "El formato puede ser A-Z a-z 8-26");
+        validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+            $(this), $("#snombrem"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
     $("#apellidom").on("keypress", function(e) {
-        validarkeypress(/^[A-Za-z]$/, e);
+        validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
 
     });
 
     $("#apellidom").on("keyup", function() {
-        validarkeyup(/^[A-Za-z]{4,26}$/,
-            $(this), $("#sapellidom"), "El formato puede ser A-Z a-z 8-26");
+        validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+            $(this), $("#sapellidom"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
     $("#contraseñam").on("keypress", function(e) {
@@ -119,13 +119,13 @@ $("#cedula1").on("keyup", function() {
 });
 
 $("#nombre1").on("keypress", function(e) {
-    validarkeypress(/^[A-Za-z]$/, e);
+    validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
 
 });
 
 $("#nombre1").on("keyup", function() {
-    validarkeyup(/^[A-Za-z]{4,10}$/,
-        $(this), $("#snombre1"), "El formato puede ser A-Z a-z 4-10");
+    validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,10}$/,
+        $(this), $("#snombre1"), "Solo letras (incluye acentos) y espacios 4-10");
 });
 
 
@@ -239,19 +239,19 @@ $("#contraceña3").on("keyup", function() {
 
 
     function validarenvio() {
-        if (validarkeyup(/^[0-9]{4,26}$/,
-        $("#user"), $("#suser"), "El formato puede ser A-Z a-z 8-26") == 0) {
-            mensaje("<p>El formato puede ser A-Z a-z 8-26</p>");
+        if (validarkeyup(/^[0-9]{6,10}$/,
+        $("#user"), $("#suser"), "Solo números 6-10") == 0) {
+            mensaje("<p>Solo números 6-10</p>");
             return false;
     
-        }else if (validarkeyup(/^[A-Za-z]{4,26}$/,
-        $("#nombre"), $("#snombre"), "El formato puede ser A-Z a-z 8-26") == 0) {
-            mensaje("<p>El formato puede ser A-Z a-z 8-26</p>");
+        }else if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+        $("#nombre"), $("#snombre"), "Solo letras (incluye acentos) y espacios 4-26") == 0) {
+            mensaje("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
             return false;
     
-        }else if (validarkeyup(/^[A-Za-z]{4,26}$/,
-        $("#apellido"), $("#sapellido"), "El formato puede ser A-Z a-z 8-26") == 0) {
-            $("#sapellido").text("<p>El formato puede ser A-Z a-z 8-26</p>");
+        }else if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+        $("#apellido"), $("#sapellido"), "Solo letras (incluye acentos) y espacios 4-26") == 0) {
+            $("#sapellido").text("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
             return false;
     
         }else if (valselect($('#rol').val(),$("#srol")) == 0) {
@@ -269,19 +269,19 @@ $("#contraceña3").on("keyup", function() {
     }
 
     function validarenvio1() {
-        if (validarkeyup(/^[0-9]{4,26}$/,
-        $("#userm"), $("#suserm"), "El formato puede ser A-Z a-z 8-26") == 0) {
-            mensaje("<p>El formato puede ser A-Z a-z 8-26</p>");
+        if (validarkeyup(/^[0-9]{6,10}$/,
+        $("#userm"), $("#suserm"), "Solo números 6-10") == 0) {
+            mensaje("<p>Solo números 6-10</p>");
             return false;
     
-        }else if (validarkeyup(/^[A-Za-z]{4,26}$/,
-        $("#nombrem"), $("#snombrem"), "El formato puede ser A-Z a-z 8-26") == 0) {
-            mensaje("<p>El formato puede ser A-Z a-z 8-26</p>");
+        }else if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+        $("#nombrem"), $("#snombrem"), "Solo letras (incluye acentos) y espacios 4-26") == 0) {
+            mensaje("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
             return false;
     
-        }else if (validarkeyup(/^[A-Za-z]{4,26}$/,
-        $("#apellidom"), $("#sapellidom"), "El formato puede ser A-Z a-z 8-26") == 0) {
-            $("#sapellidom").text("<p>El formato puede ser A-Z a-z 8-26</p>");
+        }else if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+        $("#apellidom"), $("#sapellidom"), "Solo letras (incluye acentos) y espacios 4-26") == 0) {
+            $("#sapellidom").text("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
             return false;
             }else if (valselect($('#cdtm').val(),$("#scdtm")) == 0) {
             $("#scdtm").text("<p>Debe de seleccionar un CDT</p>");

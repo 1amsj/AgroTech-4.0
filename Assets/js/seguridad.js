@@ -54,23 +54,23 @@ $(document).ready(function() {
 
   
     $("#rol").on("keypress", function(e) {
-        validarkeypress(/^[A-Za-z]$/, e);
+        validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
 
     });
 
     $("#rol").on("keyup", function() {
-        validarkeyup(/^[A-Za-z]{4,80}$/,
-            $(this), $("#srol"), "El formato puede ser A-Z a-z 8-80");
+        validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,80}$/,
+            $(this), $("#srol"), "Solo letras (incluye acentos) y espacios 4-80");
     });
 
     $("#descripcion").on("keypress", function(e) {
-        validarkeypress(/^[A-Za-z_ ]$/, e);
+        validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,-]$/, e);
 
     });
 
     $("#descripcion").on("keyup", function() {
-        validarkeyup(/^[A-Za-z_ ]{4,80}$/,
-            $(this), $("#sdescripcion"), "El formato puede ser A-Z a-z 8-80");
+        validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,-]{4,80}$/,
+            $(this), $("#sdescripcion"), "Letras, números, acentos, espacios y .,- 4-80");
     });
 
    
@@ -80,23 +80,23 @@ $(document).ready(function() {
 
 
 $("#rol1").on("keypress", function(e) {
-    validarkeypress(/^[A-Za-z]$/, e);
+    validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
 
 });
 
 $("#rol1").on("keyup", function() {
-    validarkeyup(/^[A-Za-z]{4,80}$/,
-        $(this), $("#srol1"), "El formato puede ser A-Z a-z 8-80");
+    validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,80}$/,
+        $(this), $("#srol1"), "Solo letras (incluye acentos) y espacios 4-80");
 });
 
 $("#descripcion1").on("keypress", function(e) {
-    validarkeypress(/^[A-Za-z_ ]$/, e);
+    validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,-]$/, e);
 
 });
 
 $("#descripcion1").on("keyup", function() {
-    validarkeyup(/^[A-Za-z_ ]{4,80}$/,
-        $(this), $("#sdescripcion1"), "El formato puede ser A-Z a-z 8-80");
+    validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,-]{4,80}$/,
+        $(this), $("#sdescripcion1"), "Letras, números, acentos, espacios y .,- 4-80");
 });
 
 
@@ -308,28 +308,28 @@ $("#descripcion1").on("keyup", function() {
      }
 
     function validarenvio() {
-        if (validarkeyup(/^[A-Za-z]{4,80}$/,
-        $("#rol"), $("#srol"), "El formato puede ser A-Z a-z 8-80") == 0) {
-            mensaje("<p>El formato puede ser A-Z a-z 8-80</p>");
+        if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,80}$/,
+        $("#rol"), $("#srol"), "Solo letras (incluye acentos) y espacios 4-80") == 0) {
+            mensaje("<p>Solo letras (incluye acentos) y espacios 4-80</p>");
             return false;
     
-        } else if (validarkeyup(/^[A-Za-z_ ]{4,80}$/,
-        $("#descripcion"), $("#sdescripcion"), "El formato puede ser A-Z a-z 8-80") == 0) {
-            mensaje("<p>El formato puede ser A-Z a-z 8-80</p>");
+        } else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,-]{4,80}$/,
+        $("#descripcion"), $("#sdescripcion"), "Letras, números, acentos, espacios y .,- 4-80") == 0) {
+            mensaje("<p>Letras, números, acentos, espacios y .,- 4-80</p>");
             return false;
         }
         return true;
     }
 
     function validarenvio1() {
-        if (validarkeyup(/^[A-Za-z]{4,80}$/,
-        $("#rol1"), $("#srol1"), "El formato puede ser A-Z a-z 8-80") == 0) {
-            mensaje("<p>El formato puede ser A-Z a-z 8-80</p>");
+        if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,80}$/,
+        $("#rol1"), $("#srol1"), "Solo letras (incluye acentos) y espacios 4-80") == 0) {
+            mensaje("<p>Solo letras (incluye acentos) y espacios 4-80</p>");
             return false;
     
-        } else if (validarkeyup(/^[A-Za-z_ ]{4,80}$/,
-        $("#descripcion1"), $("#sdescripcion1"), "El formato puede ser A-Z a-z 8-80") == 0) {
-            mensaje("<p>El formato puede ser A-Z a-z 8-80</p>");
+        } else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,-]{4,80}$/,
+        $("#descripcion1"), $("#sdescripcion1"), "Letras, números, acentos, espacios y .,- 4-80") == 0) {
+            mensaje("<p>Letras, números, acentos, espacios y .,- 4-80</p>");
             return false;
         }
         return true;

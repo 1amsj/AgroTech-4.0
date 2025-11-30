@@ -25,23 +25,23 @@ $(document).ready(function() {
 
 
     $("#nombre").on("keypress", function(e) {
-        validarkeypress(/^[A-Za-z]$/, e);
+        validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
 
     });
 
     $("#nombre").on("keyup", function() {
-        validarkeyup(/^[A-Za-z]{4,26}$/,
-            $(this), $("#snombre"), "El formato puede ser A-Z a-z 8-26");
+        validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+            $(this), $("#snombre"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
     $("#apellido").on("keypress", function(e) {
-        validarkeypress(/^[A-Za-z]$/, e);
+        validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
 
     });
 
     $("#apellido").on("keyup", function() {
-        validarkeyup(/^[A-Za-z]{4,26}$/,
-            $(this), $("#sapellido"), "El formato puede ser A-Z a-z 8-26");
+        validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+            $(this), $("#sapellido"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
 
@@ -51,8 +51,8 @@ $(document).ready(function() {
     });
 
     $("#telefono").on("keyup", function() {
-        validarkeyup(/^[0-9-\b]{4,26}$/,
-            $(this), $("#stelefono"), "el formato debe ser solo numeros");
+        validarkeyup(/^[0-9-]{4,26}$/,
+            $(this), $("#stelefono"), "Solo números y guiones 4-26");
     });
 
     $("#descripcion").on("keypress", function(e) {
@@ -62,28 +62,28 @@ $(document).ready(function() {
 
     $("#descripcion").on("keyup", function() {
         validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
-            $(this), $("#sdescripcion"), "el formato debe ser solo numeros");
+            $(this), $("#sdescripcion"), "Letras, números, acentos y .,-/#º* 3-120");
     });
    
    
     $("#nombrem").on("keypress", function(e) {
-        validarkeypress(/^[A-Za-z]$/, e);
+        validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
 
     });
 
     $("#nombrem").on("keyup", function() {
-        validarkeyup(/^[A-Za-z]{4,26}$/,
-            $(this), $("#snombrem"), "El formato puede ser A-Z a-z 8-26");
+        validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+            $(this), $("#snombrem"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
     $("#apellidom").on("keypress", function(e) {
-        validarkeypress(/^[A-Za-z]$/, e);
+        validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
 
     });
 
     $("#apellidom").on("keyup", function() {
-        validarkeyup(/^[A-Za-z]{4,26}$/,
-            $(this), $("#sapellidom"), "El formato puede ser A-Z a-z 8-26");
+        validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+            $(this), $("#sapellidom"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
 
@@ -93,8 +93,8 @@ $(document).ready(function() {
     });
 
     $("#telefonom").on("keyup", function() {
-        validarkeyup(/^[0-9-\b]{4,26}$/,
-            $(this), $("#stelefonom"), "el formato debe ser solo numeros");
+        validarkeyup(/^[0-9-]{4,26}$/,
+            $(this), $("#stelefonom"), "Solo números y guiones 4-26");
     });
 
     $("#descripcionm").on("keypress", function(e) {
@@ -104,7 +104,7 @@ $(document).ready(function() {
 
     $("#descripcionm").on("keyup", function() {
         validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
-            $(this), $("#sdescripcionm"), "el formato debe ser solo numeros");
+            $(this), $("#sdescripcionm"), "Letras, números, acentos y .,-/#º* 3-120");
     });
 
   
@@ -190,26 +190,26 @@ $(document).ready(function() {
 
 
     function validarenvio() {
-        if (validarkeyup(/^[A-Za-z]{4,26}$/,
-        $("#nombre"), $("#snombre"), "El formato puede ser A-Z a-z 8-26") == 0) {
-            $("#snombre").text("<p>El formato puede ser A-Z a-z 8-26</p>");
+        if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+        $("#nombre"), $("#snombre"), "Solo letras (incluye acentos) y espacios 4-26") == 0) {
+            $("#snombre").text("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
             return false;
     
-        }else if (validarkeyup(/^[A-Za-z]{4,26}$/,
-        $("#apellido"), $("#sapellido"), "El formato puede ser A-Z a-z 8-26") == 0) {
-            $("#sapellido").text("<p>El formato puede ser A-Z a-z 8-26</p>");
+        }else if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+        $("#apellido"), $("#sapellido"), "Solo letras (incluye acentos) y espacios 4-26") == 0) {
+            $("#sapellido").text("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
             return false;
     
     
-        }else if (validarkeyup(/^[0-9]{4,26}$/,
-        $("#telefono"), $("#stelefono"), "El formato puede ser 12345678") == 0) {
-            $("#stelefono").text("<p>El formato puede ser 12345678</p>");
+        }else if (validarkeyup(/^[0-9-]{4,26}$/,
+        $("#telefono"), $("#stelefono"), "Solo números y guiones 4-26") == 0) {
+            $("#stelefono").text("<p>Solo números y guiones 4-26</p>");
             return false;
     
     
         }  else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
-        $("#descripcion"), $("#sdescripcion"), "El formato puede ser .....") == 0) {
-            $("#sdescripcion").text("<p>El formato puede ser .....</p>");
+        $("#descripcion"), $("#sdescripcion"), "Letras, números, acentos y .,-/#º* 3-120") == 0) {
+            $("#sdescripcion").text("<p>Letras, números, acentos y .,-/#º* 3-120</p>");
             return false;
     
         }         
@@ -217,24 +217,24 @@ $(document).ready(function() {
     }
 
     function validarenvio1() {
-        if (validarkeyup(/^[A-Za-z]{4,26}$/,
-        $("#nombrem"), $("#snombrem"), "El formato puede ser A-Z a-z 8-26") == 0) {
-            $("#snombrem").text("<p>El formato puede ser A-Z a-z 8-26</p>");
+        if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+        $("#nombrem"), $("#snombrem"), "Solo letras (incluye acentos) y espacios 4-26") == 0) {
+            $("#snombrem").text("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
             return false;
     
-        }else if (validarkeyup(/^[A-Za-z]{4,26}$/,
-        $("#apellidom"), $("#sapellidom"), "El formato puede ser A-Z a-z 8-26") == 0) {
-            $("#sapellidom").text("<p>El formato puede ser A-Z a-z 8-26</p>");
+        }else if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+        $("#apellidom"), $("#sapellidom"), "Solo letras (incluye acentos) y espacios 4-26") == 0) {
+            $("#sapellidom").text("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
             return false;
     
-        }else if (validarkeyup(/^[0-9]{4,26}$/,
-        $("#telefonom"), $("#stelefonom"), "El formato puede ser 12345678") == 0) {
-            $("#stelefonom").text("<p>El formato puede ser 12345678</p>");
+        }else if (validarkeyup(/^[0-9-]{4,26}$/,
+        $("#telefonom"), $("#stelefonom"), "Solo números y guiones 4-26") == 0) {
+            $("#stelefonom").text("<p>Solo números y guiones 4-26</p>");
             return false;
     
         }  else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
-        $("#descripcionm"), $("#sdescripcionm"), "El formato puede ser .....") == 0) {
-            $("#sdescripcionm").text("<p>El formato puede ser .....</p>");
+        $("#descripcionm"), $("#sdescripcionm"), "Letras, números, acentos y .,-/#º* 3-120") == 0) {
+            $("#sdescripcionm").text("<p>Letras, números, acentos y .,-/#º* 3-120</p>");
             return false;
     
         }         
