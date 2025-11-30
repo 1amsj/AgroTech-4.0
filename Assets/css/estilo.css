@@ -27,6 +27,7 @@
 }
 
 body {
+
     transform: translateX(-100px); 
     animation: slideIn 1s ease-out forwards;
 }
@@ -84,4 +85,35 @@ body {
     font-family: "Special Gothic", sans-serif;
     background-color: #49FD5B;
     border-radius: 1.6vh;
+}
+
+.container-cards {
+    max-height: 75vh; /* Altura máxima para el contenedor */
+    overflow-y: auto; /* Habilita el scroll vertical */
+    padding-right: 10px; /* Espacio para evitar que el contenido quede oculto detrás del scrollbar */
+}
+
+.container-cards::-webkit-scrollbar {
+    width: 8px;                         
+}
+
+.container-cards:-webkit-scrollbar-track {
+    background: transparent;             
+}
+
+.container-cards:-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.001);  
+    border-radius: 10px;
+    backdrop-filter: blur(2px);          
+    transition: background 0.3s ease;
+}
+
+.container-cards::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.332); 
+}
+
+/* ===== Firefox ===== */
+.container-cards {
+    scrollbar-width: thin;
+    scrollbar-color: black transparent; 
 }
