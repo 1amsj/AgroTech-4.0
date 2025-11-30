@@ -51,22 +51,29 @@
                             <th>Acción</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="table">
                         <tr>
-                            <td>Super Administrador</td>
-                            <td>Juan Pérez</td>
-                            <td><button class="btn-modificar btn-sm" data-toggle="modal"
-                                    data-target="#ModificarModal">Modificar</button>
-                                <button class="btn-eliminar btn-sm" data-toggle="modal"
-                                    data-target="#SetModal">Asignar</button>
-                            </td>
+                            <?php if(!empty($consuta)){echo $consuta;} ?>
                         </tr>
+                    </tbody>
+                </table>
+
+                <table class="table table-bordered text-center align-middle" id="permisos" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaP">
+                        
                     </tbody>
                 </table>
             </div>
         </div>
     </main>
-
+ <form id="fP" method="post">
+     <input type="text" id="id_rol" name="id_rol" value="">
+    </form>
     <!-- Modal de Agregar -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered d-flex justify-content-center">
@@ -82,18 +89,18 @@
                     <div class="row justify-content-center align-items-center text-center">
                         <!-- Columna del formulario -->
                         <div class="col-md-8">
-                            <form id="f" method="post">
+                            <form id="f1" method="post">
                                 <div class="mb-3">
                                     <label for="user">Nombre del rol</label>
-                                    <input class="form-control input-standar" type="text" id="user" name="user"
-                                        placeholder="Introducir n° de empleado" autofocus>
+                                    <input class="form-control input-standar" type="text" id="rol" name="rol"
+                                        placeholder="Introducir nombre del rol" autofocus>
                                 </div>
                                 <div class="mb-3">
                                     <label for="password">Descripción</label>
-                                    <input class="form-control input-standar" type="password" id="password"
-                                        name="password" placeholder="Digite su contraseña">
+                                    <input class="form-control input-standar" type="text" id="descripcion"
+                                        name="descripcion" placeholder="Digite su descripción">
                                 </div>
-                                <button type="submit" class="btn w-100" id="enviar">Registrar</button>
+                                <button type="button" class="btn w-100" id="enviar1">Registrar</button>
                             </form>
                         </div>
                     </div>
@@ -120,18 +127,18 @@
                     <div class="row justify-content-center align-items-center text-center">
                         <!-- Columna del formulario -->
                         <div class="col-md-8">
-                            <form id="f" method="post">
+                            <form id="f2" method="post">
                                 <div class="mb-3">
                                     <label for="user">Nombre del rol</label>
-                                    <input class="form-control input-standar" type="text" id="user" name="user"
-                                        placeholder="Introducir n° de empleado" autofocus>
+                                    <input class="form-control input-standar" type="text" id="rol1" name="rol1"
+                                        placeholder="Introducir nombre del rol" autofocus>
                                 </div>
                                 <div class="mb-3">
                                     <label for="password">Descripción</label>
-                                    <input class="form-control input-standar" id="password"
-                                        name="password" placeholder="Digite su contraseña">
+                                    <input class="form-control input-standar" id="descripcion1"
+                                        name="descripcion1" placeholder="Digite su descripción">
                                 </div>
-                                <button type="submit" class="btn w-100" id="enviar">Modificar</button>
+                                <button type="button" class="btn w-100" id="modificar">Modificar</button>
                             </form>
                         </div>
                     </div>
@@ -145,7 +152,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered d-flex justify-content-center">
             <div class="modal-content" id="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Asignar</h5>
+                    <h5 class="modal-title">Asignar permisos a <span id="nombreRol"></span></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -155,17 +162,154 @@
                     <div class="row justify-content-center align-items-center text-center">
                         <!-- Columna del formulario -->
                         <div class="col-md-8">
-                            <form id="f" method="post">
+                            <form id="fpp" method="post">
                                 <div style="display: flex; justify-content: center; align-items: center; ">
                                     <div class="mb-3">
-                                        <button class="enviar">Marcar todos</button>
+                                        <button type="button" class="enviar" id="selectAllPerms">Marcar todos</button>
                                     </div>
                                     <div class="mb-3">
-                                        <button class="enviar">Desmarcar todos</button>
+                                        <button type="button" class="enviar" id="clearAllPerms">Desmarcar todos</button>
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn w-100" id="enviar">Asignar</button>
+                                <div class="container-fluid permisos-grid text-left mb-3">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <h6 class="text-uppercase">Usuario</h6>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="1" name="exampleRadios[]" value="1">
+                                                <label class="custom-control-label" for="1">Registrar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="2" name="exampleRadios[]" value="2">
+                                                <label class="custom-control-label" for="2">Modificar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="3" name="exampleRadios[]" value="3">
+                                                <label class="custom-control-label" for="3">Eliminar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="4" name="exampleRadios[]" value="4">
+                                                <label class="custom-control-label" for="4">Consultar</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <h6 class="text-uppercase">Seguridad</h6>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="23" name="exampleRadios[]" value="23">
+                                                <label class="custom-control-label" for="23">Registrar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="24" name="exampleRadios[]" value="24">
+                                                <label class="custom-control-label" for="24">Modificar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="25" name="exampleRadios[]" value="25">
+                                                <label class="custom-control-label" for="25">Eliminar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="26" name="exampleRadios[]" value="26">
+                                                <label class="custom-control-label" for="26">Consultar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="72" name="exampleRadios[]" value="72">
+                                                <label class="custom-control-label" for="72">Permisos Seguridad</label>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <h6 class="text-uppercase">Destinatario</h6>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="29" name="exampleRadios[]" value="29">
+                                                <label class="custom-control-label" for="29">Registrar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="30" name="exampleRadios[]" value="30">
+                                                <label class="custom-control-label" for="30">Modificar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="31" name="exampleRadios[]" value="31">
+                                                <label class="custom-control-label" for="31">Eliminar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="62" name="exampleRadios[]" value="62">
+                                                <label class="custom-control-label" for="62">Consultar</label>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <h6 class="text-uppercase">Proveedores</h6>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="63" name="exampleRadios[]" value="63">
+                                                <label class="custom-control-label" for="63">Registrar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="64" name="exampleRadios[]" value="64">
+                                                <label class="custom-control-label" for="64">Modificar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="65" name="exampleRadios[]" value="65">
+                                                <label class="custom-control-label" for="65">Eliminar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="66" name="exampleRadios[]" value="66">
+                                                <label class="custom-control-label" for="66">Consultar</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 mb-3">
+                                            <h6 class="text-uppercase">Reportes</h6>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="27" name="exampleRadios[]" value="27">
+                                                <label class="custom-control-label" for="27">reporte 1</label>
+                                            </div>
+                                            
+                                        </div>
+
+
+                                        <div class="col-md-4 mb-3">
+
+                                            <h6 class="text-uppercase">Bitacora</h6>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="5" name="exampleRadios[]" value="5">
+                                                <label class="custom-control-label" for="5">Consulta</label>
+                                            </div>
+                                            
+                                        </div>
+
+                                        <div class="col-md-4 mb-3">
+                                            <h6 class="text-uppercase">Inventario</h6>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="6" name="exampleRadios[]" value="6">
+                                                <label class="custom-control-label" for="6">Registrar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="7" name="exampleRadios[]" value="7">
+                                                <label class="custom-control-label" for="7">Modificar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="8" name="exampleRadios[]" value="8">
+                                                <label class="custom-control-label" for="8">Eliminar</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="9" name="exampleRadios[]" value="9">
+                                                <label class="custom-control-label" for="9">Consultar</label>
+                                            </div>
+                                        </div>
+                                        
+                                    
+                                        
+                                    </div>
+
+                                    
+                                    
+                                </div>
+                                <input type="text" style="display: none;" id="id2" name="id2" value="" >
+                                <button type="button" class="btn w-100" id="enviarp">Asignar</button>
                             </form>
                         </div>
                     </div>
@@ -184,5 +328,5 @@
 <script src="Assets/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
 <script src="Assets/js/p_bootstrap.min.js"></script>
-
+<script src="Assets/js/seguridad.js"></script>
 </html>
