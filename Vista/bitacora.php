@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inventario</title>
+    <title>Bitácora</title>
 
     <link rel="stylesheet" href="assets/css/estilo.css" />
     <link rel="stylesheet" href="assets/css/menu.css" />
@@ -29,7 +29,7 @@
   <!-- CONTENIDO PRINCIPAL -->
   <main class="main-content">
     <div class="header">
-      <h1 class="header-standar">Inventario</h1>
+      <h1 class="header-standar">Bitácora</h1>
     </div>
 
     <div class="container-all">
@@ -41,14 +41,9 @@
         <table class="table table-bordered text-center align-middle">
           <thead>
             <tr>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>Correo</th>
-              <th>Telefono</th>
-              <th>Dirección</th>
-              <th>Descripción</th>
-              <th>Modificar</th>
-              <th>Eliminar</th>
+              <th>N° de empleado</th>
+              <th>Acción</th>
+              <th>Fecha</th>
             </tr>
           </thead>
           <tbody>
@@ -56,11 +51,6 @@
               <td>Juan</td>
               <td>Pérez</td>
               <td>hola@gmail.com</td>
-              <td>xxxx-xxxx</td>
-                <td>Calle Falsa 123</td>
-                <td>Proveedor de frutas y verduras</td>
-              <td><button class="btn-modificar btn-sm">Modificar</button></td>
-              <td><button class="btn-eliminar btn-sm">Eliminar</button></td>
             </tr>
           </tbody>
         </table>
