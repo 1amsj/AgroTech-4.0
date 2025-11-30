@@ -256,7 +256,7 @@ public function consultar($nivel1){
             }
                 if(in_array("eliminar_destinatario",$nivel1)){
                     // Make delete button behave like the modify button (open the confirm modal)
-                    $respuesta = $respuesta . '<td><button type="button" class="btn-eliminar btn-sm" data-id="'.$r['N_de_empleado'].'" onclick="eliminar1(`'.$r['ID'].'`)" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</button></td>';
+                    $respuesta = $respuesta . '<td><button type="button" class="btn-eliminar btn-sm" data-id="'.$r['ID'].'" onclick="eliminar1(`'.$r['ID'].'`)" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</button></td>';
                 }
             $respuesta=$respuesta.'</th>';
             $respuesta= $respuesta.'</tr>';

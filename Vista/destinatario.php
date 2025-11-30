@@ -201,7 +201,7 @@
 </body>
 
 
-
+  <script src="Assets/js/destinatario.js"></script>
   <script src="Assets/jquery-3.3.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
   <script src="Assets/js/p_bootstrap.min.js"></script>
