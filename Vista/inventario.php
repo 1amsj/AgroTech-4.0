@@ -55,13 +55,7 @@
     </div>
   </main>
 
-  <div class="modal fade" id="cardsModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered d-flex justify-content-center">
-      <div class="modal-content" id="cardsModalContent">
-        <?php require_once("comunes/detalle_inventario.php"); ?>
-      </div>
-    </div>
-  </div>
+  <?php require_once("comunes/detalle_inventario.php"); ?>
 
   <div class="modal fade" id="loginModal1" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered d-flex justify-content-center">

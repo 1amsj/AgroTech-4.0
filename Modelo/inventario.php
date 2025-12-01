@@ -245,10 +245,12 @@ class Inventario extends datos
 			foreach ($resultado as $r) {
 				$nombre = htmlspecialchars($r['Nombre'], ENT_QUOTES, 'UTF-8');
 				$fecha = htmlspecialchars($r['Fecha'], ENT_QUOTES, 'UTF-8');
+				$categoria = htmlspecialchars($r['Categoria'], ENT_QUOTES, 'UTF-8');
+				$cantidad = htmlspecialchars($r['Cantidad'], ENT_QUOTES, 'UTF-8');
 
 				$respuesta .= '
 				<div class="ag-courses_item">
-					<a href="#" class="ag-courses-item_link" data-product-id="' . (int)$r['ID'] . '" data-toggle="modal" data-target="#loginModal">
+					<a href="#" class="ag-courses-item_link" data-product-id="' . (int)$r['ID'] . '" data-product-name="' . $nombre . '" data-product-category="' . $categoria . '" data-product-date="' . $fecha . '" data-product-stock="' . $cantidad . '">
 						<div class="ag-courses-item_bg"></div>
 
 						<div class="ag-courses-item_title">
