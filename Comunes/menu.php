@@ -51,7 +51,7 @@
                         <i class="fas fa-gear me-3"></i>
                         <span class="hide-on-collapse">Bitacora</span>
                     </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                    <a href="?pagina=reportes" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-gear me-3"></i>
                         <span class="hide-on-collapse">Reportes</span>
                     </a>
@@ -96,7 +96,7 @@
                         <i class="fas fa-users me-3"></i>
                         <span class="hide-on-collapse">Bitacora</span>
                     </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
+                    <a href="?pagina=reportes" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-gear me-3"></i>
                         <span class="hide-on-collapse">Reportes</span>
                     </a>

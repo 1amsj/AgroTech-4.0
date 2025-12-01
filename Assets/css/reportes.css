@@ -1,0 +1,181 @@
+/* Estilos específicos para el módulo de reportes */
+.reportes-filtros {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    padding: 24px;
+    margin-bottom: 24px;
+    font-family: "ABeeZee", sans-serif;
+}
+
+.reportes-filtros h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.reportes-filtros .form-group label {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.reportes-filtros .form-control {
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e5e5;
+    font-size: 14px;
+}
+
+.reportes-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.reportes-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border-radius: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-family: "ABeeZee", sans-serif;
+}
+
+.reportes-btn-primary {
+    background-color: #49fd5b;
+    color: #000000;
+    box-shadow: 0 6px 12px rgba(73, 253, 91, 0.35);
+}
+
+.reportes-btn-primary:hover {
+    transform: scale(1.04);
+    box-shadow: 0 12px 24px rgba(73, 253, 91, 0.4);
+}
+
+.reportes-btn-secondary {
+    background-color: #f1f3f4;
+    color: #202124;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.reportes-btn-secondary:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+}
+
+.reportes-btn-outline {
+    background-color: transparent;
+    color: #202124;
+    border: 2px solid #49fd5b;
+    box-shadow: none;
+}
+
+.reportes-btn-outline:hover {
+    transform: scale(1.03);
+    background-color: rgba(73, 253, 91, 0.12);
+}
+
+.reportes-resumen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.resumen-card {
+    flex: 1 1 220px;
+    background: linear-gradient(135deg, #ffffff 0%, #f9fff9 100%);
+    border-radius: 18px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    font-family: "ABeeZee", sans-serif;
+}
+
+.resumen-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(73, 253, 91, 0.18), transparent 55%);
+    pointer-events: none;
+}
+
+.resumen-card h3 {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    color: #1b4332;
+}
+
+.resumen-card p {
+    font-size: 32px;
+    font-weight: 700;
+    color: #081c15;
+    margin: 0;
+}
+
+.resumen-card span {
+    display: block;
+    font-size: 13px;
+    color: #495057;
+    margin-top: 6px;
+}
+
+.resumen-card.ingresos {
+    border-left: 5px solid #2d6a4f;
+}
+
+.resumen-card.egresos {
+    border-left: 5px solid #e63946;
+}
+
+.resumen-card.balance {
+    border-left: 5px solid #1d3557;
+}
+
+.reportes-table-container {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    padding: 16px;
+}
+
+.reportes-table-container table thead th {
+    background-color: #081c15;
+    color: #ffffff;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.reportes-table-container table tbody tr:hover {
+    background-color: rgba(73, 253, 91, 0.08);
+}
+
+@media (max-width: 992px) {
+    .reportes-filtros {
+        padding: 18px;
+    }
+
+    .reportes-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .reportes-btn {
+        width: 100%;
+    }
+
+    .resumen-card {
+        flex: 1 1 100%;
+    }
+}
