@@ -9,7 +9,25 @@ $(function () {
 	const $enterModal = $("#inventoryAddEnterModal");
 	const $outModal = $("#inventoryAddOutModal");
 	const $managedModals = $detailModal.add($editModal).add($deleteModal).add($enterModal).add($outModal);
+	const $createForm = $("#inventoryCreateForm");
+	const $editForm = $("#inventoryEditForm");
+	const $deleteForm = $("#inventoryDeleteForm");
+	const $enterForm = $("#inventoryEnterForm");
+	const $outForm = $("#inventoryOutForm");
+	const $enterQuantity = $("#enterProductStock");
+	const $enterUnitCost = $("#enterProductUnitCost");
+	const $enterTotalCost = $("#enterProductTotalCost");
+	const $outQuantity = $("#outProductStock");
+	const $outUnitCost = $("#outProductUnitCost");
+	const $outTotalCost = $("#outProductTotalCost");
+	const $providerSelectEnter = $("#enterProductProvider");
+	const $recipientSelectOut = $("#outProductRecipient");
+	const $providerError = $("#providerError");
+	const $recipientError = $("#recipientError");
+	const todayIso = new Date().toISOString().slice(0, 10);
 	let selectedProduct = null;
+
+	$("#createProductDate").val(todayIso);
 
 	const getBackdrops = () => Array.from(document.querySelectorAll(".modal-backdrop"));
 	const getActiveModals = () => Array.from(document.querySelectorAll(".agro-modal.show"));
@@ -41,7 +59,7 @@ $(function () {
 		backdrops.slice(1).forEach((backdrop) => backdrop.remove());
 		const baseBackdrop = backdrops[0];
 		if (baseBackdrop) {
-			baseBackdrop.style.zIndex = BACKDROP_BASE_Z_INDEX; // keep base dim layer under stack
+			baseBackdrop.style.zIndex = BACKDROP_BASE_Z_INDEX;
 		}
 	};
 
@@ -88,18 +106,21 @@ $(function () {
 	$cardsContainer.on("click", ".ag-courses-item_link", function (event) {
 		event.preventDefault();
 		const $link = $(this);
+		const productPrice = toNumber($link.data("product-price"));
 		selectedProduct = {
 			id: $link.data("product-id") || "",
 			name: $link.data("product-name") || "Sin nombre",
 			category: $link.data("product-category") || "--",
 			date: $link.data("product-date") || "--",
-			stock: $link.data("product-stock") || "--"
+			stock: $link.data("product-stock") || "--",
+			price: productPrice
 		};
 
 		$("#inventoryProductName").text(selectedProduct.name);
 		$("#inventoryProductCategory").text(selectedProduct.category);
 		$("#inventoryProductDate").text(selectedProduct.date);
 		$("#inventoryProductQuantity").text(selectedProduct.stock);
+		$("#inventoryProductPrice").text(formatDecimal(selectedProduct.price));
 
 		$detailModal.modal("show");
 	});
@@ -108,10 +129,12 @@ $(function () {
 		if (!selectedProduct) {
 			return;
 		}
+		$("#editProductId").val(selectedProduct.id);
 		$("#editProductName").val(selectedProduct.name);
 		$("#editProductCategory").val(selectedProduct.category);
-		$("#editProductDate").val(selectedProduct.date);
+		$("#editProductDate").val(normalizeDateInput(selectedProduct.date));
 		$("#editProductStock").val(selectedProduct.stock);
+		$("#editProductPrice").val(formatForInput(selectedProduct.price));
 		$editModal.modal("show");
 	});
 
@@ -119,9 +142,11 @@ $(function () {
 		if (!selectedProduct) {
 			return;
 		}
+		$("#deleteProductId").val(selectedProduct.id);
 		$("#deleteProductName").val(selectedProduct.name);
 		$("#deleteProductCategory").val(selectedProduct.category);
 		$("#deleteProductStock").val(selectedProduct.stock);
+		$("#deleteProductPrice").val(formatDecimal(selectedProduct.price));
 		$deleteModal.modal("show");
 	});
 
@@ -129,9 +154,16 @@ $(function () {
 		if (!selectedProduct) {
 			return;
 		}
+		$("#enterProductId").val(selectedProduct.id);
 		$("#enterProductName").val(selectedProduct.name);
 		$("#enterProductCategory").val(selectedProduct.category);
-		$("#enterProductStock").val(selectedProduct.stock);
+		$("#enterProductDate").val(todayIso);
+		$enterQuantity.val("");
+		$enterUnitCost.val(formatForInput(selectedProduct.price));
+		$enterTotalCost.val("");
+		$providerSelectEnter.val("");
+		$providerError.text("");
+		updateCostTotals($enterQuantity, $enterUnitCost, $enterTotalCost);
 		$enterModal.modal("show");
 	});
 
@@ -139,11 +171,91 @@ $(function () {
 		if (!selectedProduct) {
 			return;
 		}
+		$("#outProductId").val(selectedProduct.id);
 		$("#outProductName").val(selectedProduct.name);
 		$("#outProductCategory").val(selectedProduct.category);
-		$("#outProductStock").val(selectedProduct.stock);
+		$("#outProductDate").val(todayIso);
+		$outQuantity.val("");
+		$outUnitCost.val(formatForInput(selectedProduct.price));
+		$outTotalCost.val("");
+		$recipientSelectOut.val("");
+		$recipientError.text("");
+		updateCostTotals($outQuantity, $outUnitCost, $outTotalCost);
 		$outModal.modal("show");
-	});	
+	});
+
+	$("#submitCreateInventory").on("click", function () {
+		$createForm.trigger("submit");
+	});
+
+	$("#submitEditInventory").on("click", function () {
+		if (!selectedProduct) {
+			return;
+		}
+		$editForm.trigger("submit");
+	});
+
+	$("#submitDeleteInventory").on("click", function () {
+		if (!selectedProduct) {
+			return;
+		}
+		$deleteForm.trigger("submit");
+	});
+
+	$("#submitEnterInventory").on("click", function () {
+		if (!selectedProduct) {
+			return;
+		}
+		if (!validatePositiveNumber($enterQuantity.val())) {
+			$enterQuantity.focus();
+			return;
+		}
+		if (!validatePositiveNumber($enterUnitCost.val())) {
+			$enterUnitCost.focus();
+			return;
+		}
+		if ($providerSelectEnter.length && !$providerSelectEnter.val()) {
+			$providerError.text("Seleccione un proveedor");
+			return;
+		}
+		$providerError.text("");
+		updateCostTotals($enterQuantity, $enterUnitCost, $enterTotalCost);
+		$enterForm.trigger("submit");
+	});
+
+	$("#submitOutInventory").on("click", function () {
+		if (!selectedProduct) {
+			return;
+		}
+		if (!validatePositiveNumber($outQuantity.val())) {
+			$outQuantity.focus();
+			return;
+		}
+		if (!validatePositiveNumber($outUnitCost.val())) {
+			$outUnitCost.focus();
+			return;
+		}
+		if ($recipientSelectOut.length && !$recipientSelectOut.val()) {
+			$recipientError.text("Seleccione un destinatario");
+			return;
+		}
+		$recipientError.text("");
+		updateCostTotals($outQuantity, $outUnitCost, $outTotalCost);
+		$outForm.trigger("submit");
+	});
+
+	$enterQuantity.on("input", function () {
+		updateCostTotals($enterQuantity, $enterUnitCost, $enterTotalCost);
+	});
+	$enterUnitCost.on("input", function () {
+		updateCostTotals($enterQuantity, $enterUnitCost, $enterTotalCost);
+	});
+	$outQuantity.on("input", function () {
+		updateCostTotals($outQuantity, $outUnitCost, $outTotalCost);
+	});
+	$outUnitCost.on("input", function () {
+		updateCostTotals($outQuantity, $outUnitCost, $outTotalCost);
+	});
 
 	$(document).on("click", function (event) {
 		const target = event.target;
@@ -167,8 +279,62 @@ $(function () {
 		}
 	});
 
-	$("#inventoryEditForm, #inventoryDeleteForm, #inventoryAddOutModal, #inventoryAddEnterModal").on("submit", function (event) {
-		event.preventDefault();
-		// Integrar lógica de guardado o eliminación aquí
-	});
+	function validatePositiveNumber(value) {
+		if (value === undefined || value === null) {
+			return false;
+		}
+		const numberValue = Number(value);
+		return !Number.isNaN(numberValue) && numberValue > 0;
+	}
+
+	function toNumber(value) {
+		if (value === undefined || value === null || value === "") {
+			return null;
+		}
+		if (typeof value === "number" && !Number.isNaN(value)) {
+			return value;
+		}
+		const sanitized = String(value).replace(/,/g, ".");
+		const numberValue = Number(sanitized);
+		return Number.isNaN(numberValue) ? null : numberValue;
+	}
+
+	function formatDecimal(value) {
+		const numberValue = toNumber(value);
+		if (numberValue === null) {
+			return "--";
+		}
+		return numberValue.toFixed(2);
+	}
+
+	function formatForInput(value) {
+		const numberValue = toNumber(value);
+		if (numberValue === null) {
+			return "";
+		}
+		return numberValue.toFixed(2);
+	}
+
+	function updateCostTotals($quantityInput, $unitInput, $totalInput) {
+		const quantity = toNumber($quantityInput.val());
+		const unit = toNumber($unitInput.val());
+		if (quantity === null || unit === null) {
+			$totalInput.val("");
+			return;
+		}
+		const total = quantity * unit;
+		$totalInput.val(total.toFixed(2));
+	}
+
+	function normalizeDateInput(value) {
+		if (typeof value !== "string" || !value.trim()) {
+			return todayIso;
+		}
+		const parsed = Date.parse(value);
+		if (Number.isNaN(parsed)) {
+			return todayIso;
+		}
+		const dateObj = new Date(parsed);
+		return dateObj.toISOString().slice(0, 10);
+	}
 });

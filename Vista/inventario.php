@@ -39,7 +39,9 @@
 
     <div class="container-all">
       <div class="container-header">
-        <button class="btn-standar" data-toggle="modal" data-target="#loginModal1">Agregar Producto</button>
+        <?php if (is_array($nivel1) && in_array("agregar_inventario", $nivel1, true)) : ?>
+        <button class="btn-standar" data-toggle="modal" data-target="#createInventoryModal">Agregar Producto</button>
+        <?php endif; ?>
       </div>
       <div class="container-cards">
         <div class="ag-courses_box">
@@ -57,7 +59,7 @@
 
   <?php require_once("comunes/detalle_inventario.php"); ?>
 
-  <div class="modal fade" id="loginModal1" tabindex="-1" aria-hidden="true">
+  <div class="modal fade" id="createInventoryModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered d-flex justify-content-center">
       <div class="modal-content" id="modal-content">
         <div class="modal-header">
@@ -71,33 +73,48 @@
           <div class="row justify-content-center align-items-center text-center">
             <!-- Columna del formulario -->
             <div class="col-md-8">
-              <form id="f" method="post">
+              <form id="inventoryCreateForm" method="post">
+                <input type="hidden" name="accion" value="registrar">
                 <div class="mb-3">
-                  <label for="user">Nombre del producto</label>
-                  <input class="form-control input-standar" type="text" id="nombre" name="nombre"
+                  <label for="createProductName">Nombre del producto</label>
+                  <input class="form-control input-standar" type="text" id="createProductName" name="nombre"
                     placeholder="Escriba el nombre del producto" autofocus>
                 </div>
                 <div class="mb-3">
-                  <label for="password">Categoría</label>
-                  <input class="form-control input-standar" type="text" id="categoria" name="categoria"
-                      placeholder="Escriba la categoría del producto" autofocus>
+                  <label for="createProductCategory">Categoría</label>
+                  <input class="form-control input-standar" type="text" id="createProductCategory" name="categoria"
+                    placeholder="Escriba la categoría del producto">
                   </div>
                 <div class="mb-3">
-                  <label for="password">Fecha</label>
-                  <input class="form-control input-standar" type="text" id="fecha" name="fecha"
-                      placeholder="Escriba la categoría del producto" autofocus>
+                  <label for="createProductDate">Fecha</label>
+                  <input class="form-control input-standar" type="date" id="createProductDate" name="fecha"
+                    placeholder="Seleccione la fecha">
                   </div>
                 <div class="mb-3">
-                  <label for="user">Stock Actual</label>
-                  <input class="form-control input-standar" type="text" id="stocka" name="stocka"
-                    placeholder="Escriba el stock actual" autofocus>
+                  <label for="createProductStock">Stock Actual</label>
+                  <input class="form-control input-standar" type="number" min="0" step="0.01" id="createProductStock" name="stocka"
+                    placeholder="Escriba el stock actual">
+                </div>
+                <div class="mb-3">
+                  <label for="createProductPrice">Costo unitario</label>
+                  <input class="form-control input-standar" type="number" min="0" step="0.01" id="createProductPrice" name="precio"
+                    placeholder="Ingrese el costo unitario">
                 </div>
                 <div class ="mb-3">
-                  <label for="proveedor">Proveedor</label>
-                  <span id="proveedor" class="text-danger"></span>
-                  <select name="proveedor" id="proveedor" class="form-control input-standar">
+                  <label for="createProductProvider">Proveedor</label>
+                  <span id="providerCreateError" class="text-danger"></span>
+                  <select name="proveedor" id="createProductProvider" class="form-control input-standar">
+                    <option value="">Seleccione un proveedor</option>
+                    <?php if (!empty($proveedoresInventario)) : ?>
+                      <?php foreach ($proveedoresInventario as $proveedor) : ?>
+                        <option value="<?php echo htmlspecialchars($proveedor['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                          <?php echo htmlspecialchars($proveedor['nombre'], ENT_QUOTES, 'UTF-8'); ?>
+                        </option>
+                      <?php endforeach; ?>
+                    <?php endif; ?>
+                  </select>
                 </div>
-                <button type="submit" class="btn w-100" id="enviar">Enviar</button>
+                <button type="button" class="btn w-100" id="submitCreateInventory">Enviar</button>
               </form>
             </div>
           </div>
