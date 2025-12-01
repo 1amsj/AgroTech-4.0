@@ -8,7 +8,7 @@ $(function () {
 	const $deleteModal = $("#inventoryDeleteModal");
 	const $enterModal = $("#inventoryAddEnterModal");
 	const $outModal = $("#inventoryAddOutModal");
-	const $managedModals = $detailModal.add($editModal).add($deleteModal);
+	const $managedModals = $detailModal.add($editModal).add($deleteModal).add($enterModal).add($outModal);
 	let selectedProduct = null;
 
 	const getBackdrops = () => Array.from(document.querySelectorAll(".modal-backdrop"));
@@ -125,7 +125,7 @@ $(function () {
 		$deleteModal.modal("show");
 	});
 
-	$(".js-open-enter").on("click", function () {
+	$(".js-open-enter, .js-open-add-enter").on("click", function () {
 		if (!selectedProduct) {
 			return;
 		}
@@ -135,7 +135,7 @@ $(function () {
 		$enterModal.modal("show");
 	});
 
-	$(".js-open-out").on("click", function () {
+	$(".js-open-out, .js-open-add-out").on("click", function () {
 		if (!selectedProduct) {
 			return;
 		}
