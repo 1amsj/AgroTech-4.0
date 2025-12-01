@@ -10,13 +10,12 @@ require_once("modelo/".$pagina.".php");
 
 	if(is_file("vista/".$pagina.".php")){
 
-		
-		if(!empty($_POST)){
-			
-			
+		if(empty($_SESSION)){
+			session_start();
 		}
-		
 
+		$o = new bitacora();
+		$registrosBitacora = $o->consultar();
 
 		require_once("vista/".$pagina.".php");
 	}

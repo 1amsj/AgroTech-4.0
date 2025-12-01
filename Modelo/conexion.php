@@ -17,6 +17,9 @@ class datos{
 
     public function registrar_bitacora($accion, $modulo,$id)
     {
+        if (!ctype_digit((string) $id)) {
+            return;
+        }
         $sql = "INSERT INTO bitacora (Fecha, Accion, N_de_empleado  ) 
         VALUES(CURDATE(), :accion, :id_usuario)";
 

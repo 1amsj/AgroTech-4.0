@@ -125,7 +125,7 @@
                         <img src="https://randomuser.me/api/portraits/women/70.jpg" style="height:60px"
                             class="rounded-circle" alt="Profile">
                         <div class="ms-3 profile-info">
-                            <h6 class="text-white mb-0"><?php $nivel = $_SESSION['usuario']; echo $nivel; ?></h6>
+                            <h6 class="text-white mb-0"><?php echo isset($_SESSION['usuario_nombre']) ? $_SESSION['usuario_nombre'] : ($_SESSION['usuario'] ?? ''); ?></h6>
                             <small class="text-muted">1</small>
                         </div>
                     </div>

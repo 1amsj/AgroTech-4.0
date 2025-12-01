@@ -11,7 +11,8 @@ if(is_file("vista/".$pagina.".php")){
         session_start();
     }
 
-    $usuarioSesion = $_SESSION['usuario'] ?? "";
+    $usuarioSesionId = $_SESSION['usuario'] ?? "";
+    $usuarioSesionNombre = $_SESSION['usuario_nombre'] ?? $usuarioSesionId;
     $permisosSesion = $_SESSION['permisos'] ?? [];
     if (!is_array($permisosSesion)) {
         $permisosSesion = [];
@@ -81,7 +82,7 @@ if(is_file("vista/".$pagina.".php")){
                 'producto' => ($filtros['producto'] !== '' && isset($mapProductos[$filtros['producto']])) ? $mapProductos[$filtros['producto']] : 'Todos'
             ];
 
-            $o->generarPdf($filtros, $etiquetas, $usuarioSesion);
+            $o->generarPdf($filtros, $etiquetas, $usuarioSesionNombre, $usuarioSesionId);
         }
     }
 

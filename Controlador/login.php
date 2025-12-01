@@ -48,7 +48,8 @@ require_once("modelo/".$pagina.".php");
 				if ($permisos!="ha ocurrido un error") {
 					session_start();
 					
-					$_SESSION['usuario'] =$resultado[2];
+					$_SESSION['usuario'] = $_POST['user'];
+					$_SESSION['usuario_nombre'] = $resultado[2];
 					$_SESSION['rol'] = $resultado[1];
 					$_SESSION['permisos'] =$permisos;
 					$pagina="main";

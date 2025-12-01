@@ -1,99 +1,64 @@
 <?php
 
 require_once('modelo/conexion.php');
-class entrada extends datos{
-    private $usuario;
-	private $clave;
 
-
-    public function set_usuario($valor){
-		$this->usuario = $valor; 
-	}
-	public function set_clave($valor){
-		$this->clave = $valor; 
-	}
-	
-    public function busca(){
+class bitacora extends datos
+{
+	public function consultar()
+	{
 		$co = $this->conecta();
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		try{
-		
 
-			$resultado = $co->prepare("SELECT usuario.Contrasena, usuario.ID_rol, usuario.Nombre, usuario.Apellido FROM usuario WHERE usuario.N_de_empleado =:usua;");
-			
-			$resultado->bindParam(':usua',$this->usuario);
-		
-			$resultado->execute();
+		$sql = "SELECT b.ID, b.N_de_empleado, b.Accion, b.Fecha, " .
+			"CONCAT(COALESCE(u.Nombre, ''), ' ', COALESCE(u.Apellido, '')) AS nombre_completo " .
+			"FROM bitacora b " .
+			"LEFT JOIN usuario u ON u.N_de_empleado = b.N_de_empleado " .
+			"ORDER BY b.ID DESC";
 
+		$stmt = $co->prepare($sql);
+		$stmt->execute();
 
-			foreach($resultado as $r){
-				$fila= array($r["Contrasena"],$r["ID_rol"],$r["Nombre"]." ".$r["Apellido"]);
+		$filas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            }
-	
-			
-			if(!empty($fila[0])){
-
-			
-				return $fila;
-
-			    
-			}
-			else{
-				$fila=array("El usuario ingresado es incorrecto");
-				return $fila;
-			}
-
-			
-		}catch(Exception $e){
-			return $e;
+		if (empty($filas)) {
+			return '<tr><td colspan="3">No existen registros en la bitacora.</td></tr>';
 		}
-	}
 
+		$tabla = '';
 
-	public function permisos($rol){
-		$co = $this->conecta();
-		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		try{
-		
+		foreach ($filas as $fila) {
+			$empleadoNumero = trim((string) ($fila['N_de_empleado'] ?? ''));
+			$nombre = trim($fila['nombre_completo']);
 
-			$resultado = $co->prepare("SELECT p.nombre as permiso FROM rol r 
-            INNER JOIN rol_permiso rp ON r.id=rp.ID_ROL INNER JOIN permisos p ON rp.ID_Permiso=p.id 
-            WHERE r.id = :rol;");
-			
-			$resultado->bindParam(':rol',$rol);
-		
-			$resultado->execute();
-
-			$permisos = [];
-            $i = 0;
-			foreach($resultado as $r){
-				$permisos[$i] = $r["permiso"];
-                $i++;
-
-            }
-
-			
-			
-			if(!empty($permisos[0])){
-
-				
-				return $permisos;
-			    
+			if ($empleadoNumero === '' && $nombre === '') {
+				$empleado = 'Sin dato';
+			} elseif ($empleadoNumero === '') {
+				$empleado = $nombre;
+			} elseif ($nombre === '') {
+				$empleado = $empleadoNumero;
+			} else {
+				$empleado = $empleadoNumero . ' - ' . $nombre;
 			}
-			else{
-				
-				return "ha ocurrido un error";
+
+			$fecha = $fila['Fecha'] ?? '';
+			if (!empty($fecha) && $fecha !== '0000-00-00') {
+				$fechaObj = date_create($fecha);
+				if ($fechaObj instanceof DateTime) {
+					$fecha = $fechaObj->format('d/m/Y');
+				}
+			} else {
+				$fecha = 'Sin fecha';
 			}
-	
-			
-		}catch(Exception $e){
-			return $e;
+
+			$tabla .= '<tr>' .
+				'<td>' . htmlspecialchars($empleado, ENT_QUOTES, 'UTF-8') . '</td>' .
+				'<td>' . htmlspecialchars($fila['Accion'], ENT_QUOTES, 'UTF-8') . '</td>' .
+				'<td>' . htmlspecialchars($fecha, ENT_QUOTES, 'UTF-8') . '</td>' .
+				'</tr>';
 		}
+
+		return $tabla;
 	}
-
-
-
 }
 
 ?>

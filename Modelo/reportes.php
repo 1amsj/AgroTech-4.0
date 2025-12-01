@@ -211,11 +211,11 @@ class reportes extends datos
         ];
     }
 
-    public function generarPdf(array $filtros, array $etiquetasFiltros, string $usuarioSesion): void
+    public function generarPdf(array $filtros, array $etiquetasFiltros, string $usuarioNombre, string $usuarioId = ''): void
     {
-        if ($usuarioSesion !== '' && ctype_digit((string) $usuarioSesion)) {
+        if ($usuarioId !== '' && ctype_digit((string) $usuarioId)) {
             try {
-                $this->registrar_bitacora('Generacion de reporte PDF', 'reportes', $usuarioSesion);
+                $this->registrar_bitacora('Generacion de reporte PDF', 'reportes', $usuarioId);
             } catch (Exception $e) {
                 // Ignorar errores de bitacora para no interrumpir la descarga
             }
@@ -254,7 +254,7 @@ class reportes extends datos
         <body>
             <h1><?php echo htmlspecialchars($titulo, ENT_QUOTES, 'UTF-8'); ?></h1>
             <div class="metadata">
-                <span>Generado por: <?php echo htmlspecialchars($usuarioSesion, ENT_QUOTES, 'UTF-8'); ?></span>
+                <span>Generado por: <?php echo htmlspecialchars($usuarioNombre, ENT_QUOTES, 'UTF-8'); ?></span>
                 <span>Fecha de generacion: <?php echo htmlspecialchars($fechaActual, ENT_QUOTES, 'UTF-8'); ?></span>
             </div>
             <div class="filters">

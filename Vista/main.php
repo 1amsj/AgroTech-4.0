@@ -29,7 +29,7 @@
   <main class="main-content d-flex flex-column">
     <div class ="header" style = "display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end;text-align: right; gap: 10px;">
         <h1 class="header-standar">
-        Bienvenido, <?php $nivel = $_SESSION['usuario']; echo $nivel; ?>
+        Bienvenido, <?php echo isset($_SESSION['usuario_nombre']) ? $_SESSION['usuario_nombre'] : ($_SESSION['usuario'] ?? ''); ?>
         </h1>
         <p>Esta es la página principal de AgroTech 4.0</p>
     </div>
