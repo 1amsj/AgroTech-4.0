@@ -20,8 +20,10 @@ body {
   padding: 50px 0;
 }
 .ag-courses_item {
-  -ms-flex-preferred-size: calc(33.33333% - 30px);
-  flex-basis: calc(33.33333% - 30px);
+  -ms-flex-preferred-size: calc(25% - 30px);
+  flex: 0 0 calc(25% - 30px);
+  flex-basis: calc(25% - 30px);
+  max-width: calc(25% - 30px);
 
   margin: 0 15px 30px;
 

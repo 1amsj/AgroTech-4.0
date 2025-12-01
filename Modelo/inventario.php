@@ -243,19 +243,22 @@ class Destinatario extends datos
 			$respuesta = "";
 
 			foreach ($resultado as $r) {
+				$nombre = htmlspecialchars($r['Nombre'], ENT_QUOTES, 'UTF-8');
+				$fecha = htmlspecialchars($r['Fecha'], ENT_QUOTES, 'UTF-8');
+
 				$respuesta .= '
 				<div class="ag-courses_item">
-					<a href="detalle_inventario.php?id='.$r['ID'].'" class="ag-courses-item_link">
+					<a href="#" class="ag-courses-item_link" data-product-id="' . (int)$r['ID'] . '">
 						<div class="ag-courses-item_bg"></div>
 
 						<div class="ag-courses-item_title">
-						' . $r['Nombre'] . '
+						' . $nombre . '
 						</div>
 
 						<div class="ag-courses-item_date-box">
 						Fecha:
 						<span class="ag-courses-item_date">
-							' . $r['Fecha'] . '
+							' . $fecha . '
 						</span>
 						</div>
 					</a>

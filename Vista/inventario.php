@@ -42,16 +42,26 @@
         <button class="btn-standar" data-toggle="modal" data-target="#loginModal1">Agregar Producto</button>
       </div>
       <div class="container-cards">
-        <?php
-            if (in_array("consultar_inventario", $nivel1)) {
-              if (isset($consult)) {
-                echo $consult;
+        <div class="ag-courses_box">
+          <?php
+              if (in_array("consultar_inventario", $nivel1)) {
+                if (isset($consult)) {
+                  echo $consult;
+                }
               }
-            }
-            ?>
+              ?>
+        </div>
       </div>
     </div>
   </main>
+
+  <div class="modal fade" id="cardsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered d-flex justify-content-center">
+      <div class="modal-content" id="cardsModalContent">
+        <?php require_once("comunes/cards.php"); ?>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -62,5 +72,6 @@
 <script src="Assets/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
 <script src="Assets/js/p_bootstrap.min.js"></script>
+<script src="Assets/js/inventario.js"></script>
 
 </html>
