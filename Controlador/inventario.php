@@ -29,7 +29,7 @@ require_once("modelo/".$pagina.".php");
 					$nivel1 = "";
 				}
 
-		$o = new destinatario();
+		$o = new inventario();
 		if(!empty($_POST)){
 		
 		if(!empty($_POST['accion'])){

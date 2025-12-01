@@ -1,7 +1,7 @@
 <?php
 
 require_once('modelo/conexion.php');
-class Destinatario extends datos
+class Inventario extends datos
 {
 
 	private $nombre;
@@ -248,7 +248,7 @@ class Destinatario extends datos
 
 				$respuesta .= '
 				<div class="ag-courses_item">
-					<a href="#" class="ag-courses-item_link" data-product-id="' . (int)$r['ID'] . '">
+					<a href="#" class="ag-courses-item_link" data-product-id="' . (int)$r['ID'] . '" data-toggle="modal" data-target="#loginModal">
 						<div class="ag-courses-item_bg"></div>
 
 						<div class="ag-courses-item_title">
