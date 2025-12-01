@@ -37,18 +37,14 @@
          <?php
         if (in_array("agregar_destinatario", $nivel1)) {
           ?>
-          <button class="btn-standar" data-toggle="modal" data-target="#loginModal">Agregar Destinatario
-            <?php if (isset($mensaje)) {
-              echo $mensaje;
-            } ?></button>
-
+          <button class="btn-standar" data-toggle="modal" data-target="#createDestinatarioModal">Agregar Destinatario</button>
           <?php
         }
         ?>
       </div>
 
       <div class="user-table">
-        <table class="table table-bordered text-center align-middle">
+        <table class="table table-bordered text-center align-middle" id="destinatarioTable">
           <thead>
             <tr>
               <th>Nombre</th>
@@ -74,7 +70,7 @@
   </main>
 
   <!-- Modal de Agregar -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+  <div class="modal fade" id="createDestinatarioModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered d-flex justify-content-center">
       <div class="modal-content" id="modal-content">
         <div class="modal-header">
@@ -88,7 +84,8 @@
           <div class="row justify-content-center align-items-center text-center">
             <!-- Columna del formulario -->
             <div class="col-md-8">
-              <form id="f" method="post">
+              <form id="formDestinatarioCreate" method="post">
+                <input type="hidden" name="accion" value="registrar">
                 <div class="mb-3">
                   <label for="user">Nombre</label>
                   <span id="snombre" class="text-danger"></span>
@@ -113,7 +110,7 @@
                   <input class="form-control input-standar" type="text" id="descripcion" name="descripcion"
                     placeholder="Escriba una descripcion" autofocus>
                 </div>
-                <button type="button" class="btn w-100" id="enviar">Registrar</button>
+                <button type="button" class="btn w-100" id="btnRegistrarDestinatario">Registrar</button>
               </form>
             </div>
           </div>
@@ -123,7 +120,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="loginModal1" tabindex="-1" aria-hidden="true">
+  <div class="modal fade" id="editDestinatarioModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered d-flex justify-content-center">
       <div class="modal-content" id="modal-content">
         <div class="modal-header">
@@ -137,7 +134,8 @@
           <div class="row justify-content-center align-items-center text-center">
             <!-- Columna del formulario -->
             <div class="col-md-8">
-              <form id="f" method="post">
+              <form id="formDestinatarioEdit" method="post">
+                <input type="hidden" name="modificar" id="destinatarioId">
                 <div class="mb-3">
                   <label for="userm">Nombre</label>
                   <span id="snombrem" class="text-danger"></span>
@@ -159,10 +157,10 @@
                 <div class="mb-3">
                   <label for="descriptionm">Descripción</label>
                   <span id="sdescripcionm" class="text-danger"></span>
-                  <input class="form-control input-standar" type="text" id="descripciónm" name="descripcionm"
+                  <input class="form-control input-standar" type="text" id="descripcionm" name="descripcionm"
                     placeholder="Escriba una descripcion" autofocus>
                 </div>
-                <button type="button" class="btn w-100" id="enviar">Modificar</button>
+                <button type="button" class="btn w-100" id="btnActualizarDestinatario">Modificar</button>
               </form>
             </div>
           </div>
@@ -183,11 +181,10 @@
         <div class="modal-body">
           <p>¿Seguro que desea eliminar este destinatario?</p>
         </div>
-        <form id="f3" method="post">
-
-          <input class="form-control input-standar" readonly type="text" id="eliminar" name="eliminar"
-            placeholder="Introducir ID del destinatario" autofocus>
-
+        <form id="formDestinatarioDelete" method="post">
+          <input type="hidden" id="deleteDestinatarioId" name="eliminar">
+          <input class="form-control input-standar" readonly type="text" id="deleteDestinatarioName"
+            placeholder="Nombre del destinatario" autofocus>
         </form>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -201,8 +198,8 @@
 </body>
 
 
-  <script src="Assets/js/destinatario.js"></script>
   <script src="Assets/jquery-3.3.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
   <script src="Assets/js/p_bootstrap.min.js"></script>
+  <script src="Assets/js/destinatario.js"></script>
 </html>

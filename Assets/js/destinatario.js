@@ -1,265 +1,192 @@
-$(document).ready(function() {
+$(function () {
+    const $createForm = $("#formDestinatarioCreate");
+    const $editForm = $("#formDestinatarioEdit");
+    const $deleteForm = $("#formDestinatarioDelete");
+    const $table = $("#destinatarioTable");
 
-   
-       $("#enviar").on("click", function() {
-        if (validarenvio()) {
-          
-            $("#f").submit();
-       }
-   
-
+    $("#btnRegistrarDestinatario").on("click", function () {
+        if (validarEnvioCreate()) {
+            $createForm.submit();
+        }
     });
 
-
-    $("#enviar1").on("click", function() {
-        if (validarenvio1()) {
-          
-            $("#f2").submit();
-       }
-   
+    $("#btnActualizarDestinatario").on("click", function () {
+        if (validarEnvioEdit()) {
+            $editForm.submit();
+        }
     });
 
-   
-/*validaciones para registrar*/
+    $("#confirmDeleteButton").on("click", function () {
+        $deleteForm.submit();
+    });
 
+    $table.on("click", ".js-edit-destinatario", function () {
+        const $row = $(this).closest("tr");
+        fillEditForm(extractRowData($row));
+    });
 
+    $table.on("click", ".js-delete-destinatario", function () {
+        const $row = $(this).closest("tr");
+        fillDeleteForm(extractRowData($row));
+    });
 
-    $("#nombre").on("keypress", function(e) {
+    attachFieldValidation();
+    moveModalsToBody();
+});
+
+function attachFieldValidation() {
+    $("#nombre, #apellido, #nombrem, #apellidom").on("keypress", function (e) {
         validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
-
     });
 
-    $("#nombre").on("keyup", function() {
+    $("#nombre").on("keyup", function () {
         validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
             $(this), $("#snombre"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
-    $("#apellido").on("keypress", function(e) {
-        validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
-
-    });
-
-    $("#apellido").on("keyup", function() {
+    $("#apellido").on("keyup", function () {
         validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
             $(this), $("#sapellido"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
-
-    $("#telefono").on("keypress", function(e) {
-        validarkeypress(/^[0-9-\b]*$/, e);
-
-    });
-
-    $("#telefono").on("keyup", function() {
-        validarkeyup(/^[0-9-]{4,26}$/,
-            $(this), $("#stelefono"), "Solo números y guiones 4-26");
-    });
-
-    $("#descripcion").on("keypress", function(e) {
-        validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]*$/, e);
-
-    });
-
-    $("#descripcion").on("keyup", function() {
-        validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
-            $(this), $("#sdescripcion"), "Letras, números, acentos y .,-/#º* 3-120");
-    });
-   
-   
-    $("#nombrem").on("keypress", function(e) {
-        validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
-
-    });
-
-    $("#nombrem").on("keyup", function() {
+    $("#nombrem").on("keyup", function () {
         validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
             $(this), $("#snombrem"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
-    $("#apellidom").on("keypress", function(e) {
-        validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
-
-    });
-
-    $("#apellidom").on("keyup", function() {
+    $("#apellidom").on("keyup", function () {
         validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
             $(this), $("#sapellidom"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
-
-    $("#telefonom").on("keypress", function(e) {
-        validarkeypress(/^[0-9-\b]*$/, e);
-
+    $("#telefono, #telefonom").on("keypress", function (e) {
+        validarkeypress(/^[0-9\b]*$/, e);
     });
 
-    $("#telefonom").on("keyup", function() {
-        validarkeyup(/^[0-9-]{4,26}$/,
-            $(this), $("#stelefonom"), "Solo números y guiones 4-26");
+    $("#telefono").on("keyup", function () {
+        validarkeyup(/^[0-9]{4,20}$/,
+            $(this), $("#stelefono"), "Solo números 4-20");
     });
 
-    $("#descripcionm").on("keypress", function(e) {
+    $("#telefonom").on("keyup", function () {
+        validarkeyup(/^[0-9]{4,20}$/,
+            $(this), $("#stelefonom"), "Solo números 4-20");
+    });
+
+    $("#descripcion, #descripcionm").on("keypress", function (e) {
         validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]*$/, e);
-
     });
 
-    $("#descripcionm").on("keyup", function() {
+    $("#descripcion").on("keyup", function () {
+        validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
+            $(this), $("#sdescripcion"), "Letras, números, acentos y .,-/#º* 3-120");
+    });
+
+    $("#descripcionm").on("keyup", function () {
         validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
             $(this), $("#sdescripcionm"), "Letras, números, acentos y .,-/#º* 3-120");
     });
+}
 
-  
-    
-    });
-    function modificar(id){
-        $("#tabla tr").each(function(){
-        
-            if(id == $(this).find("th:eq(0)").text()){
-                
-          
-                $("#nombrem").val($(this).find("th:eq(1)").text());
-                $("#id").val($(this).find("th:eq(0)").text());
-                $("#apellidom").val($(this).find("th:eq(2)").text());
-                $("#telefonom").val($(this).find("th:eq(4)").text());
-                $("#descripcionm").val($(this).find("th:eq(6)").text());
-           
-                
+function extractRowData($row) {
+    const dataset = $row.data();
+    return {
+        id: dataset.id || "",
+        nombre: decodeHtml(dataset.nombre || ""),
+        apellido: decodeHtml(dataset.apellido || ""),
+        telefono: decodeHtml(dataset.telefono || ""),
+        descripcion: decodeHtml(dataset.descripcion || "")
+    };
+}
 
-            }
-        });
-    
+function decodeHtml(value) {
+    const textarea = document.createElement("textarea");
+    textarea.innerHTML = value;
+    return textarea.value;
+}
+
+function fillEditForm(data) {
+    $("#destinatarioId").val(data.id || "");
+    $("#nombrem").val(data.nombre || "");
+    $("#apellidom").val(data.apellido || "");
+    $("#telefonom").val(data.telefono || "");
+    $("#descripcionm").val(data.descripcion || "");
+}
+
+function fillDeleteForm(data) {
+    $("#deleteDestinatarioId").val(data.id || "");
+    $("#deleteDestinatarioName").val((data.nombre || "") + (data.apellido ? " " + data.apellido : ""));
+}
+
+function validarkeyup(er, etiqueta, etiquetamensaje, mensaje) {
+    const isValid = er.test(etiqueta.val());
+    if (isValid) {
+        etiquetamensaje.text("");
+        return 1;
     }
+    etiquetamensaje.text(mensaje);
+    setTimeout(function () {
+        etiquetamensaje.text("");
+    }, 5000);
+    return 0;
+}
 
-    function eliminar1(id){
-        $("#eliminar").val(id);
-        $("#confirmDeleteButton").on("click", function(){
-            $("#f3").submit();
-        
-        });
-
+function validarkeypress(er, e) {
+    const key = e.keyCode;
+    const tecla = String.fromCharCode(key);
+    if (!er.test(tecla)) {
+        e.preventDefault();
     }
+}
 
-
-
-    function validarkeyup(er, etiqueta, etiquetamensaje,
-        mensaje) {
-        a = er.test(etiqueta.val());
-        if (a) {
-            etiquetamensaje.text("");
-            return 1;
-        } else {
-            etiquetamensaje.text(mensaje);
-            setTimeout(function() {
-                etiquetamensaje.text("");
-            }, 5000);
-            
-    
-            return 0;
-        }
-    }
-    
-    function validarkeypress(er, e) {
-    
-        key = e.keyCode;
-    
-    
-        tecla = String.fromCharCode(key);
-    
-    
-        a = er.test(tecla);
-    
-        if (!a) {
-    
-            e.preventDefault();
-        }
-    
-    
-    }
-
-    // Safety: ensure modals are direct children of <body> to avoid positioning/z-index issues
-    // This moves #loginModal and #loginModal1 to body on load without changing markup/styles.
-    $(function(){
-        try{
-            // Move any modal elements to the document body to avoid clipping
-            // by transformed/overflowing ancestor containers (fixes backdrop-only issue).
-            $('.modal').appendTo('body');
-        }catch(e){
-            // ignore if elements not present or jQuery error
-            console.warn('Could not move modals to body:', e);
-        }
-    });
-
-
-    function validarenvio() {
-        if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
-        $("#nombre"), $("#snombre"), "Solo letras (incluye acentos) y espacios 4-26") == 0) {
-            $("#snombre").text("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
-            return false;
-    
-        }else if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
-        $("#apellido"), $("#sapellido"), "Solo letras (incluye acentos) y espacios 4-26") == 0) {
-            $("#sapellido").text("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
-            return false;
-    
-    
-        }else if (validarkeyup(/^[0-9-]{4,26}$/,
-        $("#telefono"), $("#stelefono"), "Solo números y guiones 4-26") == 0) {
-            $("#stelefono").text("<p>Solo números y guiones 4-26</p>");
-            return false;
-    
-    
-        }  else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
-        $("#descripcion"), $("#sdescripcion"), "Letras, números, acentos y .,-/#º* 3-120") == 0) {
-            $("#sdescripcion").text("<p>Letras, números, acentos y .,-/#º* 3-120</p>");
-            return false;
-    
-        }         
-        return true;
-    }
-
-    function validarenvio1() {
-        if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
-        $("#nombrem"), $("#snombrem"), "Solo letras (incluye acentos) y espacios 4-26") == 0) {
-            $("#snombrem").text("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
-            return false;
-    
-        }else if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
-        $("#apellidom"), $("#sapellidom"), "Solo letras (incluye acentos) y espacios 4-26") == 0) {
-            $("#sapellidom").text("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
-            return false;
-    
-        }else if (validarkeyup(/^[0-9-]{4,26}$/,
-        $("#telefonom"), $("#stelefonom"), "Solo números y guiones 4-26") == 0) {
-            $("#stelefonom").text("<p>Solo números y guiones 4-26</p>");
-            return false;
-    
-        }  else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
-        $("#descripcionm"), $("#sdescripcionm"), "Letras, números, acentos y .,-/#º* 3-120") == 0) {
-            $("#sdescripcionm").text("<p>Letras, números, acentos y .,-/#º* 3-120</p>");
-            return false;
-    
-        }         
-        return true;
-    }
-
-
-
-
-
-    
-function valselect(rol,srol) {
-    
-
-    if (rol != 'seleccionar') {
-        
-        return true;
-    } else {
-        srol.text("seleccione un rol")
-        setTimeout(function() {
-            srol.fadeOut();
-        }, 3000);
+function validarEnvioCreate() {
+    if (!validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+        $("#nombre"), $("#snombre"), "Solo letras (incluye acentos) y espacios 4-26")) {
         return false;
     }
+    if (!validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+        $("#apellido"), $("#sapellido"), "Solo letras (incluye acentos) y espacios 4-26")) {
+        return false;
+    }
+    if (!validarkeyup(/^[0-9]{4,20}$/,
+        $("#telefono"), $("#stelefono"), "Solo números 4-20")) {
+        return false;
+    }
+    if (!validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
+        $("#descripcion"), $("#sdescripcion"), "Letras, números, acentos y .,-/#º* 3-120")) {
+        return false;
+    }
+    return true;
+}
 
+function validarEnvioEdit() {
+    if (!validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+        $("#nombrem"), $("#snombrem"), "Solo letras (incluye acentos) y espacios 4-26")) {
+        return false;
+    }
+    if (!validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
+        $("#apellidom"), $("#sapellidom"), "Solo letras (incluye acentos) y espacios 4-26")) {
+        return false;
+    }
+    if (!validarkeyup(/^[0-9]{4,20}$/,
+        $("#telefonom"), $("#stelefonom"), "Solo números 4-20")) {
+        return false;
+    }
+    if (!validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
+        $("#descripcionm"), $("#sdescripcionm"), "Letras, números, acentos y .,-/#º* 3-120")) {
+        return false;
+    }
+    return true;
+}
 
-
+function moveModalsToBody() {
+    try {
+        $(".modal").each(function () {
+            if (!$(this).parent().is("body")) {
+                $(this).appendTo("body");
+            }
+        });
+    } catch (error) {
+        console.warn("Could not move modals to body:", error);
+    }
 }

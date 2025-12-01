@@ -13,10 +13,19 @@ class Destinatario extends datos
 
 
 
+	public function set_id($valor)
+	{
+
+		$this->id = is_numeric($valor) ? (int)$valor : null;
+
+	}
+
+
+
 	public function set_nombre($valor)
 	{
 
-		$this->nombre = $valor;
+		$this->nombre = trim($valor);
 
 	}
 
@@ -24,20 +33,20 @@ class Destinatario extends datos
 	public function set_apellido($valor)
 	{
 
-		$this->apellido = $valor;
+		$this->apellido = trim($valor);
 
 	}
 
 	public function set_telefono($telefono)
 	{
 
-		$this->telefono = $telefono;
+		$this->telefono = preg_replace('/[^0-9]/', '', (string)$telefono);
 	}
 
 	public function set_descripcion($descripcion)
 	{
 
-		$this->descripcion = $descripcion;
+		$this->descripcion = trim($descripcion);
 	}
 
 	public function set_nivel($valor)
@@ -48,51 +57,43 @@ class Destinatario extends datos
 
 	public function registrar()
 	{
-		$val = $this->registrar1();
-		echo $val;
+		return $this->registrar1();
 	}
 
 	public function modificar()
 	{
-		$val = $this->modificar1();
-		echo $val;
+		return $this->modificar1();
 	}
 
 	public function eliminar()
 	{
-		$val = $this->eliminar1();
-		echo $val;
+		return $this->eliminar1();
 	}
 	public function registrar1()
 	{
 
 		$co = $this->conecta();
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		if (!$this->existe($this->id)) {
-			try {
-				$t = "1";
-				$r = $co->prepare("Insert into destinatario(
+		try {
+			$r = $co->prepare("Insert into destinatario(
 						
-                    Nombre, 
-                    Apellido,
-                    Descripcion,
-                    Telefono,
-					Estado
-                    )
+					Nombre, 
+					Apellido,
+					Descripcion,
+				Telefono
+					)
             
 
-                    Values(
-                        :nombre,
-                        :apellido,
-						:correo,
-                        :telefono,
-						:estado
-                    )");
-				$r->bindParam(':nombre', $this->nombre);
-				$r->bindParam(':apellido', $this->apellido);
-				$r->bindParam(':descripcion', $this->descripcion);
-				$r->bindParam(':telefono', $this->telefono);
-				$r->bindParam(':estado',$t);	
+					Values(
+						:nombre,
+						:apellido,
+						:descripcion,
+						:telefono
+					)");
+				$r->bindValue(':nombre', $this->nombre, PDO::PARAM_STR);
+				$r->bindValue(':apellido', $this->apellido, PDO::PARAM_STR);
+				$r->bindValue(':descripcion', $this->descripcion, PDO::PARAM_STR);
+				$r->bindValue(':telefono', $this->telefono, PDO::PARAM_STR);
 				$r->execute();
 				$this->bitacora("Se registro un destinatario", "destinatario", $this->nivel);
 
@@ -101,10 +102,6 @@ class Destinatario extends datos
 			} catch (Exception $e) {
 				return $e->getMessage();
 			}
-
-		} else {
-			return "Nombre registrado";
-		}
 
 
 	}
@@ -115,26 +112,26 @@ class Destinatario extends datos
 
 		$co = $this->conecta();
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		if (empty($this->id)) {
+			return "Identificador inválido";
+		}
 		if ($this->existe($this->id)) {
 			try {
-				$t = "1";
 				$r = $co->prepare("Update destinatario set 
                             
-                        ID=:ID,
                         Nombre=:Nombre,
                         Apellido=:Apellido,
                         Descripcion=:Descripcion,
-                        Estado=:Estado,
-                        Telefono=:Telefono,
-                        where
-						ID =:ID
+					Telefono=:Telefono
+					where
+					ID =:ID
                             
                         ");
-				$r->bindParam(':Nombre', $this->nombre);
-				$r->bindParam(':Apellido', $this->apellido);
-				$r->bindParam(':Descripcion', $this->descripcion);
-				$r->bindParam(':Estado', $t);
-				$r->bindParam(':Telefono', $this->telefono);
+				$r->bindValue(':Nombre', $this->nombre, PDO::PARAM_STR);
+				$r->bindValue(':Apellido', $this->apellido, PDO::PARAM_STR);
+				$r->bindValue(':Descripcion', $this->descripcion, PDO::PARAM_STR);
+				$r->bindValue(':Telefono', $this->telefono, PDO::PARAM_STR);
+				$r->bindValue(':ID', $this->id, PDO::PARAM_INT);
 
 				$r->execute();
 
@@ -183,22 +180,20 @@ class Destinatario extends datos
 	}
 
 
-    public function eliminar1(){
+	public function eliminar1(){
         $co = $this->conecta();
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		if (empty($this->id)) {
+			return "Identificador inválido";
+		}
 		if($this->existe($this->id)){
 		
 
 			try {
-					$r=$co->prepare("Update destinatario set 
-                        Estado=0
-                        where
-						ID =:ID
-                            
-                        ");
-					$r->bindParam(':ID',$this->id);
+					$r=$co->prepare("Delete from destinatario where ID = :ID");
+					$r->bindValue(':ID',$this->id, PDO::PARAM_INT);
 					$r->execute();
-                    $this->bitacora("Se elimino un destinatario", "destinatario",$this->nivel);
+					$this->bitacora("Se elimino un destinatario", "destinatario",$this->nivel);
 					return "Registro Eliminado";
                     
 			} catch(Exception $e) {
@@ -236,33 +231,28 @@ public function consultar($nivel1){
         try{
 			
 			
-			$resultado = $co->prepare('SELECT * FROM destinatario WHERE Estado=1;');
+			$resultado = $co->prepare('SELECT * FROM destinatario;');
 			$resultado->execute();
            $respuesta="";
 
-            foreach($resultado as $r){
-                $respuesta= $respuesta.'<tr>';
-                $respuesta=$respuesta."<th>".$r['Nombre']."</th>";
-                $respuesta=$respuesta."<th>".$r['Apellido']."</th>";
-                $respuesta=$respuesta."<th>".$r['Telefono']."</th>";
-				$respuesta=$respuesta."<th>".$r['Descripcion']."</th>";
-
-                
-                $respuesta=$respuesta.'<th>';
-                if (in_array("modificar_destinatario",$nivel1)) {
-                    # code...
-                
-                $respuesta=$respuesta.'<button type="button" class="btn-modificar btn-sm" data-toggle="modal" data-target="#loginModal1" onclick="modificar(`'.$r['ID'].'`)">Modificar</button>';
-            }
-                if(in_array("eliminar_destinatario",$nivel1)){
-                    // Make delete button behave like the modify button (open the confirm modal)
-                    $respuesta = $respuesta . '<td><button type="button" class="btn-eliminar btn-sm" data-id="'.$r['ID'].'" onclick="eliminar1(`'.$r['ID'].'`)" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</button></td>';
-                }
-            $respuesta=$respuesta.'</th>';
-            $respuesta= $respuesta.'</tr>';
-             
-
-            }
+			foreach($resultado as $r){
+				$respuesta .= '<tr data-id="' . $r['ID'] . '" data-nombre="' . htmlspecialchars($r['Nombre'], ENT_QUOTES, 'UTF-8') . '" data-apellido="' . htmlspecialchars($r['Apellido'], ENT_QUOTES, 'UTF-8') . '" data-telefono="' . htmlspecialchars((string)$r['Telefono'], ENT_QUOTES, 'UTF-8') . '" data-descripcion="' . htmlspecialchars($r['Descripcion'], ENT_QUOTES, 'UTF-8') . '">';
+				$respuesta .= '<td>' . htmlspecialchars($r['Nombre'], ENT_QUOTES, 'UTF-8') . '</td>';
+				$respuesta .= '<td>' . htmlspecialchars($r['Apellido'], ENT_QUOTES, 'UTF-8') . '</td>';
+				$respuesta .= '<td>' . htmlspecialchars((string)$r['Telefono'], ENT_QUOTES, 'UTF-8') . '</td>';
+				$respuesta .= '<td>' . htmlspecialchars($r['Descripcion'], ENT_QUOTES, 'UTF-8') . '</td>';
+				if (in_array("modificar_destinatario", $nivel1)) {
+					$respuesta .= '<td class="text-nowrap"><button type="button" class="btn-modificar btn-sm js-edit-destinatario" data-toggle="modal" data-target="#editDestinatarioModal">Modificar</button></td>';
+				} else {
+					$respuesta .= '<td></td>';
+				}
+				if (in_array("eliminar_destinatario", $nivel1)) {
+					$respuesta .= '<td class="text-nowrap"><button type="button" class="btn-eliminar btn-sm js-delete-destinatario" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</button></td>';
+				} else {
+					$respuesta .= '<td></td>';
+				}
+				$respuesta .= '</tr>';
+			}
 
            
             return $respuesta;

@@ -32,23 +32,22 @@ require_once("modelo/".$pagina.".php");
 		$o = new destinatario();
 		if(!empty($_POST)){
 		
-		if(!empty($_POST['accion'])){
+		  if(!empty($_POST['accion'])){
 
 
-			$o->set_nombre($_POST['nombre']);
+			$o->set_nombre($_POST['nombre'] ?? '');
 
-			$o->set_apellido($_POST['apellido']);
+			$o->set_apellido($_POST['apellido'] ?? '');
 
-			
-			$o->set_telefono($_POST['telefono']);
 
-			
-			$o->set_descripcion($_POST['descripcion']);
+			$o->set_telefono($_POST['telefono'] ?? '');
+
+
+			$o->set_descripcion($_POST['descripcion'] ?? '');
 
 			$o->set_nivel($nivel);
 			
 			$mensaje = $o->registrar();	
-			echo $mensaje;
 			
 				
 			
@@ -59,18 +58,18 @@ require_once("modelo/".$pagina.".php");
 
 
 
-			$o->set_nombre($_POST['nombrem']);
+			$o->set_id($_POST['modificar']);
+			$o->set_nombre($_POST['nombrem'] ?? '');
 
-			$o->set_apellido($_POST['apellidom']);
+			$o->set_apellido($_POST['apellidom'] ?? '');
 
-			$o->set_telefono($_POST['telefonom']);
-			
-			$o->set_descripcion($_POST['descripcionm']);
+			$o->set_telefono($_POST['telefonom'] ?? '');
+		
+			$o->set_descripcion($_POST['descripcionm'] ?? '');
 
 			$o->set_nivel($nivel);
 			
 			$mensaje = $o->modificar();	
-			echo $mensaje;
 			
 				
 			
@@ -80,12 +79,10 @@ require_once("modelo/".$pagina.".php");
 		  if(!empty($_POST['eliminar'])){
 
 
-			$o->set_nombre($_POST['eliminar']);
-
+			$o->set_id($_POST['eliminar']);
 			$o->set_nivel($nivel);
 			
 			$mensaje = $o->eliminar();	
-			echo $mensaje;
 			
 				
 			
