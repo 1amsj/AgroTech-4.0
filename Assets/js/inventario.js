@@ -150,7 +150,7 @@ $(function () {
 		$deleteModal.modal("show");
 	});
 
-	$(".js-open-enter, .js-open-add-enter").on("click", function () {
+	$(".js-open-add-enter").on("click", function () {
 		if (!selectedProduct) {
 			return;
 		}
@@ -167,7 +167,7 @@ $(function () {
 		$enterModal.modal("show");
 	});
 
-	$(".js-open-out, .js-open-add-out").on("click", function () {
+	$(".js-open-add-out").on("click", function () {
 		if (!selectedProduct) {
 			return;
 		}

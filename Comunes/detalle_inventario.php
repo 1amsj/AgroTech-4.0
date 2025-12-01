@@ -59,11 +59,17 @@
           <input type="hidden" name="modificar" id="editProductId">
           <div class="agro-form-group">
             <label for="editProductName">Nombre del producto</label>
-            <input type="text" class="agro-input" id="editProductName" name="nombre" placeholder="Escriba el nombre del producto" />
+            <input type="text" class="agro-input" id="editProductName" name="nombre"
+              placeholder="Escriba el nombre del producto" />
           </div>
           <div class="agro-form-group">
             <label for="editProductCategory">Categoría</label>
+<<<<<<< HEAD
             <input type="text" class="agro-input" id="editProductCategory" name="categoriam" placeholder="Escriba la categoría del producto" />
+=======
+            <input type="text" class="agro-input" id="editProductCategory" name="categoria"
+              placeholder="Escriba la categoría del producto" />
+>>>>>>> be11860fafb89c608716e44710fcf0a7210d194b
           </div>
           <div class="agro-form-group">
             <label for="editProductDate">Fecha</label>
@@ -71,7 +77,12 @@
           </div>
           <div class="agro-form-group">
             <label for="editProductStock">Stock Actual</label>
+<<<<<<< HEAD
             <input type="number" min="0" step="0.01" class="agro-input" id="editProductStock" name="stockam" placeholder="Escriba el stock actual" />
+=======
+            <input type="text" class="agro-input" id="editProductStock" name="stock"
+              placeholder="Escriba el stock actual" />
+>>>>>>> be11860fafb89c608716e44710fcf0a7210d194b
           </div>
           <div class="agro-form-group">
             <label for="editProductPrice">Costo unitario</label>
@@ -98,6 +109,7 @@
           <input type="hidden" name="eliminar" id="deleteProductId">
           <div class="agro-form-group">
             <label for="deleteProductName">Nombre del producto</label>
+<<<<<<< HEAD
             <input type="text" class="agro-input" id="deleteProductName" name="nombre" placeholder="Escriba el nombre del producto" readonly />
           </div>
           <div class="agro-form-group">
@@ -107,6 +119,20 @@
           <div class="agro-form-group">
             <label for="deleteProductStock">Stock Actual</label>
             <input type="text" class="agro-input" id="deleteProductStock" name="stock" placeholder="Escriba el stock actual" readonly />
+=======
+            <input type="text" class="agro-input" id="deleteProductName" name="nombre"
+              placeholder="Escriba el nombre del producto" />
+          </div>
+          <div class="agro-form-group">
+            <label for="deleteProductCategory">Categoría</label>
+            <input type="text" class="agro-input" id="deleteProductCategory" name="categoria"
+              placeholder="Escriba la categoría del producto" />
+          </div>
+          <div class="agro-form-group">
+            <label for="deleteProductStock">Stock Actual</label>
+            <input type="text" class="agro-input" id="deleteProductStock" name="stock"
+              placeholder="Escriba el stock actual" />
+>>>>>>> be11860fafb89c608716e44710fcf0a7210d194b
           </div>
           <div class="agro-form-group">
             <label for="deleteProductPrice">Costo unitario</label>
@@ -132,18 +158,30 @@
         <form id="inventoryEnterForm" method="post">
           <input type="hidden" name="entrada" id="enterProductId">
           <div class="agro-form-group">
+<<<<<<< HEAD
             <label for="enterProductName">Nombre del producto</label>
             <input type="text" class="agro-input" id="enterProductName" name="nombre_entrada" placeholder="Nombre del producto" readonly />
           </div>
           <div class="agro-form-group">
             <label for="enterProductCategory">Categoría</label>
             <input type="text" class="agro-input" id="enterProductCategory" name="categoria_entrada" placeholder="Categoría" readonly />
+=======
+            <label for="editProductName">Nombre del producto</label>
+            <input type="text" class="agro-input" id="editProductName" name="nombre"
+              placeholder="Escriba el nombre del producto" />
+          </div>
+          <div class="agro-form-group">
+            <label for="editProductCategory">Categoría</label>
+            <input type="text" class="agro-input" id="editProductCategory" name="categoria"
+              placeholder="Escriba la categoría del producto" />
+>>>>>>> be11860fafb89c608716e44710fcf0a7210d194b
           </div>
           <div class="agro-form-group">
             <label for="enterProductDate">Fecha</label>
             <input type="date" class="agro-input" id="enterProductDate" name="fecha_entrada" placeholder="Seleccione la fecha" />
           </div>
           <div class="agro-form-group">
+<<<<<<< HEAD
             <label for="enterProductStock">Cantidad</label>
             <input type="number" min="0" step="0.01" class="agro-input" id="enterProductStock" name="cantidad_entrada" placeholder="Escriba la cantidad" />
           </div>
@@ -154,6 +192,11 @@
           <div class="agro-form-group">
             <label for="enterProductTotalCost">Costo total</label>
             <input type="number" min="0" step="0.01" class="agro-input" id="enterProductTotalCost" name="costo_total_entrada" placeholder="Costo total" readonly />
+=======
+            <label for="editProductStock">Cantidad</label>
+            <input type="text" class="agro-input" id="editProductStock" name="stock"
+              placeholder="Escriba el stock actual" />
+>>>>>>> be11860fafb89c608716e44710fcf0a7210d194b
           </div>
           <div class="agro-form-group">
             <label for="enterProductProvider">Proveedor</label>
@@ -190,18 +233,30 @@
         <form id="inventoryOutForm" method="post">
           <input type="hidden" name="salida" id="outProductId">
           <div class="agro-form-group">
+<<<<<<< HEAD
             <label for="outProductName">Nombre del producto</label>
             <input type="text" class="agro-input" id="outProductName" name="nombre_salida" placeholder="Nombre del producto" readonly />
           </div>
           <div class="agro-form-group">
             <label for="outProductCategory">Categoría</label>
             <input type="text" class="agro-input" id="outProductCategory" name="categoria_salida" placeholder="Categoría" readonly />
+=======
+            <label for="editProductName">Nombre del producto</label>
+            <input type="text" class="agro-input" id="editProductName" name="nombre"
+              placeholder="Escriba el nombre del producto" />
+          </div>
+          <div class="agro-form-group">
+            <label for="editProductCategory">Categoría</label>
+            <input type="text" class="agro-input" id="editProductCategory" name="categoria"
+              placeholder="Escriba la categoría del producto" />
+>>>>>>> be11860fafb89c608716e44710fcf0a7210d194b
           </div>
           <div class="agro-form-group">
             <label for="outProductDate">Fecha</label>
             <input type="date" class="agro-input" id="outProductDate" name="fecha_salida" placeholder="Seleccione la fecha" />
           </div>
           <div class="agro-form-group">
+<<<<<<< HEAD
             <label for="outProductStock">Cantidad</label>
             <input type="number" min="0" step="0.01" class="agro-input" id="outProductStock" name="cantidad_salida" placeholder="Escriba la cantidad" />
           </div>
@@ -212,6 +267,11 @@
           <div class="agro-form-group">
             <label for="outProductTotalCost">Costo total</label>
             <input type="number" min="0" step="0.01" class="agro-input" id="outProductTotalCost" name="costo_total_salida" placeholder="Costo total" readonly />
+=======
+            <label for="editProductStock">Cantidad</label>
+            <input type="text" class="agro-input" id="editProductStock" name="stock"
+              placeholder="Escriba el stock actual" />
+>>>>>>> be11860fafb89c608716e44710fcf0a7210d194b
           </div>
           <div class="agro-form-group">
             <label for="outProductRecipient">Destinatario</label>
