@@ -121,8 +121,9 @@
         </button>
       </div>
       <div class="modal-body agro-modal-body">
-        <form id="inventoryEditForm">
+        <form id="inventoryEnterForm">
           <div class="agro-form-group">
+<<<<<<< HEAD
             <label for="editProductName">Nombre del producto</label>
             <input type="text" class="agro-input" id="editProductName" name="nombre"
               placeholder="Escriba el nombre del producto" />
@@ -131,20 +132,33 @@
             <label for="editProductCategory">Categoría</label>
             <input type="text" class="agro-input" id="editProductCategory" name="categoria"
               placeholder="Escriba la categoría del producto" />
+=======
+            <label for="enterProductName">Nombre del producto</label>
+            <input type="text" class="agro-input" id="enterProductName" name="nombre" placeholder="Escriba el nombre del producto" />
           </div>
           <div class="agro-form-group">
-            <label for="editProductDate">Fecha</label>
-            <input type="text" class="agro-input" id="editProductDate" name="fecha" placeholder="Escriba la fecha" />
+            <label for="enterProductCategory">Categoría</label>
+            <input type="text" class="agro-input" id="enterProductCategory" name="categoria" placeholder="Escriba la categoría del producto" />
+>>>>>>> 565cce0da7e814adaf1eaafd30322f1d02d2ebff
           </div>
           <div class="agro-form-group">
+            <label for="enterProductDate">Fecha</label>
+            <input type="text" class="agro-input" id="enterProductDate" name="fecha" placeholder="Escriba la fecha" />
+          </div>
+          <div class="agro-form-group">
+<<<<<<< HEAD
             <label for="editProductStock">Cantidad</label>
             <input type="text" class="agro-input" id="editProductStock" name="stock"
               placeholder="Escriba el stock actual" />
+=======
+            <label for="enterProductStock">Cantidad</label>
+            <input type="text" class="agro-input" id="enterProductStock" name="stock" placeholder="Escriba la cantidad" />
+>>>>>>> 565cce0da7e814adaf1eaafd30322f1d02d2ebff
           </div>
           <div class="agro-form-group">
-            <label for="editProductStock">Proveedor</label>
-            <span id="proveedor" class="text-danger"></span>
-            <select name="proveedor" id="proveedor" class="form-control input-standar">
+            <label for="enterProductProvider">Proveedor</label>
+            <span id="providerError" class="text-danger"></span>
+            <select name="proveedor" id="enterProductProvider" class="form-control input-standar"></select>
           </div>
           <button type="submit" class="agro-btn agro-btn-confirm w-100">Enviar</button>
         </form>
@@ -164,8 +178,9 @@
         </button>
       </div>
       <div class="modal-body agro-modal-body">
-        <form id="inventoryEditForm">
+        <form id="inventoryOutForm">
           <div class="agro-form-group">
+<<<<<<< HEAD
             <label for="editProductName">Nombre del producto</label>
             <input type="text" class="agro-input" id="editProductName" name="nombre"
               placeholder="Escriba el nombre del producto" />
@@ -174,20 +189,33 @@
             <label for="editProductCategory">Categoría</label>
             <input type="text" class="agro-input" id="editProductCategory" name="categoria"
               placeholder="Escriba la categoría del producto" />
+=======
+            <label for="outProductName">Nombre del producto</label>
+            <input type="text" class="agro-input" id="outProductName" name="nombre" placeholder="Escriba el nombre del producto" />
           </div>
           <div class="agro-form-group">
-            <label for="editProductDate">Fecha</label>
-            <input type="text" class="agro-input" id="editProductDate" name="fecha" placeholder="Escriba la fecha" />
+            <label for="outProductCategory">Categoría</label>
+            <input type="text" class="agro-input" id="outProductCategory" name="categoria" placeholder="Escriba la categoría del producto" />
+>>>>>>> 565cce0da7e814adaf1eaafd30322f1d02d2ebff
           </div>
           <div class="agro-form-group">
+            <label for="outProductDate">Fecha</label>
+            <input type="text" class="agro-input" id="outProductDate" name="fecha" placeholder="Escriba la fecha" />
+          </div>
+          <div class="agro-form-group">
+<<<<<<< HEAD
             <label for="editProductStock">Cantidad</label>
             <input type="text" class="agro-input" id="editProductStock" name="stock"
               placeholder="Escriba el stock actual" />
+=======
+            <label for="outProductStock">Cantidad</label>
+            <input type="text" class="agro-input" id="outProductStock" name="stock" placeholder="Escriba la cantidad" />
+>>>>>>> 565cce0da7e814adaf1eaafd30322f1d02d2ebff
           </div>
           <div class="agro-form-group">
-            <label for="editProductStock">Destinatario</label>
-            <span id="destinatario" class="text-danger"></span>
-            <select name="destinatario" id="destinatario" class="form-control input-standar">
+            <label for="outProductRecipient">Destinatario</label>
+            <span id="recipientError" class="text-danger"></span>
+            <select name="destinatario" id="outProductRecipient" class="form-control input-standar"></select>
           </div>
           <button type="submit" class="agro-btn agro-btn-confirm w-100">Enviar</button>
         </form>
