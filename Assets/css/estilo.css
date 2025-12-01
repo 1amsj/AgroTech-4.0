@@ -177,34 +177,62 @@ body.no-scroll {
 }
 
 .agro-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 28px;
-    border-radius: 18px;
-    font-weight: 600;
-    font-size: 16px;
+    color: black;
+    font-weight: bold;
     border: none;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 1vh;
+    padding: 1vh 2vh;
+    background-color: white;
+    margin: 1vh;
+    border-radius: 1.6vh;
+    box-shadow: 0.6vh 0.6vh 1.2vh rgba(0, 0, 0, 0.2);
+    padding: 2vh 2vh;
+    font-size: 2vh;
+    border: none;
     font-family: "ABeeZee", sans-serif;
 }
 
 .agro-btn:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 18px 32px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    color: white;
+    background-color: black;
+    border: white;
+    box-shadow: 0 4px 12px white;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .agro-btn-delete {
-    background: #d62828;
-    color: #ffffff;
+    background-color: #DC3545;
+    margin: 1vh;
+    border-radius: 1.6vh;
+    box-shadow: 0.6vh 0.6vh 1.2vh rgba(0, 0, 0, 0.2);
+    padding: 1vh 2vh;
+    font-size: 2vh;
+    border: none;
+    font-family: "ABeeZee", sans-serif;
 }
 
 .agro-btn-edit {
-    background: #f6c102;
-    color: #081c15;
+    background-color: #FFC107;
+    margin: 1vh;
+    border-radius: 1.6vh;
+    box-shadow: 0.6vh 0.6vh 1.2vh rgba(0, 0, 0, 0.2);
+    padding: 1vh 2vh;
+    font-size: 2vh;
+    border: none;
+    font-family: "ABeeZee", sans-serif;
 }
+
+.agro-btn-edit:hover, .agro-btn-delete:hover {
+    transform: scale(1.05);
+    background-color: transparent;
+    border: black;
+    box-shadow: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
 
 .agro-btn-close,
 .agro-btn-confirm,

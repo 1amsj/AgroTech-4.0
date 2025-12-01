@@ -92,6 +92,11 @@
                   <input class="form-control input-standar" type="text" id="stocka" name="stocka"
                     placeholder="Escriba el stock actual" autofocus>
                 </div>
+                <div class ="mb-3">
+                  <label for="proveedor">Proveedor</label>
+                  <span id="proveedor" class="text-danger"></span>
+                  <select name="proveedor" id="proveedor" class="form-control input-standar">
+                </div>
                 <button type="submit" class="btn w-100" id="enviar">Enviar</button>
               </form>
             </div>

@@ -69,7 +69,7 @@
                     </a>
                     <a href="?pagina=logout" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">logout</span>
+                        <span class="hide-on-collapse">Cerrar Sesión</span>
                 </a>
                 </div>
                 <?php
@@ -78,12 +78,20 @@
                         <i class="fas fa-chart-bar me-3"></i>
                         <span class="hide-on-collapse">Inventario</span>
                     </a>
+                    <a href="?pagina=proveedor" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-gear me-3"></i>
+                        <span class="hide-on-collapse">Proveedores</span>
+                    </a>
+                    <a href="?pagina=destinatario" class="sidebar-link text-decoration-none p-3">
+                        <i class="fas fa-gear me-3"></i>
+                        <span class="hide-on-collapse">Destinatario</span>
+                    </a>
                     <a href="?pagina=logout" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">logout</span>
-                </a>
+                        <span class="hide-on-collapse">Cerrar Sesión</span>
+                    </a>
                 <?php
-                    } else if ($nivel == "boss") { ?>
+                    } else if ($nivel == "3") { ?>
                     <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-chart-bar me-3"></i>
                         <span class="hide-on-collapse">Inventario</span>
@@ -114,7 +122,7 @@
                     </a>
                     <a href="?pagina=logout" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">logout</span>
+                        <span class="hide-on-collapse">Cerrar Sesión</span>
                 </a>
                     
                 <?php

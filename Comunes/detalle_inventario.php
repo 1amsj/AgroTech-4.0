@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/estilo.css" />
+
 <div class="modal fade agro-modal" id="cardsModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content agro-modal-content">
@@ -9,6 +11,8 @@
       </div>
       <div class="modal-body agro-modal-body">
         <div class="agro-modal-actions">
+          <button type="button" class="agro-btn agro-btn-add js-open-add-enter">Registrar entrada de producto</button>
+          <button type="button" class="agro-btn agro-btn-view js-open-add-out">Registrar salida de producto</button>
           <button type="button" class="agro-btn agro-btn-delete js-open-delete">Eliminar producto</button>
           <button type="button" class="agro-btn agro-btn-edit js-open-edit">Modificar producto</button>
         </div>
@@ -95,6 +99,85 @@
             <input type="text" class="agro-input" id="deleteProductStock" name="stock" placeholder="Escriba el stock actual" />
           </div>
           <button type="submit" class="agro-btn agro-btn-danger w-100">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade agro-modal" id="inventoryAddEnterModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content agro-modal-content">
+      <div class="modal-header agro-modal-header">
+        <h5 class="modal-title">Registrar entrada de producto</h5>
+        <button type="button" class="close agro-modal-close" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body agro-modal-body">
+        <form id="inventoryEditForm">
+          <div class="agro-form-group">
+            <label for="editProductName">Nombre del producto</label>
+            <input type="text" class="agro-input" id="editProductName" name="nombre" placeholder="Escriba el nombre del producto" />
+          </div>
+          <div class="agro-form-group">
+            <label for="editProductCategory">Categoría</label>
+            <input type="text" class="agro-input" id="editProductCategory" name="categoria" placeholder="Escriba la categoría del producto" />
+          </div>
+          <div class="agro-form-group">
+            <label for="editProductDate">Fecha</label>
+            <input type="text" class="agro-input" id="editProductDate" name="fecha" placeholder="Escriba la fecha" />
+          </div>
+          <div class="agro-form-group">
+            <label for="editProductStock">Cantidad</label>
+            <input type="text" class="agro-input" id="editProductStock" name="stock" placeholder="Escriba el stock actual" />
+          </div>
+          <div class="agro-form-group">
+            <label for="editProductStock">Proveedor</label>
+            <span id="proveedor" class="text-danger"></span>
+            <select name="proveedor" id="proveedor" class="form-control input-standar">
+          </div>
+          <button type="submit" class="agro-btn agro-btn-confirm w-100">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade agro-modal" id="inventoryAddOutModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content agro-modal-content">
+      <div class="modal-header agro-modal-header">
+        <h5 class="modal-title">Registrar salida de producto</h5>
+        <button type="button" class="close agro-modal-close" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body agro-modal-body">
+        <form id="inventoryEditForm">
+          <div class="agro-form-group">
+            <label for="editProductName">Nombre del producto</label>
+            <input type="text" class="agro-input" id="editProductName" name="nombre" placeholder="Escriba el nombre del producto" />
+          </div>
+          <div class="agro-form-group">
+            <label for="editProductCategory">Categoría</label>
+            <input type="text" class="agro-input" id="editProductCategory" name="categoria" placeholder="Escriba la categoría del producto" />
+          </div>
+          <div class="agro-form-group">
+            <label for="editProductDate">Fecha</label>
+            <input type="text" class="agro-input" id="editProductDate" name="fecha" placeholder="Escriba la fecha" />
+          </div>
+          <div class="agro-form-group">
+            <label for="editProductStock">Cantidad</label>
+            <input type="text" class="agro-input" id="editProductStock" name="stock" placeholder="Escriba el stock actual" />
+          </div>
+          <div class="agro-form-group">
+            <label for="editProductStock">Destinatario</label>
+            <span id="destinatario" class="text-danger"></span>
+            <select name="destinatario" id="destinatario" class="form-control input-standar">
+          </div>
+          <button type="submit" class="agro-btn agro-btn-confirm w-100">Enviar</button>
         </form>
       </div>
     </div>

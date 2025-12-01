@@ -6,6 +6,8 @@ $(function () {
 	const $detailModal = $("#cardsModal");
 	const $editModal = $("#inventoryEditModal");
 	const $deleteModal = $("#inventoryDeleteModal");
+	const $enterModal = $("#inventoryAddEnterModal");
+	const $outModal = $("#inventoryAddOutModal");
 	const $managedModals = $detailModal.add($editModal).add($deleteModal);
 	let selectedProduct = null;
 
@@ -78,6 +80,8 @@ $(function () {
 		$cardsContainer.removeClass("freeze-scroll");
 		$editModal.modal("hide");
 		$deleteModal.modal("hide");
+		$enterModal.modal("hide");
+		$outModal.modal("hide");
 		selectedProduct = null;
 	});
 
@@ -121,6 +125,26 @@ $(function () {
 		$deleteModal.modal("show");
 	});
 
+	$(".js-open-enter").on("click", function () {
+		if (!selectedProduct) {
+			return;
+		}
+		$("#enterProductName").val(selectedProduct.name);
+		$("#enterProductCategory").val(selectedProduct.category);
+		$("#enterProductStock").val(selectedProduct.stock);
+		$enterModal.modal("show");
+	});
+
+	$(".js-open-out").on("click", function () {
+		if (!selectedProduct) {
+			return;
+		}
+		$("#outProductName").val(selectedProduct.name);
+		$("#outProductCategory").val(selectedProduct.category);
+		$("#outProductStock").val(selectedProduct.stock);
+		$outModal.modal("show");
+	});	
+
 	$(document).on("click", function (event) {
 		const target = event.target;
 		if (!(target instanceof HTMLElement)) {
@@ -129,7 +153,7 @@ $(function () {
 		if (target.closest('[data-dismiss="modal"]')) {
 			return;
 		}
-		if (target.closest('#inventoryEditModal') || target.closest('#inventoryDeleteModal')) {
+		if (target.closest('#inventoryEditModal') || target.closest('#inventoryDeleteModal') || target.closest('#inventoryAddEnterModal') || target.closest('#inventoryAddOutModal')) {
 			return;
 		}
 		const detailModalEl = $detailModal.get(0);
@@ -143,7 +167,7 @@ $(function () {
 		}
 	});
 
-	$("#inventoryEditForm, #inventoryDeleteForm").on("submit", function (event) {
+	$("#inventoryEditForm, #inventoryDeleteForm, #inventoryAddOutModal, #inventoryAddEnterModal").on("submit", function (event) {
 		event.preventDefault();
 		// Integrar lógica de guardado o eliminación aquí
 	});
