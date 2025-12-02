@@ -265,11 +265,11 @@
                                             <h6 class="text-uppercase">Reportes</h6>
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="27" name="exampleRadios[]" value="27">
-                                                <label class="custom-control-label" for="27">reporte 1</label>
+                                                <label class="custom-control-label" for="27">consultar reportes</label>
                                             </div>
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="75" name="exampleRadios[]" value="75">
-                                                <label class="custom-control-label" for="75">reporte 1</label>
+                                                <label class="custom-control-label" for="75">generar pdf</label>
                                             </div>
                                             
                                         </div>
