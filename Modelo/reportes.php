@@ -5,12 +5,6 @@ use Dompdf\Options;
 
 require_once('modelo/conexion.php');
 
-$dompdfAutoload = __DIR__ . '/../dompdf/vendor/autoload.php';
-if (!is_file($dompdfAutoload)) {
-    throw new RuntimeException('No se encontró el autoloader de Dompdf en ' . $dompdfAutoload);
-}
-require_once $dompdfAutoload;
-
 class reportes extends datos
 {
     public function obtenerTiposMovimiento(): array
@@ -85,20 +79,24 @@ class reportes extends datos
 
         $sql = "SELECT
                     m.id,
-                    i.Nombre AS producto,
+                    COALESCE(NULLIF(i.Nombre, ''), CONCAT('Producto ', m.id_inventario)) AS producto,
                     m.tipo,
-                    m.cantidad,
-                    m.motivo,
-                    m.costo_unitario,
-                    m.costo_total,
-                    m.stock_resultante,
-                    m.fecha,
-                    CONCAT(u.Nombre, ' ', u.Apellido) AS usuario,
-                    GROUP_CONCAT(DISTINCT CONCAT(d.Nombre, ' ', d.Apellido) SEPARATOR ', ') AS destinatarios,
-                    GROUP_CONCAT(DISTINCT CONCAT(p.Nombre, ' ', p.Apellido) SEPARATOR ', ') AS proveedores
+                    COALESCE(m.cantidad, 0) AS cantidad,
+                    COALESCE(m.motivo, '') AS motivo,
+                    COALESCE(m.costo_unitario, 0) AS costo_unitario,
+                    COALESCE(m.costo_total, 0) AS costo_total,
+                    COALESCE(m.stock_resultante, 0) AS stock_resultante,
+                    DATE_FORMAT(m.fecha, '%Y-%m-%d') AS fecha,
+                    m.id_usuario,
+                    CASE
+                        WHEN u.N_de_empleado IS NULL THEN CONCAT('Usuario ', m.id_usuario)
+                        ELSE NULLIF(TRIM(CONCAT(COALESCE(u.Nombre, ''), ' ', COALESCE(u.Apellido, ''))), '')
+                    END AS usuario,
+                    GROUP_CONCAT(DISTINCT NULLIF(TRIM(CONCAT(COALESCE(d.Nombre, ''), ' ', COALESCE(d.Apellido, ''))), '') SEPARATOR ', ') AS destinatarios,
+                    GROUP_CONCAT(DISTINCT NULLIF(TRIM(CONCAT(COALESCE(p.Nombre, ''), ' ', COALESCE(p.Apellido, ''))), '') SEPARATOR ', ') AS proveedores
                 FROM movimiento m
-                INNER JOIN inventario i ON i.ID = m.id_inventario
-                INNER JOIN usuario u ON u.N_de_empleado = m.id_usuario
+                LEFT JOIN inventario i ON i.ID = m.id_inventario
+                LEFT JOIN usuario u ON u.N_de_empleado = m.id_usuario
                 LEFT JOIN movimiento_destinatario md ON md.id_movimiento = m.id
                 LEFT JOIN destinatario d ON d.ID = md.id_destinatario
                 LEFT JOIN movimiento_proveedor mp ON mp.id_movimiento = m.id
@@ -108,12 +106,12 @@ class reportes extends datos
         $params = [];
 
         if (!empty($filtros['fecha_inicio'])) {
-            $sql .= " AND STR_TO_DATE(m.fecha, '%Y-%m-%d') >= STR_TO_DATE(:fecha_inicio, '%Y-%m-%d')";
+            $sql .= " AND m.fecha >= :fecha_inicio";
             $params[':fecha_inicio'] = $filtros['fecha_inicio'];
         }
 
         if (!empty($filtros['fecha_fin'])) {
-            $sql .= " AND STR_TO_DATE(m.fecha, '%Y-%m-%d') <= STR_TO_DATE(:fecha_fin, '%Y-%m-%d')";
+            $sql .= " AND m.fecha <= :fecha_fin";
             $params[':fecha_fin'] = $filtros['fecha_fin'];
         }
 
@@ -133,18 +131,9 @@ class reportes extends datos
         }
 
         $sql .= " GROUP BY
-                    m.id,
-                    i.Nombre,
-                    m.tipo,
-                    m.cantidad,
-                    m.motivo,
-                    m.costo_unitario,
-                    m.costo_total,
-                    m.stock_resultante,
-                    m.fecha,
-                    usuario
+                    m.id
                 ORDER BY
-                    STR_TO_DATE(m.fecha, '%Y-%m-%d') DESC,
+                    m.fecha DESC,
                     m.id DESC";
 
         $stmt = $co->prepare($sql);
@@ -156,6 +145,12 @@ class reportes extends datos
 
         $movimientos = [];
         foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            $usuario = (string) ($row['usuario'] ?? '');
+            $usuarioId = isset($row['id_usuario']) ? trim((string) $row['id_usuario']) : '';
+            if ($usuario === '') {
+                $usuario = $usuarioId !== '' ? 'Usuario ' . $usuarioId : 'Usuario sin identificar';
+            }
+
             $movimientos[] = [
                 'id' => (int) $row['id'],
                 'producto' => (string) $row['producto'],
@@ -166,7 +161,7 @@ class reportes extends datos
                 'costo_total' => (string) $row['costo_total'],
                 'stock_resultante' => (string) $row['stock_resultante'],
                 'fecha' => (string) $row['fecha'],
-                'usuario' => (string) $row['usuario'],
+                'usuario' => $usuario,
                 'destinatarios' => $row['destinatarios'] !== null ? (string) $row['destinatarios'] : '',
                 'proveedores' => $row['proveedores'] !== null ? (string) $row['proveedores'] : ''
             ];
@@ -336,12 +331,7 @@ class reportes extends datos
         <?php
         $html = ob_get_clean();
 
-        $options = new Options();
-        $options->set('isRemoteEnabled', true);
-        $options->set('isHtml5ParserEnabled', true);
-        $options->set('defaultFont', 'DejaVu Sans');
-
-        $dompdf = new Dompdf($options);
+        $dompdf = $this->crearDompdf();
         $dompdf->loadHtml($html, 'UTF-8');
         $dompdf->setPaper('letter', 'landscape');
         $dompdf->render();
@@ -349,6 +339,24 @@ class reportes extends datos
         $nombreArchivo = 'reporte_movimientos_' . date('Ymd_His') . '.pdf';
         $dompdf->stream($nombreArchivo, ['Attachment' => false]);
         exit;
+    }
+
+    private function crearDompdf(): Dompdf
+    {
+        if (!class_exists(Dompdf::class) || !class_exists(Options::class)) {
+            $dompdfAutoload = __DIR__ . '/../dompdf/vendor/autoload.php';
+            if (!is_file($dompdfAutoload)) {
+                throw new RuntimeException('No se encontró el autoloader de Dompdf en ' . $dompdfAutoload);
+            }
+            require_once $dompdfAutoload;
+        }
+
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('defaultFont', 'DejaVu Sans');
+
+        return new Dompdf($options);
     }
 
     private function normalizarNumero($valor): float

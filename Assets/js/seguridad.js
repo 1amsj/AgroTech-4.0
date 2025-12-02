@@ -286,6 +286,7 @@ $("#descripcion1").on("keyup", function() {
             check("modificar_proveedores", "#64");
             check("eliminar_proveedores", "#65");
             check("consultar_proveedores", "#66");
+            check("generar_reportes", "#75");
             
 
 
