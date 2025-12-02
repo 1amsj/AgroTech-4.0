@@ -37,103 +37,121 @@
                     </a>
 
                     <?php
-                        if ($nivel == "1") {
-                    ?>
-                    <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-chart-bar me-3"></i>
-                        <span class="hide-on-collapse">Inventario</span>
-                    </a>
-                    <a href="?pagina=seguridad" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-box me-3"></i>
-                        <span class="hide-on-collapse">Seguridad</span>
-                    </a>
-                    <a href="?pagina=bitacora" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">Bitacora</span>
-                    </a>
-                    <a href="?pagina=reportes" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">Reportes</span>
-                    </a>
-                    <a href="?pagina=destinatario" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">Destinatarios</span>
-                    </a>
-                    <a href="?pagina=proveedor" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">Proveedores</span>
-                    </a>
-                    <a href="?pagina=usuario" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">Usuarios</span>
-                    </a>
-                    <a href="?pagina=logout" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">Cerrar Sesión</span>
-                </a>
-                </div>
-                <?php
+                    if ($nivel == "1") {
+                        ?>
+                        <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3">
+                            <i class="fas fa-boxes-stacked me-3"></i>
+                            <span class="hide-on-collapse">Inventario</span>
+                        </a>
+
+                        <a href="?pagina=seguridad" class="sidebar-link text-decoration-none p-3">
+                            <i class="fas fa-shield-halved me-3"></i>
+                            <span class="hide-on-collapse">Seguridad</span>
+                        </a>
+
+                        <a href="?pagina=bitacora" class="sidebar-link text-decoration-none p-3">
+                            <i class="fas fa-book me-3"></i>
+                            <span class="hide-on-collapse">Bitácora</span>
+                        </a>
+
+                        <a href="?pagina=reportes" class="sidebar-link text-decoration-none p-3">
+                            <i class="fas fa-chart-line me-3"></i>
+                            <span class="hide-on-collapse">Reportes</span>
+                        </a>
+
+                        <a href="?pagina=destinatario" class="sidebar-link text-decoration-none p-3">
+                            <i class="fas fa-users-between-lines me-3"></i>
+                            <span class="hide-on-collapse">Destinatarios</span>
+                        </a>
+
+                        <a href="?pagina=proveedor" class="sidebar-link text-decoration-none p-3">
+                            <i class="fas fa-truck-field me-3"></i>
+                            <span class="hide-on-collapse">Proveedores</span>
+                        </a>
+
+                        <a href="?pagina=usuario" class="sidebar-link text-decoration-none p-3">
+                            <i class="fas fa-user-gear me-3"></i>
+                            <span class="hide-on-collapse">Usuarios</span>
+                        </a>
+
+                        <a href="?pagina=logout" class="sidebar-link text-decoration-none p-3">
+                            <i class="fas fa-right-from-bracket me-3"></i>
+                            <span class="hide-on-collapse">Cerrar Sesión</span>
+                        </a>
+
+                    </div>
+                    <?php
                     } else if ($nivel == "2") { ?>
-                    <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-chart-bar me-3"></i>
-                        <span class="hide-on-collapse">Inventario</span>
-                    </a>
-                    <a href="?pagina=proveedor" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">Proveedores</span>
-                    </a>
-                    <a href="?pagina=destinatario" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">Destinatario</span>
-                    </a>
-                    <a href="?pagina=logout" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">Cerrar Sesión</span>
-                    </a>
-                <?php
+                        <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3">
+                            <i class="fas fa-boxes-stacked me-3"></i>
+                            <span class="hide-on-collapse">Inventario</span>
+                        </a>
+                        <a href="?pagina=proveedor" class="sidebar-link text-decoration-none p-3">
+                            <i class="fas fa-truck-field me-3"></i>
+                            <span class="hide-on-collapse">Proveedores</span>
+                        </a>
+                        <a href="?pagina=destinatario" class="sidebar-link text-decoration-none p-3">
+                            <i class="fas fa-users-between-lines me-3"></i>
+                            <span class="hide-on-collapse">Destinatario</span>
+                        </a>
+                        <a href="?pagina=logout" class="sidebar-link text-decoration-none p-3">
+                            <i class="fas fa-right-from-bracket me-3"></i>
+                            <span class="hide-on-collapse">Cerrar Sesión</span>
+                        </a>
+                    <?php
                     } else if ($nivel == "3") { ?>
-                    <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-chart-bar me-3"></i>
-                        <span class="hide-on-collapse">Inventario</span>
-                    </a>
-                    <a href="?pagina=seguridad" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-box me-3"></i>
-                        <span class="hide-on-collapse">Seguridad</span>
-                    </a>
-                    <a href="#" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-users me-3"></i>
-                        <span class="hide-on-collapse">Bitacora</span>
-                    </a>
-                    <a href="?pagina=reportes" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">Reportes</span>
-                    </a>
-                    <a href="?pagina=destinatario" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">Destinatarios</span>
-                    </a>
-                    <a href="?pagina=proveedor" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">Proveedores</span>
-                    </a>
-                    <a href="?pagina=usuario" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">Usuarios</span>
-                    </a>
-                    <a href="?pagina=logout" class="sidebar-link text-decoration-none p-3">
-                        <i class="fas fa-gear me-3"></i>
-                        <span class="hide-on-collapse">Cerrar Sesión</span>
-                </a>
-                    
-                <?php
+                            <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3">
+                                <i class="fas fa-boxes-stacked me-3"></i>
+                                <span class="hide-on-collapse">Inventario</span>
+                            </a>
+
+                            <a href="?pagina=seguridad" class="sidebar-link text-decoration-none p-3">
+                                <i class="fas fa-shield-halved me-3"></i>
+                                <span class="hide-on-collapse">Seguridad</span>
+                            </a>
+
+                            <a href="?pagina=bitacora" class="sidebar-link text-decoration-none p-3">
+                                <i class="fas fa-book me-3"></i>
+                                <span class="hide-on-collapse">Bitácora</span>
+                            </a>
+
+                            <a href="?pagina=reportes" class="sidebar-link text-decoration-none p-3">
+                                <i class="fas fa-chart-line me-3"></i>
+                                <span class="hide-on-collapse">Reportes</span>
+                            </a>
+
+                            <a href="?pagina=destinatario" class="sidebar-link text-decoration-none p-3">
+                                <i class="fas fa-users-between-lines me-3"></i>
+                                <span class="hide-on-collapse">Destinatarios</span>
+                            </a>
+
+                            <a href="?pagina=proveedor" class="sidebar-link text-decoration-none p-3">
+                                <i class="fas fa-truck-field me-3"></i>
+                                <span class="hide-on-collapse">Proveedores</span>
+                            </a>
+
+                            <a href="?pagina=usuario" class="sidebar-link text-decoration-none p-3">
+                                <i class="fas fa-user-gear me-3"></i>
+                                <span class="hide-on-collapse">Usuarios</span>
+                            </a>
+
+                            <a href="?pagina=logout" class="sidebar-link text-decoration-none p-3">
+                                <i class="fas fa-right-from-bracket me-3"></i>
+                                <span class="hide-on-collapse">Cerrar Sesión</span>
+                            </a>
+
+
+                    <?php
                     }
-                ?>
+                    ?>
                 <div class="profile-section mt-auto p-4">
                     <div class="d-flex align-items-center">
                         <img src="https://randomuser.me/api/portraits/women/70.jpg" style="height:60px"
                             class="rounded-circle" alt="Profile">
                         <div class="ms-3 profile-info">
-                            <h6 class="text-white mb-0"><?php echo isset($_SESSION['usuario_nombre']) ? $_SESSION['usuario_nombre'] : ($_SESSION['usuario'] ?? ''); ?></h6>
+                            <h6 class="text-white mb-0">
+                                <?php echo isset($_SESSION['usuario_nombre']) ? $_SESSION['usuario_nombre'] : ($_SESSION['usuario'] ?? ''); ?>
+                            </h6>
                             <small class="text-muted">1</small>
                         </div>
                     </div>

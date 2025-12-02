@@ -9,6 +9,25 @@
     font-family: "ABeeZee", sans-serif;
 }
 
+.btn-standar1{
+    background-color: #49FD5B;
+    margin: 1vh;
+    border-radius: 1.6vh;
+    box-shadow: 0.6vh 0.6vh 1.2vh rgba(0, 0, 0, 0.2);
+    padding: 2vh 2vh;
+    font-size: 2vh;
+    border: none;
+    font-family: "ABeeZee", sans-serif;
+}
+
+.btn-standar1:hover{
+    transform: scale(1.05);
+    background-color: white;
+    border: black;
+    box-shadow: 0 4px 12px rgba(73, 253, 91, 0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
 
 .btn-standar:hover{
     transform: scale(1.05);
@@ -55,7 +74,7 @@ body {
 }
 
 
-.enviar, #enviar, #registrar, #modificar {
+.enviar, #enviar, #registrar, #modificar, #submitEnterInventory, #enviar1, #submitCreateInventory {
     color: black;
     font-weight: bold;
     border: none;
@@ -71,7 +90,7 @@ body {
     font-family: "ABeeZee", sans-serif;
 }
 
-#enviar:hover, .enviar:hover, #registrar:hover, #modificar:hover {
+#enviar:hover, .enviar:hover, #registrar:hover, #modificar:hover, #submitEnterInventory:hover, #enviar1:hover, #submitCreateInventory:hover {
     transform: scale(1.05);
     color: white;
     background-color: black;

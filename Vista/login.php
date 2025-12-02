@@ -88,8 +88,8 @@
 <body>
 
   <div class="botones">
-    <button type="button" class="btn-standar" onclick="window.location.href = 'https://inta.gob.ni/'">INTA</button>
-    <button type="button" class="btn-standar" id="login" data-toggle="modal" data-target="#loginModal">Iniciar
+    <button type="button" class="btn-standar1" onclick="window.location.href = 'https://inta.gob.ni/'">INTA</button>
+    <button type="button" class="btn-standar1" id="login" data-toggle="modal" data-target="#loginModal">Iniciar
       Sesión</button>
   </div>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
