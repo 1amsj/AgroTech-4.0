@@ -12,6 +12,7 @@ class Destinatario extends datos
 	private $nivel;
 
 
+	
 
 	public function set_id($valor)
 	{
