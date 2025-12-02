@@ -166,9 +166,9 @@ $("#contraceña3").on("keyup", function() {
             if(id == $(this).find("th:eq(0)").text()){
                 $("#userm").val(id);
           
-                $("#nombrem").val($(this).find("th:eq(2)").text());
+                $("#nombrem").val($(this).find("th:eq(1)").text());
                
-                $("#apellidom").val($(this).find("th:eq(3)").text());
+                $("#apellidom").val($(this).find("th:eq(2)").text());
      
            
                 
