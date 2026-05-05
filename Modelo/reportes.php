@@ -391,3 +391,14 @@ class reportes extends datos
         return number_format((float) $limpio, $decimales, '.', ',');
     }
 }
+
+function encriptar($dato) {
+    $clave = "clave_secreta_123";
+    $iv = substr(hash('sha256', $clave), 0, 16);
+    return openssl_encrypt($dato, 'AES-256-CBC', $clave, 0, $iv);
+}
+function desencriptar($dato) {
+    $clave = "clave_secreta_123";
+    $iv = substr(hash('sha256', $clave), 0, 16);
+    return openssl_decrypt($dato, 'AES-256-CBC', $clave, 0, $iv);
+}

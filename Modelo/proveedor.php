@@ -108,11 +108,12 @@ class Proveedor extends datos
 					:direccion,
 					:estado
 				)");
+				$telefono_encriptado = encriptar($this->telefono);	
 				$r->bindParam(':nombre', $this->nombre);
 				$r->bindParam(':apellido', $this->apellido);
 				$r->bindParam(':correo', $this->correo);
 				$r->bindParam(':descripcion', $this->descripcion);
-				$r->bindParam(':telefono', $this->telefono);
+				$r->bindParam(':telefono', $telefono_encriptado);
 				$r->bindParam(':direccion', $this->direccion);
 				$r->bindParam(':estado',$t);	
 				$r->execute();
@@ -154,12 +155,13 @@ class Proveedor extends datos
 						ID =:ID
                             
                         ");
+				$telefono_encriptado = encriptar($this->telefono);
 				$r->bindParam(':Nombre', $this->nombre);
 				$r->bindParam(':Apellido', $this->apellido);
 				$r->bindParam(':Correo', $this->correo);
 				$r->bindParam(':Descripcion', $this->descripcion);
 				$r->bindParam(':Estado', $t);
-				$r->bindParam(':Telefono', $this->telefono);
+				$r->bindParam(':Telefono', $telefono_encriptado);
 				$r->bindParam(':Direccion', $this->direccion);
 				// bind ID for WHERE clause
 				$r->bindParam(':ID',$this->id);
@@ -311,6 +313,17 @@ public function consultar($nivel1){
 }
 
 
+}
+
+function encriptar($dato) {
+    $clave = "clave_secreta_123";
+    $iv = substr(hash('sha256', $clave), 0, 16);
+    return openssl_encrypt($dato, 'AES-256-CBC', $clave, 0, $iv);
+}
+function desencriptar($dato) {
+    $clave = "clave_secreta_123";
+    $iv = substr(hash('sha256', $clave), 0, 16);
+    return openssl_decrypt($dato, 'AES-256-CBC', $clave, 0, $iv);
 }
 
 ?>

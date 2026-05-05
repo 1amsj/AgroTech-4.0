@@ -98,10 +98,11 @@ class usuarios extends datos{
                         :id_rol,
                         :id_cdt
                     )");
+                    $contraseña_encriptada = encriptar($this->contraseña);
                 $r->bindParam(':N_de_empleado',$this->id);	
                 $r->bindParam(':nombre',$this->nombre);	
                 $r->bindParam(':apellido',$this->apellido);	
-                $r->bindParam(':contrasena',$this->contraseña);	
+                $r->bindParam(':contrasena',$contraseña_encriptada);	
                 $r->bindParam(':estado',$t);	
                 $r->bindParam(':id_rol',$this->rol);	
                 $r->bindParam(':id_cdt',$this->cdt);	    
@@ -152,10 +153,12 @@ class usuarios extends datos{
 						N_de_empleado =:N_de_empleado 
                             
                         ");
+
+                        $contraseña_encriptada = encriptar($this->contraseña);
                         $r->bindParam(':N_de_empleado',$this->id);
                         $r->bindParam(':Nombre',$this->nombre);	
                         $r->bindParam(':Apellido',$this->apellido);
-                        $r->bindParam(':Contrasena',$this->contraseña);	
+                        $r->bindParam(':Contrasena',$contraseña_encriptada);	
                         $r->bindParam(':Estado',$t);	
                         $r->bindParam(':ID_rol',$this->rol);
                         $r->bindParam(':ID_CDT',$this->cdt);
@@ -403,6 +406,17 @@ public function consultar($nivel1){
     
 
 
+}
+
+function encriptar($dato) {
+    $clave = "clave_secreta_123";
+    $iv = substr(hash('sha256', $clave), 0, 16);
+    return openssl_encrypt($dato, 'AES-256-CBC', $clave, 0, $iv);
+}
+function desencriptar($dato) {
+    $clave = "clave_secreta_123";
+    $iv = substr(hash('sha256', $clave), 0, 16);
+    return openssl_decrypt($dato, 'AES-256-CBC', $clave, 0, $iv);
 }
 
 ?>

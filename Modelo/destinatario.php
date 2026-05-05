@@ -90,10 +90,12 @@ class Destinatario extends datos
 						:descripcion,
 						:telefono
 					)");
+
+				$telefono_encriptado = encriptar($this->telefono);
 				$r->bindValue(':nombre', $this->nombre, PDO::PARAM_STR);
 				$r->bindValue(':apellido', $this->apellido, PDO::PARAM_STR);
 				$r->bindValue(':descripcion', $this->descripcion, PDO::PARAM_STR);
-				$r->bindValue(':telefono', $this->telefono, PDO::PARAM_STR);
+				$r->bindValue(':telefono', $telefono_encriptado, PDO::PARAM_STR);
 				$r->execute();
 				$this->bitacora("Se registro un destinatario", "destinatario", $this->nivel);
 
@@ -127,10 +129,13 @@ class Destinatario extends datos
 					ID =:ID
                             
                         ");
+
+				$telefono_encriptado = encriptar($this->telefono);
+
 				$r->bindValue(':Nombre', $this->nombre, PDO::PARAM_STR);
 				$r->bindValue(':Apellido', $this->apellido, PDO::PARAM_STR);
 				$r->bindValue(':Descripcion', $this->descripcion, PDO::PARAM_STR);
-				$r->bindValue(':Telefono', $this->telefono, PDO::PARAM_STR);
+				$r->bindValue(':Telefono', $telefono_encriptado, PDO::PARAM_STR);
 				$r->bindValue(':ID', $this->id, PDO::PARAM_INT);
 
 				$r->execute();
@@ -270,6 +275,19 @@ public function consultar($nivel1){
 }
 
 
+
 }
+
+function encriptar($dato) {
+    $clave = "clave_secreta_123";
+    $iv = substr(hash('sha256', $clave), 0, 16);
+    return openssl_encrypt($dato, 'AES-256-CBC', $clave, 0, $iv);
+}
+function desencriptar($dato) {
+    $clave = "clave_secreta_123";
+    $iv = substr(hash('sha256', $clave), 0, 16);
+    return openssl_decrypt($dato, 'AES-256-CBC', $clave, 0, $iv);
+}
+
 
 ?>
