@@ -15,6 +15,9 @@
     }
     ?>
 
+    <?php
+        $pagina_actual = isset($_GET['pagina']) ? $_GET['pagina'] : 'inicio';
+    ?>
 
 
     <?php
@@ -31,7 +34,7 @@
                 </div>
 
                 <div class="nav flex-column">
-                    <a href="#" class="sidebar-link active text-decoration-none p-3">
+                    <a href="?pagina=main" class="sidebar-link text-decoration-none p-3">
                         <i class="fas fa-home me-3"></i>
                         <span class="hide-on-collapse">Inicio</span>
                     </a>
@@ -39,37 +42,37 @@
                     <?php
                     if ($nivel == "1") {
                         ?>
-                        <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3">
+                        <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'inventario') ? 'active' : ''; ?>">
                             <i class="fas fa-boxes-stacked me-3"></i>
                             <span class="hide-on-collapse">Inventario</span>
                         </a>
 
-                        <a href="?pagina=seguridad" class="sidebar-link text-decoration-none p-3">
+                        <a href="?pagina=seguridad" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'seguridad') ? 'active' : ''; ?>">
                             <i class="fas fa-shield-halved me-3"></i>
                             <span class="hide-on-collapse">Seguridad</span>
                         </a>
 
-                        <a href="?pagina=bitacora" class="sidebar-link text-decoration-none p-3">
+                        <a href="?pagina=bitacora" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'bitacora') ? 'active' : ''; ?>">
                             <i class="fas fa-book me-3"></i>
                             <span class="hide-on-collapse">Bitácora</span>
                         </a>
 
-                        <a href="?pagina=reportes" class="sidebar-link text-decoration-none p-3">
+                        <a href="?pagina=reportes" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'reportes') ? 'active' : ''; ?>">
                             <i class="fas fa-chart-line me-3"></i>
                             <span class="hide-on-collapse">Reportes</span>
                         </a>
 
-                        <a href="?pagina=destinatario" class="sidebar-link text-decoration-none p-3">
+                        <a href="?pagina=destinatario" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'destinatario') ? 'active' : ''; ?>">
                             <i class="fas fa-users-between-lines me-3"></i>
                             <span class="hide-on-collapse">Destinatarios</span>
                         </a>
 
-                        <a href="?pagina=proveedor" class="sidebar-link text-decoration-none p-3">
+                        <a href="?pagina=proveedor" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'proveedor') ? 'active' : ''; ?>">
                             <i class="fas fa-truck-field me-3"></i>
                             <span class="hide-on-collapse">Proveedores</span>
                         </a>
 
-                        <a href="?pagina=usuario" class="sidebar-link text-decoration-none p-3">
+                        <a href="?pagina=usuario" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'usuario') ? 'active' : ''; ?>">
                             <i class="fas fa-user-gear me-3"></i>
                             <span class="hide-on-collapse">Usuarios</span>
                         </a>
@@ -82,15 +85,15 @@
                     </div>
                     <?php
                     } else if ($nivel == "2") { ?>
-                        <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3">
+                        <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'inventario') ? 'active' : ''; ?>">
                             <i class="fas fa-boxes-stacked me-3"></i>
                             <span class="hide-on-collapse">Inventario</span>
                         </a>
-                        <a href="?pagina=proveedor" class="sidebar-link text-decoration-none p-3">
+                        <a href="?pagina=proveedor" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'proveedor') ? 'active' : ''; ?>">
                             <i class="fas fa-truck-field me-3"></i>
                             <span class="hide-on-collapse">Proveedores</span>
                         </a>
-                        <a href="?pagina=destinatario" class="sidebar-link text-decoration-none p-3">
+                        <a href="?pagina=destinatario" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'destinatario') ? 'active' : ''; ?>">
                             <i class="fas fa-users-between-lines me-3"></i>
                             <span class="hide-on-collapse">Destinatario</span>
                         </a>
@@ -100,42 +103,42 @@
                         </a>
                     <?php
                     } else if ($nivel == "3") { ?>
-                            <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3">
+                            <a href="?pagina=inventario" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'inventario') ? 'active' : ''; ?>|">
                                 <i class="fas fa-boxes-stacked me-3"></i>
                                 <span class="hide-on-collapse">Inventario</span>
                             </a>
 
-                            <a href="?pagina=seguridad" class="sidebar-link text-decoration-none p-3">
+                            <a href="?pagina=seguridad" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'seguridad') ? 'active' : ''; ?>">
                                 <i class="fas fa-shield-halved me-3"></i>
                                 <span class="hide-on-collapse">Seguridad</span>
                             </a>
 
-                            <a href="?pagina=bitacora" class="sidebar-link text-decoration-none p-3">
+                            <a href="?pagina=bitacora" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'bitacora') ? 'active' : ''; ?>">
                                 <i class="fas fa-book me-3"></i>
                                 <span class="hide-on-collapse">Bitácora</span>
                             </a>
 
-                            <a href="?pagina=reportes" class="sidebar-link text-decoration-none p-3">
+                            <a href="?pagina=reportes" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'reportes') ? 'active' : ''; ?>">
                                 <i class="fas fa-chart-line me-3"></i>
                                 <span class="hide-on-collapse">Reportes</span>
                             </a>
 
-                            <a href="?pagina=destinatario" class="sidebar-link text-decoration-none p-3">
+                            <a href="?pagina=destinatario" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'destinatario') ? 'active' : ''; ?>">
                                 <i class="fas fa-users-between-lines me-3"></i>
                                 <span class="hide-on-collapse">Destinatarios</span>
                             </a>
 
-                            <a href="?pagina=proveedor" class="sidebar-link text-decoration-none p-3">
+                            <a href="?pagina=proveedor" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'proveedor') ? 'active' : ''; ?>">
                                 <i class="fas fa-truck-field me-3"></i>
                                 <span class="hide-on-collapse">Proveedores</span>
                             </a>
 
-                            <a href="?pagina=usuario" class="sidebar-link text-decoration-none p-3">
+                            <a href="?pagina=usuario" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'usuario') ? 'active' : ''; ?>">
                                 <i class="fas fa-user-gear me-3"></i>
                                 <span class="hide-on-collapse">Usuarios</span>
                             </a>
 
-                            <a href="?pagina=logout" class="sidebar-link text-decoration-none p-3">
+                            <a href="?pagina=logout" class="sidebar-link text-decoration-none p-3 <?php echo ($pagina_actual == 'logout') ? 'active' : ''; ?>">
                                 <i class="fas fa-right-from-bracket me-3"></i>
                                 <span class="hide-on-collapse">Cerrar Sesión</span>
                             </a>

@@ -242,10 +242,11 @@ public function consultar($nivel1){
            $respuesta="";
 
 			foreach($resultado as $r){
+				$telefono = desencriptar($r['Telefono']);
 				$respuesta .= '<tr data-id="' . $r['ID'] . '" data-nombre="' . htmlspecialchars($r['Nombre'], ENT_QUOTES, 'UTF-8') . '" data-apellido="' . htmlspecialchars($r['Apellido'], ENT_QUOTES, 'UTF-8') . '" data-telefono="' . htmlspecialchars((string)$r['Telefono'], ENT_QUOTES, 'UTF-8') . '" data-descripcion="' . htmlspecialchars($r['Descripcion'], ENT_QUOTES, 'UTF-8') . '">';
 				$respuesta .= '<td>' . htmlspecialchars($r['Nombre'], ENT_QUOTES, 'UTF-8') . '</td>';
 				$respuesta .= '<td>' . htmlspecialchars($r['Apellido'], ENT_QUOTES, 'UTF-8') . '</td>';
-				$respuesta .= '<td>' . htmlspecialchars((string)$r['Telefono'], ENT_QUOTES, 'UTF-8') . '</td>';
+				$respuesta .= '<td>' . htmlspecialchars($telefono, ENT_QUOTES, 'UTF-8') . '</td>';
 				$respuesta .= '<td>' . htmlspecialchars($r['Descripcion'], ENT_QUOTES, 'UTF-8') . '</td>';
 				if (in_array("modificar_destinatario", $nivel1)) {
 					$respuesta .= '<td class="text-nowrap"><button type="button" class="btn-modificar btn-sm js-edit-destinatario" data-toggle="modal" data-target="#editDestinatarioModal">Modificar</button></td>';

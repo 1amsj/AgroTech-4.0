@@ -13,7 +13,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #49FD5B;
+    background-color: #49fd5b8d;
     transition: all 0.3s ease;
     overflow-y: auto;      
     overflow-x: hidden;     

@@ -271,12 +271,13 @@ public function consultar($nivel1){
            $respuesta="";
 
             foreach($resultado as $r){
+				$telefono = desencriptar($r['Telefono']);
                 $respuesta= $respuesta.'<tr>';
 				$respuesta=$respuesta."<th style='display:none'>".$r['ID']."</th>";
                 $respuesta=$respuesta."<th>".$r['Nombre']."</th>";
                 $respuesta=$respuesta."<th>".$r['Apellido']."</th>";
                 $respuesta=$respuesta."<th>".$r['Correo']."</th>";
-                $respuesta=$respuesta."<th>".$r['Telefono']."</th>";
+                $respuesta=$respuesta."<th>".$telefono."</th>";
 				$respuesta=$respuesta."<th>".$r['Descripcion']."</th>";
                 $respuesta=$respuesta."<th>".$r['Direccion']."</th>";
 		
