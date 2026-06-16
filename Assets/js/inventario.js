@@ -121,7 +121,6 @@ $(function () {
 		$("#inventoryProductDate").text(selectedProduct.date);
 		$("#inventoryProductQuantity").text(selectedProduct.stock);
 		$("#inventoryProductPrice").text(formatDecimal(selectedProduct.price));
-
 		$detailModal.modal("show");
 	});
 
@@ -130,11 +129,11 @@ $(function () {
 			return;
 		}
 		$("#editProductId").val(selectedProduct.id);
-		$("#editProductName").val(selectedProduct.name);
+		$("#editProductName").val(selectedProduct.ProductName);
 		$("#editProductCategory").val(selectedProduct.category);
-		$("#editProductDate").val(normalizeDateInput(selectedProduct.date));
+		$("#editProductDate").val(selectedProduct.date);
 		$("#editProductStock").val(selectedProduct.stock);
-		$("#editProductPrice").val(formatForInput(selectedProduct.price));
+		$("#editProductPrice").val(selectedProduct.price);
 		$editModal.modal("show");
 	});
 
@@ -189,10 +188,9 @@ $(function () {
 	});
 
 	$("#submitEditInventory").on("click", function () {
-		if (!selectedProduct) {
-			return;
-		}
-		$editForm.trigger("submit");
+    if (!selectedProduct) return;
+
+    $("#inventoryEditForm").submit();
 	});
 
 	$("#submitDeleteInventory").on("click", function () {
@@ -337,4 +335,5 @@ $(function () {
 		const dateObj = new Date(parsed);
 		return dateObj.toISOString().slice(0, 10);
 	}
+
 });

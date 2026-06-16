@@ -1,5 +1,5 @@
 .btn-standar{
-    background-color: #49fd5b8d;
+    background-color: #2D6A4F;
     margin: 1vh;
     border-radius: 1.6vh;
     box-shadow: 0.6vh 0.6vh 1.2vh rgba(0, 0, 0, 0.2);
@@ -10,7 +10,7 @@
 }
 
 .btn-standar1{
-    background-color: #49fd5b8d;
+    background-color: #2D6A4F;
     margin: 1vh;
     border-radius: 1.6vh;
     box-shadow: 0.6vh 0.6vh 1.2vh rgba(0, 0, 0, 0.2);
@@ -46,7 +46,7 @@
 }
 
 body {
-
+    
     transform: translateX(-100px); 
     animation: slideIn 1s ease-out forwards;
 }
@@ -102,7 +102,7 @@ body {
 
 #modal-content, #modal-content1 {
     font-family: "Special Gothic", sans-serif;
-    background-color: #49fd5b8d;
+    background-color: #2D6A4F;
     border-radius: 1.6vh;
 }
 
@@ -162,7 +162,7 @@ body.no-scroll {
 }
 
 .agro-modal-content {
-    background: #49fd5b8d;
+    background: #F8F9FA;
     border: none;
     border-radius: 20px;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);

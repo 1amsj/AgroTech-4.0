@@ -55,8 +55,7 @@
         <table class="table table-bordered text-center align-middle" id="tabla">
           <thead>
             <tr>
-              <th>Nombre</th>
-              <th>Apellido</th>
+              <th>Nombre del proveedor</th>
               <th>Correo</th>
               <th>Telefono</th>
               <th>Dirección</th>
@@ -92,16 +91,10 @@
             <div class="col-md-8">
               <form id="f" method="post">
                 <div class="mb-3">
-                  <label for="user">Nombre</label>
+                  <label for="user">Nombre del proveedor</label>
                   <span id="snombre" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="nombre" name="nombre"
                     placeholder="Escriba el nombre del proveedor" autofocus>
-                </div>
-                <div class="mb-3">
-                  <label for="password">Apellido</label>
-                  <span id="sapellido" class="text-danger"></span>
-                  <input class="form-control input-standar" type="text" id="apellido" name="apellido"
-                    placeholder="Escriba el apellido del proveedor" autofocus>
                 </div>
                 <div class="mb-3">
                   <label for="email">Correo</label>
@@ -125,7 +118,7 @@
                   <label for="description">Descripción</label>
                   <span id="sdescripcion" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="descripcion" name="descripcion"
-                    placeholder="Introducir n° de empleado" autofocus>
+                    placeholder="Introducir descripción" autofocus>
                   <input class="form-control input-standar" style="display: none;" type="text" id="accion" name="accion" value="registrar">  
                 </div>
                 <button type="button" class="btn w-100" id="enviar">Registrar</button>
@@ -154,17 +147,11 @@
             <div class="col-md-8">
               <form id="f2" method="post">
                 <div class="mb-3">
-                  <label for="userm">Nombre</label>
+                  <label for="userm">Nombre del proveedor</label>
                   <span id="snombrem" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="nombrem" name="nombrem"
                     placeholder="Escriba su nombre" autofocus>
                     <input class="form-control input-standar" type="text" id="id" name="id" style="display:none;">
-                </div>
-                <div class="mb-3">
-                  <label for="passwordm">Apellido</label>
-                  <span id="sapellidom" class="text-danger"></span>
-                  <input class="form-control input-standar" type="text" id="apellidom" name="apellidom"
-                    placeholder="Escriba el apellido del proveedor" autofocus>
                 </div>
                 <div class="mb-3">
                   <label for="emailm">Correo</label>
@@ -188,7 +175,7 @@
                   <label for="descriptionm">Descripción</label>
                   <span id="sdescripcionm" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="descripcionm" name="descripcionm"
-                    placeholder="Introducir n° de empleado" autofocus>
+                    placeholder="Introducir descripción" autofocus>
                     <input class="form-control input-standar" style="display: none;" type="text" id="modificar" name="modificar" value="asdasd">
                 </div>
                 <button type="button" class="btn w-100" id="enviar1">Modificar</button>

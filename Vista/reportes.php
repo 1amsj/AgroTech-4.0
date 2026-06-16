@@ -125,17 +125,17 @@ if (!function_exists('agrotech_reportes_format')) {
             <span>Cantidad total movilizada</span>
           </div>
           <div class="resumen-card ingresos">
-            <h3>Entradas (C$)</h3>
+            <h3>Entradas ($)</h3>
             <p><?php echo number_format($resumen['total_entradas'], 2, '.', ','); ?></p>
             <span>Valor de entradas</span>
           </div>
           <div class="resumen-card egresos">
-            <h3>Salidas (C$)</h3>
+            <h3>Salidas ($)</h3>
             <p><?php echo number_format($resumen['total_salidas'], 2, '.', ','); ?></p>
             <span>Valor de salidas</span>
           </div>
           <div class="resumen-card balance">
-            <h3>Balance (C$)</h3>
+            <h3>Balance ($)</h3>
             <p><?php echo number_format($resumen['balance'], 2, '.', ','); ?></p>
             <span>Diferencia entre entradas y salidas</span>
           </div>

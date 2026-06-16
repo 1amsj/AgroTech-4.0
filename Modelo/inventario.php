@@ -82,28 +82,34 @@ class Inventario extends datos
 
 	public function obtenerProveedoresActivos(): array
 	{
-		$co = $this->conecta();
-		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "SELECT ID, CONCAT(COALESCE(Nombre, ''), ' ', COALESCE(Apellido, '')) AS nombre
-				FROM proveedor WHERE Estado = 1 ORDER BY nombre ASC";
+    $co = $this->conecta();
+    $co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-		$stmt = $co->prepare($sql);
-		$stmt->execute();
+    $sql = "SELECT ID, Nombre_proveedor, Apellido
+            FROM proveedor
+            ORDER BY Nombre_proveedor ASC";
 
-		$proveedores = [];
-		foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
-			$nombre = trim((string) $row['nombre']);
-			if ($nombre === '') {
-				$nombre = 'Proveedor #' . (int) $row['ID'];
-			}
-			$proveedores[] = [
-				'id' => (string) $row['ID'],
-				'nombre' => $nombre
-			];
-		}
+    $stmt = $co->prepare($sql);
+    $stmt->execute();
 
-		return $proveedores;
-	}
+    $proveedores = [];
+
+    foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
+
+        $nombre = trim($row['Nombre_proveedor'] . ' ' . $row['Apellido']);
+
+        if ($nombre === '') {
+            $nombre = 'Proveedor #' . (int)$row['ID'];
+        }
+
+        $proveedores[] = [
+            'id' => (string) $row['ID'],
+            'nombre' => $nombre
+        ];
+    }
+
+    return $proveedores;
+}
 
 	public function obtenerDestinatariosActivos(): array
 	{
@@ -145,12 +151,27 @@ class Inventario extends datos
 				$nombre = htmlspecialchars($r['Nombre'], ENT_QUOTES, 'UTF-8');
 				$fecha = htmlspecialchars($r['Fecha'], ENT_QUOTES, 'UTF-8');
 				$categoria = htmlspecialchars($r['Categoria'], ENT_QUOTES, 'UTF-8');
-				$cantidad = htmlspecialchars($r['Cantidad'], ENT_QUOTES, 'UTF-8');
+				$cantidad = number_format((float)$r['Cantidad'], 0) . ' cajas';
+					if ($r['Cantidad'] <= 10) {
+						$estadoStock = "🔴 Stock crítico";
+					} elseif ($r['Cantidad'] <= 30) {
+						$estadoStock = "🟡 Stock bajo";
+					} else {
+						$estadoStock = "🟢 Disponible";
+					}
 				$precio = htmlspecialchars($r['precio'] ?? '', ENT_QUOTES, 'UTF-8');
 
 				$respuesta .= '
 				<div class="ag-courses_item">
-					<a href="#" class="ag-courses-item_link" data-product-id="' . (int) $r['ID'] . '" data-product-name="' . $nombre . '" data-product-category="' . $categoria . '" data-product-date="' . $fecha . '" data-product-stock="' . $cantidad . '" data-product-price="' . $precio . '">
+					<a href="#" class="ag-courses-item_link"
+						data-product-id="' . (int)$r['ID'] . '"
+						data-product-name="' . $nombre . '"
+						data-product-category="' . $categoria . '"
+						data-product-date="' . $fecha . '"
+						data-product-stock="' . $cantidad . '"
+						data-product-price="' . $precio . '"
+						data-product-estado="' . $estadoStock . '">
+					    
 						<div class="ag-courses-item_bg"></div>
 
 						<div class="ag-courses-item_title">
@@ -161,6 +182,19 @@ class Inventario extends datos
 						Fecha:
 						<span class="ag-courses-item_date">
 							' . $fecha . '
+						</span>
+						</div>
+						<div class="ag-courses-item_date-box">
+						Stock:
+						<span class="ag-courses-item_date">
+							' . $cantidad . '
+						</span>
+						</div>
+
+						<div class="ag-courses-item_date-box">
+						Estado:
+						<span class="ag-courses-item_date">
+							' . $estadoStock . '
 						</span>
 						</div>
 					</a>
@@ -175,10 +209,30 @@ class Inventario extends datos
 	}
 
 	private function registrar1()
-	{
-		if ($this->nombre === '') {
-			return 'El nombre es obligatorio';
-		}
+{
+    if ($this->nombre === '') {
+        return 'El nombre es obligatorio';
+    }
+
+    $co = $this->conecta();
+    $co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Validar que el producto no exista
+    $verificar = $co->prepare(
+        "SELECT ID
+         FROM inventario
+         WHERE UPPER(Nombre) = UPPER(:nombre)
+         AND Estado = 1"
+    );
+
+    $verificar->bindValue(':nombre', $this->nombre, PDO::PARAM_STR);
+    $verificar->execute();
+
+    if ($verificar->fetch()) {
+        return 'El producto ya se encuentra registrado';
+    }
+
+    $co->beginTransaction();
 
 		$co = $this->conecta();
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -483,17 +537,6 @@ class Inventario extends datos
 
 		return null;
 	}
-}
-
-function encriptar($dato) {
-    $clave = "clave_secreta_123";
-    $iv = substr(hash('sha256', $clave), 0, 16);
-    return openssl_encrypt($dato, 'AES-256-CBC', $clave, 0, $iv);
-}
-function desencriptar($dato) {
-    $clave = "clave_secreta_123";
-    $iv = substr(hash('sha256', $clave), 0, 16);
-    return openssl_decrypt($dato, 'AES-256-CBC', $clave, 0, $iv);
 }
 
 ?>

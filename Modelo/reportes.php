@@ -29,7 +29,7 @@ class reportes extends datos
         $co = $this->conecta();
         $co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT N_de_empleado AS id, CONCAT(Nombre, ' ', Apellido) AS nombre, Estado FROM usuario ORDER BY nombre ASC";
+        $sql = "SELECT N_de_empleado AS id, CONCAT(Nombre, ' ') AS nombre, Estado FROM usuario ORDER BY nombre ASC";
         $stmt = $co->prepare($sql);
         $stmt->execute();
 
@@ -92,8 +92,20 @@ class reportes extends datos
                         WHEN u.N_de_empleado IS NULL THEN CONCAT('Usuario ', m.id_usuario)
                         ELSE NULLIF(TRIM(CONCAT(COALESCE(u.Nombre, ''), ' ', COALESCE(u.Apellido, ''))), '')
                     END AS usuario,
-                    GROUP_CONCAT(DISTINCT NULLIF(TRIM(CONCAT(COALESCE(d.Nombre, ''), ' ', COALESCE(d.Apellido, ''))), '') SEPARATOR ', ') AS destinatarios,
-                    GROUP_CONCAT(DISTINCT NULLIF(TRIM(CONCAT(COALESCE(p.Nombre, ''), ' ', COALESCE(p.Apellido, ''))), '') SEPARATOR ', ') AS proveedores
+                    GROUP_CONCAT(
+                        DISTINCT NULLIF(
+                            TRIM(CONCAT(COALESCE(d.Nombre, ''), ' ', COALESCE(d.Apellido, ''))),
+                            ''
+                        )
+                        SEPARATOR ', '
+                    ) AS destinatarios,
+                    GROUP_CONCAT(
+                        DISTINCT NULLIF(
+                            TRIM(CONCAT(COALESCE(p.Nombre_proveedor, ''), ' ', COALESCE(p.Apellido, ''))),
+                            ''
+                        )
+                        SEPARATOR ', '
+                    ) AS proveedores
                 FROM movimiento m
                 LEFT JOIN inventario i ON i.ID = m.id_inventario
                 LEFT JOIN usuario u ON u.N_de_empleado = m.id_usuario
@@ -390,15 +402,4 @@ class reportes extends datos
 
         return number_format((float) $limpio, $decimales, '.', ',');
     }
-}
-
-function encriptar($dato) {
-    $clave = "clave_secreta_123";
-    $iv = substr(hash('sha256', $clave), 0, 16);
-    return openssl_encrypt($dato, 'AES-256-CBC', $clave, 0, $iv);
-}
-function desencriptar($dato) {
-    $clave = "clave_secreta_123";
-    $iv = substr(hash('sha256', $clave), 0, 16);
-    return openssl_decrypt($dato, 'AES-256-CBC', $clave, 0, $iv);
 }

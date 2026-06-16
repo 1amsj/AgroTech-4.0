@@ -4,8 +4,7 @@ require_once('modelo/conexion.php');
 class Proveedor extends datos
 {
 
-	private $nombre;
-	private $apellido;
+	private $nombre_proveedor;
 	private $telefono;
 	private $correo;
 	private $descripcion;
@@ -18,7 +17,7 @@ class Proveedor extends datos
 	public function set_nombre($valor)
 	{
 
-		$this->nombre = $valor;
+		$this->nombre_proveedor = $valor;
 
 	}
 	public function set_id($valor)
@@ -34,12 +33,6 @@ class Proveedor extends datos
 
 	}
 
-	public function set_apellido($valor)
-	{
-
-		$this->apellido = $valor;
-
-	}
 	public function set_telefono($valor)
 	{
 
@@ -92,28 +85,24 @@ class Proveedor extends datos
 			try {
 				$t = "1";
 				$r = $co->prepare("INSERT INTO proveedor (
-					Nombre,
-					Apellido,
+					Nombre_proveedor,
 					Correo,
 					Descripcion,
 					Telefono,
 					Direccion,
 					Estado
 				) VALUES (
-					:nombre,
-					:apellido,
+					:nombre_proveedor,
 					:correo,
 					:descripcion,
 					:telefono,
 					:direccion,
 					:estado
 				)");
-				$telefono_encriptado = encriptar($this->telefono);	
-				$r->bindParam(':nombre', $this->nombre);
-				$r->bindParam(':apellido', $this->apellido);
+				$r->bindParam(':nombre_proveedor', $this->nombre_proveedor);
 				$r->bindParam(':correo', $this->correo);
 				$r->bindParam(':descripcion', $this->descripcion);
-				$r->bindParam(':telefono', $telefono_encriptado);
+				$r->bindParam(':telefono', $this->telefono);
 				$r->bindParam(':direccion', $this->direccion);
 				$r->bindParam(':estado',$t);	
 				$r->execute();
@@ -144,8 +133,7 @@ class Proveedor extends datos
 				$r = $co->prepare("Update proveedor set 
                             
                         ID=:ID,
-                        Nombre=:Nombre,
-                        Apellido=:Apellido,
+                        Nombre_proveedor = :nombre_proveedor,
 						Correo=:Correo,
                         Descripcion=:Descripcion,
                         Estado=:Estado,
@@ -155,13 +143,11 @@ class Proveedor extends datos
 						ID =:ID
                             
                         ");
-				$telefono_encriptado = encriptar($this->telefono);
-				$r->bindParam(':Nombre', $this->nombre);
-				$r->bindParam(':Apellido', $this->apellido);
+				$r->bindParam(':nombre_proveedor', $this->nombre_proveedor);
 				$r->bindParam(':Correo', $this->correo);
 				$r->bindParam(':Descripcion', $this->descripcion);
 				$r->bindParam(':Estado', $t);
-				$r->bindParam(':Telefono', $telefono_encriptado);
+				$r->bindParam(':Telefono', $this->telefono);
 				$r->bindParam(':Direccion', $this->direccion);
 				// bind ID for WHERE clause
 				$r->bindParam(':ID',$this->id);
@@ -271,13 +257,11 @@ public function consultar($nivel1){
            $respuesta="";
 
             foreach($resultado as $r){
-				$telefono = desencriptar($r['Telefono']);
                 $respuesta= $respuesta.'<tr>';
 				$respuesta=$respuesta."<th style='display:none'>".$r['ID']."</th>";
-                $respuesta=$respuesta."<th>".$r['Nombre']."</th>";
-                $respuesta=$respuesta."<th>".$r['Apellido']."</th>";
+  				$respuesta = $respuesta."<th>".$r['Nombre_proveedor']."</th>";
                 $respuesta=$respuesta."<th>".$r['Correo']."</th>";
-                $respuesta=$respuesta."<th>".$telefono."</th>";
+                $respuesta=$respuesta."<th>".$r['Telefono']."</th>";
 				$respuesta=$respuesta."<th>".$r['Descripcion']."</th>";
                 $respuesta=$respuesta."<th>".$r['Direccion']."</th>";
 		
@@ -314,17 +298,6 @@ public function consultar($nivel1){
 }
 
 
-}
-
-function encriptar($dato) {
-    $clave = "clave_secreta_123";
-    $iv = substr(hash('sha256', $clave), 0, 16);
-    return openssl_encrypt($dato, 'AES-256-CBC', $clave, 0, $iv);
-}
-function desencriptar($dato) {
-    $clave = "clave_secreta_123";
-    $iv = substr(hash('sha256', $clave), 0, 16);
-    return openssl_decrypt($dato, 'AES-256-CBC', $clave, 0, $iv);
 }
 
 ?>

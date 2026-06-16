@@ -37,12 +37,10 @@ require_once("modelo/".$pagina.".php");
 
 			$o->set_nombre($_POST['nombre'] ?? '');
 
-			$o->set_apellido($_POST['apellido'] ?? '');
-
 
 			$o->set_telefono($_POST['telefono'] ?? '');
 
-
+			
 			$o->set_descripcion($_POST['descripcion'] ?? '');
 
 			$o->set_nivel($nivel);
@@ -60,8 +58,6 @@ require_once("modelo/".$pagina.".php");
 
 			$o->set_id($_POST['modificar']);
 			$o->set_nombre($_POST['nombrem'] ?? '');
-
-			$o->set_apellido($_POST['apellidom'] ?? '');
 
 			$o->set_telefono($_POST['telefonom'] ?? '');
 		

@@ -34,24 +34,12 @@ $(document).ready(function() {
             $(this), $("#snombre"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
-    $("#apellido").on("keypress", function(e) {
-        validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
-
-    });
-
-    $("#apellido").on("keyup", function() {
-        validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
-            $(this), $("#sapellido"), "Solo letras (incluye acentos) y espacios 4-26");
+    $("#correo").on("keypress", function(e) {
+    validarkeypress(/^[a-zA-Z0-9@._\sñÑ]$/, e);
     });
 
     $("#correo").on("keypress", function(e) {
-        validarkeypress(/^[0-9A-Za-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1\u0040]$/, e);
-
-    });
-
-    $("#correo").on("keyup", function() {
-        validarkeyup(/^[0-9a-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1]{4,26}[\u0040]{1}[a-z]{5,7}[\u002E]{1}[a-z]{3}$/,
-            $(this), $("#scorreo"), "El formato puede ser A-Z a-z 0-9 ejemplo: nombreUsuari+@+servidor+.+dominio");
+    validarkeypress(/^[a-zA-Z0-9@._\sñÑ]$/, e);
     });
 
     $("#telefono").on("keypress", function(e) {
@@ -64,23 +52,35 @@ $(document).ready(function() {
             $(this), $("#stelefono"), "Solo números y guiones 4-26");
     });
 
-    $("#direccion").on("keypress", function(e) {
-        validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]*$/, e);
-
+    $("#direccionm").on("keypress", function(e) {
+    validarkeypress(
+        /[0-9A-Za-zÁÉÍÓÚáéíóúÑñ\s.,\-\/#º*]/,
+        e
+    );
     });
 
-    $("#direccion").on("keyup", function() {
-        validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
-            $(this), $("#sdireccion"), "Letras, números, acentos y .,-/#º* 3-120");
+    $("#direccionm").on("keyup", function() {
+    validarkeyup(
+        /^[0-9A-Za-zÁÉÍÓÚáéíóúÑñ\s.,\-\/#º*]{3,120}$/,
+        $(this),
+        $("#sdireccionm"),
+        "Letras, números, acentos y .,-/#º* 3-120"
+    );
     });
-    $("#descripcion").on("keypress", function(e) {
-        validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]*$/, e);
-
+    $("#descripcionm").on("keypress", function(e) {
+    validarkeypress(
+        /[0-9A-Za-zÁÉÍÓÚáéíóúÑñ\s.,\-\/#º*]/,
+        e
+    );
     });
 
-    $("#descripcion").on("keyup", function() {
-        validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
-            $(this), $("#sdescripcion"), "Letras, números, acentos y .,-/#º* 3-120");
+    $("#descripcionm").on("keyup", function() {
+    validarkeyup(
+        /^[0-9A-Za-zÁÉÍÓÚáéíóúÑñ\s.,\-\/#º*]{3,120}$/,
+        $(this),
+        $("#sdescripcionm"),
+        "Letras, números, acentos y .,-/#º* 3-120"
+    );
     });
    
    
@@ -94,24 +94,12 @@ $(document).ready(function() {
             $(this), $("#snombrem"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
-    $("#apellidom").on("keypress", function(e) {
-        validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
-
+    $("#correo").on("keypress", function(e) {
+    validarkeypress(/^[a-zA-Z0-9@._\sñÑ]$/, e);
     });
 
-    $("#apellidom").on("keyup", function() {
-        validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
-            $(this), $("#sapellidom"), "Solo letras (incluye acentos) y espacios 4-26");
-    });
-
-    $("#correom").on("keypress", function(e) {
-        validarkeypress(/^[0-9A-Za-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1\u0040]$/, e);
-
-    });
-
-    $("#correom").on("keyup", function() {
-        validarkeyup(/^[0-9a-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1]{4,26}[\u0040]{1}[a-z]{5,7}[\u002E]{1}[a-z]{3}$/,
-            $(this), $("#scorreom"), "El formato puede ser A-Z a-z 0-9 ejemplo: nombreUsuari+@+servidor+.+dominio");
+    $("#correo").on("keypress", function(e) {
+    validarkeypress(/^[a-zA-Z0-9@._\sñÑ]$/, e);
     });
 
     $("#telefonom").on("keypress", function(e) {
@@ -125,22 +113,34 @@ $(document).ready(function() {
     });
 
     $("#direccionm").on("keypress", function(e) {
-        validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]*$/, e);
-
+    validarkeypress(
+        /[0-9A-Za-zÁÉÍÓÚáéíóúÑñ\s.,\-\/#º*]/,
+        e
+    );
     });
 
     $("#direccionm").on("keyup", function() {
-        validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
-            $(this), $("#sdireccionm"), "Letras, números, acentos y .,-/#º* 3-120");
+    validarkeyup(
+        /^[0-9A-Za-zÁÉÍÓÚáéíóúÑñ\s.,\-\/#º*]{3,120}$/,
+        $(this),
+        $("#sdireccionm"),
+        "Letras, números, acentos y .,-/#º* 3-120"
+    );
     });
     $("#descripcionm").on("keypress", function(e) {
-        validarkeypress(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]*$/, e);
-
+    validarkeypress(
+        /[0-9A-Za-zÁÉÍÓÚáéíóúÑñ\s.,\-\/#º*]/,
+        e
+    );
     });
 
     $("#descripcionm").on("keyup", function() {
-        validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
-            $(this), $("#sdescripcionm"), "Letras, números, acentos y .,-/#º* 3-120");
+    validarkeyup(
+        /^[0-9A-Za-zÁÉÍÓÚáéíóúÑñ\s.,\-\/#º*]{3,120}$/,
+        $(this),
+        $("#sdescripcionm"),
+        "Letras, números, acentos y .,-/#º* 3-120"
+    );
     });
 
   
@@ -154,7 +154,6 @@ $(document).ready(function() {
           
                 $("#nombrem").val($(this).find("th:eq(1)").text());
                 $("#id").val($(this).find("th:eq(0)").text());
-                $("#apellidom").val($(this).find("th:eq(2)").text());
                 $("#correom").val($(this).find("th:eq(3)").text());
                 $("#telefonom").val($(this).find("th:eq(4)").text());
                 $("#direccionm").val($(this).find("th:eq(5)").text());
@@ -233,14 +232,11 @@ $(document).ready(function() {
             $("#snombre").text("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
             return false;
     
-        }else if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
-        $("#apellido"), $("#sapellido"), "Solo letras (incluye acentos) y espacios 4-26") == 0) {
-            $("#sapellido").text("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
-            return false;
-    
-        }else if (validarkeyup(/^[0-9a-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1]{4,26}[\u0040]{1}[a-z]{5,7}[\u002E]{1}[a-z]{3}$/,
-        $("#correo"), $("#scorreo"), "ejemplo@dominio.com") == 0) {
-            $("#scorreo").text("<p>ejemplo@dominio.com</p>");
+        }else if (validarkeyup(
+        /(^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$)|(^no disponible$)/i,
+        $("#correo"),$("#scorreo"),"ejemplo@dominio.com o no disponible") == 0) 
+        {
+            $("#scorreo").text("<p>ejemplo@dominio.com o no disponible</p>");
             return false;
     
         }else if (validarkeyup(/^[0-9-]{4,26}$/,
@@ -268,14 +264,11 @@ $(document).ready(function() {
             $("#snombrem").text("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
             return false;
     
-        }else if (validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
-        $("#apellidom"), $("#sapellidom"), "Solo letras (incluye acentos) y espacios 4-26") == 0) {
-            $("#sapellidom").text("<p>Solo letras (incluye acentos) y espacios 4-26</p>");
-            return false;
-    
-        }else if (validarkeyup(/^[0-9a-z\u002A\u002E\u00F1\u00D1\u00D1\u00F1]{4,26}[\u0040]{1}[a-z]{5,7}[\u002E]{1}[a-z]{3}$/,
-        $("#correom"), $("#scorreom"), "ejemplo@dominio.com") == 0) {
-            $("#scorreom").text("<p>ejemplo@dominio.com</p>");
+        }else if (validarkeyup(
+        /(^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$)|(^no disponible$)/i,
+        $("#correo"),$("#scorreo"),"ejemplo@dominio.com o no disponible") == 0) 
+        {
+            $("#scorreo").text("<p>ejemplo@dominio.com o no disponible</p>");
             return false;
     
         }else if (validarkeyup(/^[0-9-]{4,26}$/,
@@ -283,14 +276,14 @@ $(document).ready(function() {
             $("#stelefonom").text("<p>Solo números y guiones 4-26</p>");
             return false;
     
-        } else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
+        } else if (validarkeyup(/^[A-Za-z0-9ÁÉÍÓÚáéíóúÑñ\s.,\-\/#º*]{3,120}$/,
         $("#direccionm"), $("#sdireccionm"), "Letras, números, acentos y .,-/#º* 3-120") == 0) {
-            $("#sdireccionm").text("<p>Letras, números, acentos y .,-/#º* 3-120</p>");
+            $("#sdireccionm").text("Letras, números, acentos y .,-/#º* 3-120");
             return false;
     
-        }  else if (validarkeyup(/^[0-9A-Za-z\u00C0-\u017F\s\.,\-\/#º\*]{3,120}$/,
+        }  else if (validarkeyup(/^[A-Za-z0-9ÁÉÍÓÚáéíóúÑñ\s.,\-\/#º*]{3,120}$/,
         $("#descripcionm"), $("#sdescripcionm"), "Letras, números, acentos y .,-/#º* 3-120") == 0) {
-            $("#sdescripcionm").text("<p>Letras, números, acentos y .,-/#º* 3-120</p>");
+           $("#sdireccionm").text("Letras, números, acentos y .,-/#º* 3-120");
             return false;
     
         }         

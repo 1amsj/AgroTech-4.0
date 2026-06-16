@@ -96,9 +96,30 @@
                     placeholder="Escriba el stock actual">
                 </div>
                 <div class="mb-3">
-                  <label for="createProductPrice">Costo unitario</label>
-                  <input class="form-control input-standar" type="number" min="0" step="0.01" id="createProductPrice" name="precio"
-                    placeholder="Ingrese el costo unitario">
+                    <label for="createProductPrice">Costo unitario</label>
+                    <input class="form-control input-standar" type="number"
+                          min="0" step="0.01"
+                          id="createProductPrice"
+                          name="precio"
+                          placeholder="Ingrese el costo unitario">
+                </div>
+                <div class="mb-3">
+                    <label for="createProductUnit">Unidad de medida</label>
+
+                    <select class="form-control input-standar"
+                            id="createProductUnit"
+                            name="unidad">
+
+                        <option value="Caja">Caja</option>
+                        <option value="Kg">Kg</option>
+                        <option value="Libra">Libra</option>
+                        <option value="Unidad">Unidad</option>
+                        <option value="Litro">Litro</option>
+                        <option value="Saco">Saco</option>
+                        <option value="Bandeja">Bandeja</option>
+                        <option value="Docena">Docena</option>
+
+                    </select>
                 </div>
                 <div class ="mb-3">
                   <label for="createProductProvider">Proveedor</label>

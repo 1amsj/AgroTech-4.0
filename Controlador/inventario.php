@@ -1,11 +1,11 @@
 <?php 
-if (!is_file("modelo/".$pagina.".php")){
+if (!is_file("Modelo/".$pagina.".php")){
 	echo "Falta definir la clase " . $pagina;
 	exit;
 }
-require_once("modelo/".$pagina.".php");
+require_once("Modelo/".$pagina.".php");
 
-if (is_file("vista/".$pagina.".php")) {
+if (is_file("Vista/".$pagina.".php")) {
 	if (empty($_SESSION)) {
 		session_start();
 	}
@@ -21,13 +21,17 @@ if (is_file("vista/".$pagina.".php")) {
 	if (!empty($_POST)) {
 		if (!empty($_POST['accion']) && $_POST['accion'] === 'registrar') {
 			$o->set_nombre($_POST['nombre'] ?? '');
-			$o->set_categoria($_POST['categoria'] ?? '');
 			$o->set_fecha($_POST['fecha'] ?? '');
 			$o->set_stocka($_POST['stocka'] ?? '0');
 			$o->set_precio($_POST['precio'] ?? '0');
 			$o->set_proveedor($_POST['proveedor'] ?? '');
 			$o->set_nivel($nivel);
-			echo $o->registrar();
+			$respuesta = $o->registrar();
+
+			echo "<script>
+			alert('$respuesta');
+			window.location='?pagina=inventario';
+			</script>";
 		}
 
 		if (!empty($_POST['modificar'])) {
@@ -84,7 +88,5 @@ if (is_file("vista/".$pagina.".php")) {
 } else {
 	echo "PAGINA EN CONSTRUCCION";
 }
-
-?>
 
 ?>

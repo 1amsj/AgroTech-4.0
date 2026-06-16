@@ -35,7 +35,7 @@ $(function () {
 });
 
 function attachFieldValidation() {
-    $("#nombre, #apellido, #nombrem, #apellidom").on("keypress", function (e) {
+    $("#nombre, #nombrem").on("keypress", function (e) {
         validarkeypress(/^[A-Za-z\u00C0-\u017F\s]$/, e);
     });
 
@@ -44,19 +44,9 @@ function attachFieldValidation() {
             $(this), $("#snombre"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
-    $("#apellido").on("keyup", function () {
-        validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
-            $(this), $("#sapellido"), "Solo letras (incluye acentos) y espacios 4-26");
-    });
-
     $("#nombrem").on("keyup", function () {
         validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
             $(this), $("#snombrem"), "Solo letras (incluye acentos) y espacios 4-26");
-    });
-
-    $("#apellidom").on("keyup", function () {
-        validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
-            $(this), $("#sapellidom"), "Solo letras (incluye acentos) y espacios 4-26");
     });
 
     $("#telefono, #telefonom").on("keypress", function (e) {
@@ -93,7 +83,6 @@ function extractRowData($row) {
     return {
         id: dataset.id || "",
         nombre: decodeHtml(dataset.nombre || ""),
-        apellido: decodeHtml(dataset.apellido || ""),
         telefono: decodeHtml(dataset.telefono || ""),
         descripcion: decodeHtml(dataset.descripcion || "")
     };
@@ -108,14 +97,13 @@ function decodeHtml(value) {
 function fillEditForm(data) {
     $("#destinatarioId").val(data.id || "");
     $("#nombrem").val(data.nombre || "");
-    $("#apellidom").val(data.apellido || "");
     $("#telefonom").val(data.telefono || "");
     $("#descripcionm").val(data.descripcion || "");
 }
 
 function fillDeleteForm(data) {
     $("#deleteDestinatarioId").val(data.id || "");
-    $("#deleteDestinatarioName").val((data.nombre || "") + (data.apellido ? " " + data.apellido : ""));
+    $("#deleteDestinatarioName").val(data.nombre || "");
 }
 
 function validarkeyup(er, etiqueta, etiquetamensaje, mensaje) {
@@ -144,10 +132,6 @@ function validarEnvioCreate() {
         $("#nombre"), $("#snombre"), "Solo letras (incluye acentos) y espacios 4-26")) {
         return false;
     }
-    if (!validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
-        $("#apellido"), $("#sapellido"), "Solo letras (incluye acentos) y espacios 4-26")) {
-        return false;
-    }
     if (!validarkeyup(/^[0-9]{4,20}$/,
         $("#telefono"), $("#stelefono"), "Solo números 4-20")) {
         return false;
@@ -162,10 +146,6 @@ function validarEnvioCreate() {
 function validarEnvioEdit() {
     if (!validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
         $("#nombrem"), $("#snombrem"), "Solo letras (incluye acentos) y espacios 4-26")) {
-        return false;
-    }
-    if (!validarkeyup(/^[A-Za-z\u00C0-\u017F\s]{4,26}$/,
-        $("#apellidom"), $("#sapellidom"), "Solo letras (incluye acentos) y espacios 4-26")) {
         return false;
     }
     if (!validarkeyup(/^[0-9]{4,20}$/,

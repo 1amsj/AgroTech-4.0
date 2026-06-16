@@ -48,7 +48,7 @@
 }
 
 .reportes-btn-primary {
-    background-color: #49fd5b8d;
+    background-color: #2D6A4F;
     color: #000000;
     box-shadow: 0 6px 12px rgba(73, 253, 91, 0.35);
 }
@@ -72,7 +72,7 @@
 .reportes-btn-outline {
     background-color: transparent;
     color: #202124;
-    border: 2px solid #49fd5b8d;
+    border: 2px solid #2D6A4F;
     box-shadow: none;
 }
 

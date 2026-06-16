@@ -48,7 +48,6 @@
           <thead>
             <tr>
               <th>Nombre</th>
-              <th>Apellido</th>
               <th>Telefono</th>
               <th>Descripción</th>
               <th>Modificar</th>
@@ -93,12 +92,6 @@
                     placeholder="Escriba el nombre del destinatario" autofocus>
                 </div>
                 <div class="mb-3">
-                  <label for="password">Apellido</label>
-                  <span id="sapellido" class="text-danger"></span>
-                  <input class="form-control input-standar" type="text" id="apellido" name="apellido"
-                    placeholder="Escriba el apellido del destinatario" autofocus>
-                </div>
-                <div class="mb-3">
                   <label for="telephone">Telefono</label>
                   <span id="stelefono" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="telefono" name="telefono"
@@ -141,12 +134,6 @@
                   <span id="snombrem" class="text-danger"></span>
                   <input class="form-control input-standar" type="text" id="nombrem" name="nombrem"
                     placeholder="Escriba el nombre del destinatario" autofocus>
-                </div>
-                <div class="mb-3">
-                  <label for="passwordm">Apellido</label>
-                  <span id="sapellidom" class="text-danger"></span>
-                  <input class="form-control input-standar" type="text" id="apellidom" name="apellidom"
-                    placeholder="Escriba el apellido del destinatario" autofocus>
                 </div>
                 <div class="mb-3">
                   <label for="telephonem">Telefono</label>
