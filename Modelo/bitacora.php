@@ -9,11 +9,7 @@ class bitacora extends datos
 		$co = $this->conecta();
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-		$sql = "SELECT b.ID, b.N_de_empleado, b.Accion, b.Fecha, " .
-			"CONCAT(COALESCE(u.Nombre, ''), ' ', COALESCE(u.Apellido, '')) AS nombre_completo " .
-			"FROM bitacora b " .
-			"LEFT JOIN usuario u ON u.N_de_empleado = b.N_de_empleado " .
-			"ORDER BY b.ID DESC";
+		$sql = "CALL sp_bitacora()";
 
 		$stmt = $co->prepare($sql);
 		$stmt->execute();

@@ -59,8 +59,7 @@
           <input type="hidden" name="modificar" id="editProductId">
           <div class="agro-form-group">
             <label for="editProductName">Nombre del producto</label>
-            <input type="text" class="agro-input" id="editProductName" name="nombre"
-              placeholder="Escriba el nombre del producto" />
+            <input type="text" class="agro-input" id="editProductName" name="nombrem"placeholder="Escriba el nombre del producto" required/>
           </div>
           <div class="agro-form-group">
             <label for="editProductCategory">Categoría</label>
@@ -72,11 +71,11 @@
           </div>
           <div class="agro-form-group">
             <label for="editProductStock">Stock Actual</label>
-            <input type="number" min="0" step="0.01" class="agro-input" id="editProductStock" name="stockam" placeholder="Escriba el stock actual" />
+            <input type="number" min="0" step="1" class="agro-input" id="editProductStock" name="stockam" placeholder="Escriba el stock actual" required/>
           </div>
           <div class="agro-form-group">
             <label for="editProductPrice">Costo unitario</label>
-            <input type="number" min="0" step="0.01" class="agro-input" id="editProductPrice" name="preciom" placeholder="Ingrese el costo unitario" />
+            <input type="number" min="0" step="1" class="agro-input" id="editProductPrice" name="preciom" placeholder="Ingrese el costo unitario" />
           </div>
           <button type="button" class="agro-btn agro-btn-confirm w-100" id="submitEditInventory">Enviar</button>
         </form>

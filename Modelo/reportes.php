@@ -77,76 +77,37 @@ class reportes extends datos
         $co = $this->conecta();
         $co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT
-                    m.id,
-                    COALESCE(NULLIF(i.Nombre, ''), CONCAT('Producto ', m.id_inventario)) AS producto,
-                    m.tipo,
-                    COALESCE(m.cantidad, 0) AS cantidad,
-                    COALESCE(m.motivo, '') AS motivo,
-                    COALESCE(m.costo_unitario, 0) AS costo_unitario,
-                    COALESCE(m.costo_total, 0) AS costo_total,
-                    COALESCE(m.stock_resultante, 0) AS stock_resultante,
-                    DATE_FORMAT(m.fecha, '%Y-%m-%d') AS fecha,
-                    m.id_usuario,
-                    CASE
-                        WHEN u.N_de_empleado IS NULL THEN CONCAT('Usuario ', m.id_usuario)
-                        ELSE NULLIF(TRIM(CONCAT(COALESCE(u.Nombre, ''), ' ', COALESCE(u.Apellido, ''))), '')
-                    END AS usuario,
-                    GROUP_CONCAT(
-                        DISTINCT NULLIF(
-                            TRIM(CONCAT(COALESCE(d.Nombre, ''), ' ', COALESCE(d.Apellido, ''))),
-                            ''
-                        )
-                        SEPARATOR ', '
-                    ) AS destinatarios,
-                    GROUP_CONCAT(
-                        DISTINCT NULLIF(
-                            TRIM(CONCAT(COALESCE(p.Nombre_proveedor, ''), ' ', COALESCE(p.Apellido, ''))),
-                            ''
-                        )
-                        SEPARATOR ', '
-                    ) AS proveedores
-                FROM movimiento m
-                LEFT JOIN inventario i ON i.ID = m.id_inventario
-                LEFT JOIN usuario u ON u.N_de_empleado = m.id_usuario
-                LEFT JOIN movimiento_destinatario md ON md.id_movimiento = m.id
-                LEFT JOIN destinatario d ON d.ID = md.id_destinatario
-                LEFT JOIN movimiento_proveedor mp ON mp.id_movimiento = m.id
-                LEFT JOIN proveedor p ON p.ID = mp.id_proveedor
-                WHERE 1 = 1";
+        $sql = "SELECT *
+        FROM vista_movimientos WHERE 1=1";
 
         $params = [];
 
         if (!empty($filtros['fecha_inicio'])) {
-            $sql .= " AND m.fecha >= :fecha_inicio";
+            $sql .= " AND fecha >= :fecha_inicio";
             $params[':fecha_inicio'] = $filtros['fecha_inicio'];
         }
 
         if (!empty($filtros['fecha_fin'])) {
-            $sql .= " AND m.fecha <= :fecha_fin";
+            $sql .= " AND fecha <= :fecha_fin";
             $params[':fecha_fin'] = $filtros['fecha_fin'];
         }
 
         if (!empty($filtros['tipo'])) {
-            $sql .= " AND m.tipo = :tipo";
+            $sql .= " AND tipo = :tipo";
             $params[':tipo'] = $filtros['tipo'];
         }
 
         if (!empty($filtros['usuario'])) {
-            $sql .= " AND m.id_usuario = :usuario";
+            $sql .= " AND id_usuario = :usuario";
             $params[':usuario'] = $filtros['usuario'];
         }
 
         if (!empty($filtros['producto'])) {
-            $sql .= " AND m.id_inventario = :producto";
+            $sql .= " AND id_inventario = :producto";
             $params[':producto'] = $filtros['producto'];
         }
 
-        $sql .= " GROUP BY
-                    m.id
-                ORDER BY
-                    m.fecha DESC,
-                    m.id DESC";
+        $sql .= " ORDER BY fecha DESC, id DESC";
 
         $stmt = $co->prepare($sql);
         foreach ($params as $clave => $valor) {

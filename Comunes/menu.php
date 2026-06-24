@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="nav flex-column">
-                    <a href="?pagina=main" class="sidebar-link text-decoration-none p-3">
+                    <a href="?pagina=main" class="sidebar-link text-decoration-none p-3" <?php echo ($pagina_actual == 'main') ? 'active' : ''; ?>>
                         <i class="fas fa-home me-3"></i>
                         <span class="hide-on-collapse">Inicio</span>
                     </a>

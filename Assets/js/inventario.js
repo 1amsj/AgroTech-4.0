@@ -129,11 +129,12 @@ $(function () {
 			return;
 		}
 		$("#editProductId").val(selectedProduct.id);
-		$("#editProductName").val(selectedProduct.ProductName);
+		$("#editProductName").val(selectedProduct.name);
 		$("#editProductCategory").val(selectedProduct.category);
 		$("#editProductDate").val(selectedProduct.date);
 		$("#editProductStock").val(selectedProduct.stock);
 		$("#editProductPrice").val(selectedProduct.price);
+		console.log(selectedProduct);
 		$editModal.modal("show");
 	});
 

@@ -153,11 +153,11 @@ class Inventario extends datos
 				$categoria = htmlspecialchars($r['Categoria'], ENT_QUOTES, 'UTF-8');
 				$cantidad = number_format((float)$r['Cantidad'], 0) . ' cajas';
 					if ($r['Cantidad'] <= 10) {
-						$estadoStock = "🔴 Stock crítico";
+						$estadoStock = "Stock crítico";
 					} elseif ($r['Cantidad'] <= 30) {
-						$estadoStock = "🟡 Stock bajo";
+						$estadoStock = "Stock bajo";
 					} else {
-						$estadoStock = "🟢 Disponible";
+						$estadoStock = "Disponible";
 					}
 				$precio = htmlspecialchars($r['precio'] ?? '', ENT_QUOTES, 'UTF-8');
 
