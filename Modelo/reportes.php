@@ -77,8 +77,7 @@ class reportes extends datos
         $co = $this->conecta();
         $co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT *
-        FROM vista_movimientos WHERE 1=1";
+        $sql = "select `m`.`id` AS `id`,`m`.`id_inventario` AS `id_inventario`,coalesce(nullif(`i`.`Nombre`,''),concat('Producto ',`m`.`id_inventario`)) AS `producto`,`m`.`tipo` AS `tipo`,coalesce(`m`.`cantidad`,0) AS `cantidad`,coalesce(`m`.`motivo`,'') AS `motivo`,coalesce(`m`.`costo_unitario`,0) AS `costo_unitario`,coalesce(`m`.`costo_total`,0) AS `costo_total`,coalesce(`m`.`stock_resultante`,0) AS `stock_resultante`,date_format(`m`.`fecha`,'%Y-%m-%d') AS `fecha`,`m`.`id_usuario` AS `id_usuario`,case when `u`.`N_de_empleado` is null then concat('Usuario ',`m`.`id_usuario`) else nullif(trim(concat(coalesce(`u`.`Nombre`,''),' ',coalesce(`u`.`Apellido`,''))),'') end AS `usuario`,group_concat(distinct nullif(trim(concat(coalesce(`d`.`Nombre`,''),' ',coalesce(`d`.`Apellido`,''))),'') separator ', ') AS `destinatarios`,group_concat(distinct nullif(trim(concat(coalesce(`p`.`Nombre_proveedor`,''),' ',coalesce(`p`.`Apellido`,''))),'') separator ', ') AS `proveedores` from ((((((`agrotechdb`.`movimiento` `m` left join `agrotechdb`.`inventario` `i` on(`i`.`ID` = `m`.`id_inventario`)) left join `agrotechdb`.`usuario` `u` on(`u`.`N_de_empleado` = `m`.`id_usuario`)) left join `agrotechdb`.`movimiento_destinatario` `md` on(`md`.`id_movimiento` = `m`.`id`)) left join `agrotechdb`.`destinatario` `d` on(`d`.`ID` = `md`.`id_destinatario`)) left join `agrotechdb`.`movimiento_proveedor` `mp` on(`mp`.`id_movimiento` = `m`.`id`)) left join `agrotechdb`.`proveedor` `p` on(`p`.`ID` = `mp`.`id_proveedor`)) group by `m`.`id`";
 
         $params = [];
 
